@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import profile from "@/assets/profile.jpg";
-import { BracketTag, DD, DT, Prompt, Section } from "@/components/tex";
+import { DD, DT, Prompt } from "@/components/tex";
 import { skills } from "@/content/cv";
 
 export const Route = createFileRoute("/")({
@@ -26,20 +26,23 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <article>
-      {/* Title block — academic preprint style */}
-      <header className="pt-4 pb-2">
-        <h1 className="text-5xl md:text-6xl tracking-tight mb-3">Bálint Décsi</h1>
-        <p className="font-mono text-sm text-[color:var(--color-ink-muted)] mb-6">
-          <Prompt caret>whoami</Prompt>
-        </p>
-        <p className="text-lg italic text-[color:var(--color-ink-muted)] mb-8">
-          CTO at Proximata · Data Engineer at Deutsche Telekom · Builder at mesh.
-        </p>
+    <article className="space-y-20">
+      {/* Title + portrait */}
+      <header className="grid md:grid-cols-[1fr_180px] gap-10 items-start pt-2">
+        <div className="space-y-6">
+          <div>
+            <h1 className="text-5xl md:text-6xl tracking-tight mb-2">Bálint Décsi</h1>
+            <p className="font-mono text-sm">
+              <Prompt caret>whoami</Prompt>
+            </p>
+          </div>
 
-        <div className="flex flex-col md:flex-row gap-8 items-start">
-          <div className="flex-1">
-            <h2 className="font-mono text-xs uppercase tracking-wider text-[color:var(--color-ink-muted)] mb-2">
+          <p className="text-xl italic text-[color:var(--color-ink-muted)] leading-relaxed">
+            CTO at Proximata · Data Engineer at Deutsche Telekom · Builder at mesh.
+          </p>
+
+          <div className="space-y-3">
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--color-ink-muted)]">
               Abstract
             </h2>
             <p className="leading-relaxed">
@@ -50,57 +53,138 @@ function Index() {
               prototyping ML-driven products.
             </p>
           </div>
+
+          {/* Footnote-style links over a dashed rule */}
+          <div className="flex flex-wrap gap-x-6 gap-y-2 pt-5 border-t border-dashed border-[color:var(--color-rule)] font-mono text-xs">
+            <FootLink mark="†" to="/cv">read full CV</FootLink>
+            <FootLink mark="‡" href="https://github.com/balintdecsi">github</FootLink>
+            <FootLink mark="§" href="https://www.linkedin.com/in/balintdecsi4b6b53183">linkedin</FootLink>
+            <FootLink mark="¶" href="mailto:balint.decsi@gmail.com">balint.decsi@gmail.com</FootLink>
+          </div>
+        </div>
+
+        <div className="relative group hidden md:block">
+          <div className="absolute -right-3 -top-3 w-full h-full border border-[color:var(--color-rule)] -z-10 transition-all group-hover:-right-1.5 group-hover:-top-1.5" />
           <img
             src={profile}
             alt="Portrait of Bálint Décsi"
-            className="w-36 h-36 object-cover border border-[color:var(--color-rule)] grayscale"
+            className="w-full aspect-square object-cover grayscale border border-[color:var(--color-rule)]"
           />
         </div>
-
-        {/* Footnote-style links */}
-        <p className="mt-8 font-mono text-sm text-[color:var(--color-ink-muted)]">
-          <sup>†</sup> <Link to="/cv">read full CV</Link>
-          {"  ·  "}
-          <sup>‡</sup> <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer">github</a>
-          {"  ·  "}
-          <sup>§</sup> <a href="https://www.linkedin.com/in/balintdecsi4b6b53183" target="_blank" rel="noopener noreferrer">linkedin</a>
-          {"  ·  "}
-          <sup>¶</sup> <a href="mailto:balint.decsi@gmail.com">balint.decsi@gmail.com</a>
-        </p>
       </header>
 
-      <Section number={1} title="At a glance">
-        <dl className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
-          <div>
-            <DT>Current role</DT>
-            <DD>CTO, Proximata <span className="text-[color:var(--color-ink-muted)]">(Vienna-based hacker lab)</span></DD>
-            <DT>Also</DT>
-            <DD>Data Engineer at Deutsche Telekom · Builder at mesh.</DD>
-          </div>
-          <div>
-            <DT>Education</DT>
-            <DD>MS Business Analytics, CEU (2025–2026)</DD>
-            <DT>Location</DT>
-            <DD>Vienna, Austria / Budapest, Hungary</DD>
-          </div>
+      {/* At a glance */}
+      <RuleSection number={1} title="At a glance">
+        <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6">
+          <div><DT>Current role</DT><DD>CTO, Proximata <span className="text-[color:var(--color-ink-muted)] italic">(Vienna-based hacker lab)</span></DD></div>
+          <div><DT>Education</DT><DD>MS Business Analytics, CEU <span className="text-[color:var(--color-ink-muted)] italic">(2025–2026)</span></DD></div>
+          <div><DT>Also</DT><DD>Data Engineer at Deutsche Telekom · Builder at mesh.</DD></div>
+          <div><DT>Location</DT><DD>Vienna, Austria / Budapest, Hungary</DD></div>
         </dl>
-      </Section>
+      </RuleSection>
 
-      <Section number={2} title="Interests & skills">
-        <p className="leading-loose">
+      {/* Skills as hover-able chip tags */}
+      <RuleSection number={2} title="Interests & skills">
+        <div className="flex flex-wrap gap-x-2 gap-y-2.5">
           {skills.map((s) => (
-            <BracketTag key={s}>{s.toLowerCase()}</BracketTag>
+            <span
+              key={s}
+              className="font-mono text-[11px] px-2.5 py-1 border border-[color:var(--color-rule)] bg-[color:var(--color-muted)] text-[color:var(--color-ink-muted)] hover:border-[color:var(--color-link)] hover:text-[color:var(--color-link)] transition-colors cursor-default"
+            >
+              [{s.toLowerCase()}]
+            </span>
           ))}
-        </p>
-      </Section>
+        </div>
+      </RuleSection>
 
-      <Section number={3} title="Where to next">
-        <ul className="font-mono text-sm space-y-2">
-          <li><span className="text-[color:var(--color-link)]">$</span> <Link to="/cv">cat cv.tex</Link>  <span className="text-[color:var(--color-ink-muted)]"># experience, education, certifications, awards</span></li>
-          <li><span className="text-[color:var(--color-link)]">$</span> <Link to="/projects">ls projects/</Link>  <span className="text-[color:var(--color-ink-muted)]"># selected work and open-source experiments</span></li>
-          <li><span className="text-[color:var(--color-link)]">$</span> <Link to="/tools">./tools --help</Link>  <span className="text-[color:var(--color-ink-muted)]"># small tools and demos I've shipped</span></li>
-        </ul>
-      </Section>
+      {/* Where to next — interactive command rows */}
+      <RuleSection number={3} title="Where to next">
+        <div className="space-y-3">
+          <CmdRow to="/cv" cmd="cat cv.tex" note="# experience, education, certifications, awards" />
+          <CmdRow to="/projects" cmd="ls projects/" note="# selected work and open-source experiments" />
+          <CmdRow to="/tools" cmd="./tools --help" note="# small tools and demos I've shipped" />
+        </div>
+      </RuleSection>
     </article>
+  );
+}
+
+function RuleSection({
+  number,
+  title,
+  children,
+}: {
+  number: number;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="space-y-8">
+      <div className="flex items-baseline gap-4">
+        <span className="text-3xl italic text-[color:var(--color-link)] opacity-40">§{number}</span>
+        <h2 className="text-2xl tracking-tight">{title}</h2>
+        <div className="grow h-px bg-[color:var(--color-rule)] self-center" />
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function FootLink({
+  mark,
+  to,
+  href,
+  children,
+}: {
+  mark: string;
+  to?: string;
+  href?: string;
+  children: React.ReactNode;
+}) {
+  const inner = (
+    <>
+      <span className="text-[color:var(--color-ink-muted)] italic mr-1.5">{mark}</span>
+      <span className="underline decoration-[color:var(--color-link)]/30 underline-offset-4 hover:decoration-[color:var(--color-link)]">
+        {children}
+      </span>
+    </>
+  );
+  if (to) {
+    return (
+      <Link to={to} className="no-underline inline-flex items-center">
+        {inner}
+      </Link>
+    );
+  }
+  const external = href?.startsWith("http");
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      className="no-underline inline-flex items-center"
+    >
+      {inner}
+    </a>
+  );
+}
+
+function CmdRow({ to, cmd, note }: { to: string; cmd: string; note: string }) {
+  return (
+    <Link
+      to={to}
+      className="no-underline group flex items-center justify-between gap-4 border border-[color:var(--color-rule)] p-4 bg-[color:var(--color-paper)] hover:border-[color:var(--color-link)]/50 hover:bg-[color:var(--color-muted)] transition-colors"
+    >
+      <div className="flex flex-wrap gap-x-4 items-baseline font-mono">
+        <span className="text-sm">
+          <span className="text-[color:var(--color-link)]">$ </span>
+          <span className="text-[color:var(--color-ink)]">{cmd}</span>
+        </span>
+        <span className="text-[11px] italic text-[color:var(--color-ink-muted)]">{note}</span>
+      </div>
+      <span className="font-mono text-[10px] tracking-wider text-[color:var(--color-ink-muted)] opacity-0 group-hover:opacity-100 transition-opacity">
+        ENTER ↵
+      </span>
+    </Link>
   );
 }
