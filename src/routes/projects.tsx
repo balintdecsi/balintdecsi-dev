@@ -31,6 +31,7 @@ interface Repo {
   fork: boolean;
   archived: boolean;
   pushed_at: string;
+  topics?: string[];
 }
 
 function Projects() {
@@ -124,9 +125,14 @@ function Repos() {
             {r.description && (
               <p className="text-sm text-[color:var(--color-ink-muted)] mt-0.5">{r.description}</p>
             )}
+            {(r.topics?.length || r.language) && (
+              <p className="mt-1">
+                {r.language && <BracketTag>{r.language.toLowerCase()}</BracketTag>}
+                {r.topics?.map((t) => <BracketTag key={t}>{t}</BracketTag>)}
+              </p>
+            )}
           </div>
           <span className="font-mono text-xs text-[color:var(--color-ink-muted)] whitespace-nowrap">
-            {r.language && <span className="mr-3">[{r.language.toLowerCase()}]</span>}
             ★ {r.stargazers_count}
           </span>
         </li>
