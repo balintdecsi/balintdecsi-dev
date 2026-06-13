@@ -14,23 +14,21 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <SiteShell>
+      <div className="py-24">
+        <pre className="font-mono text-sm text-[color:var(--color-ink-muted)] mb-6">
+{`$ cd ${typeof window !== "undefined" ? window.location.pathname : "/?"}
+bash: cd: No such file or directory`}
+        </pre>
+        <h1 className="text-3xl mb-3">404 — page not found</h1>
+        <p className="text-[color:var(--color-ink-muted)] mb-6">
+          The page you're looking for doesn't exist or has moved.
         </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+        <Link to="/" className="font-mono text-sm">
+          ← return to /
+        </Link>
       </div>
-    </div>
+    </SiteShell>
   );
 }
 
@@ -42,33 +40,24 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+    <SiteShell>
+      <div className="py-24">
+        <pre className="font-mono text-sm text-[color:var(--color-ink-muted)] mb-6">
+{`$ ./load-page
+error: unhandled exception`}
+        </pre>
+        <h1 className="text-3xl mb-3">Something broke</h1>
+        <p className="text-[color:var(--color-ink-muted)] mb-6">
+          {error.message || "Try reloading the page."}
         </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Try again
+        <div className="flex gap-4 font-mono text-sm">
+          <button onClick={() => { router.invalidate(); reset(); }} className="underline">
+            ↻ retry
           </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
+          <a href="/">← home</a>
         </div>
       </div>
-    </div>
+    </SiteShell>
   );
 }
 
@@ -77,19 +66,45 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Bálint Décsi — Data & ML Engineer" },
+      { name: "description", content: "CTO at Proximata, Data Engineer at Deutsche Telekom. Building end-to-end data and ML systems with AI agents." },
+      { name: "author", content: "Bálint Décsi" },
+      { property: "og:title", content: "Bálint Décsi" },
+      { property: "og:description", content: "Data & ML engineer. CTO at Proximata, builder at mesh." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "balintdecsi.dev" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" } as any,
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Bálint Décsi",
+          jobTitle: "CTO, Data Engineer",
+          worksFor: [
+            { "@type": "Organization", name: "Proximata", url: "https://proximata.io" },
+            { "@type": "Organization", name: "Deutsche Telekom IT Solutions HU" },
+          ],
+          url: "https://balintdecsi.dev",
+          sameAs: [
+            "https://github.com/balintdecsi",
+            "https://www.linkedin.com/in/balintdecsi4b6b53183",
+          ],
+        }),
       },
     ],
   }),
@@ -118,8 +133,57 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <SiteShell>
+        <Outlet />
+      </SiteShell>
     </QueryClientProvider>
+  );
+}
+
+function SiteShell({ children }: { children: ReactNode }) {
+  return (
+    <div className="min-h-screen flex flex-col">
+      <SiteHeader />
+      <main className="flex-1 w-full max-w-[72ch] mx-auto px-6 pb-16">
+        {children}
+      </main>
+      <SiteFooter />
+    </div>
+  );
+}
+
+function SiteHeader() {
+  const linkCls = "font-mono text-sm no-underline hover:!text-[color:var(--color-link)]";
+  return (
+    <header className="site-header no-print border-b border-[color:var(--color-rule)] mb-12">
+      <div className="max-w-[72ch] mx-auto px-6 py-5 flex items-center justify-between gap-6">
+        <Link to="/" className="font-mono text-sm no-underline tracking-tight">
+          <span className="text-[color:var(--color-link)]">~/</span>balint.decsi
+        </Link>
+        <nav className="flex items-center gap-5">
+          <Link to="/" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }} activeOptions={{ exact: true }}>about</Link>
+          <Link to="/cv" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>cv</Link>
+          <Link to="/projects" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>projects</Link>
+          <Link to="/tools" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>tools</Link>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+function SiteFooter() {
+  return (
+    <footer className="site-footer no-print border-t border-[color:var(--color-rule)] mt-12">
+      <div className="max-w-[72ch] mx-auto px-6 py-6 font-mono text-xs text-[color:var(--color-ink-muted)] flex flex-wrap items-center justify-between gap-3">
+        <span>© {new Date().getFullYear()} Bálint Décsi · typeset with care in Vienna &amp; Budapest</span>
+        <span>
+          <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline">github</a>
+          {" · "}
+          <a href="https://www.linkedin.com/in/balintdecsi4b6b53183" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline">linkedin</a>
+          {" · "}
+          <a href="mailto:balint.decsi@gmail.com" className="no-underline hover:underline">email</a>
+        </span>
+      </div>
+    </footer>
   );
 }

@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CEU FeedForward — Student Feedback Platform</title>
+  <meta name="description" content="FeedForward is a secure, anonymous student feedback platform for Central European University. Rate professors and courses with your @student.ceu.edu account.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/ceu-feedback.css">
+</head>
+<body>
+
+  <!-- DEMO RIBBON -->
+  <div class="ceu-demo-ribbon" aria-hidden="true">MVP Demo</div>
+
+  <!-- TOP BAR -->
+  <div class="ceu-topbar">
+    <div class="ceu-topbar-inner">
+      <span>Central European University — Vienna, Austria</span>
+      <div class="ceu-topbar-links">
+        <a href="https://www.ceu.edu" target="_blank" rel="noopener">ceu.edu</a>
+        <a href="#compliance" id="topbar-compliance-link">Compliance &amp; Privacy</a>
+        <a href="#" id="topbar-login-link">Student Login</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="ceu-header" role="banner">
+    <div class="ceu-header-inner">
+      <a href="#" class="ceu-logo" id="logo-link" aria-label="CEU FeedForward home">
+        <div class="ceu-logo-mark" aria-hidden="true">FF</div>
+        <div class="ceu-logo-text">
+          <span class="ceu-logo-title">FeedForward</span>
+          <span class="ceu-logo-sub">CEU Student Platform</span>
+        </div>
+      </a>
+      <nav class="ceu-nav" role="navigation" aria-label="Main navigation">
+        <button class="ceu-nav-link active" data-page="home" type="button">Home</button>
+        <button class="ceu-nav-link" data-page="feedback" type="button">Submit Feedback</button>
+        <button class="ceu-nav-link" data-page="compliance" type="button">Compliance</button>
+        <button class="ceu-nav-link" data-page="about" type="button">About</button>
+        <button class="ceu-nav-cta" id="header-register-btn" type="button">Register</button>
+      </nav>
+    </div>
+  </header>
+
+  <main role="main">
+
+    <!-- ══════════════════════════════════════
+         PAGE: HOME
+    ══════════════════════════════════════ -->
+    <div class="ceu-page active" id="page-home">
+
+      <!-- HERO -->
+      <section class="ceu-hero" aria-labelledby="hero-heading">
+        <div class="ceu-hero-inner">
+          <div class="ceu-hero-badge">MVP Demo — For University Review</div>
+          <h1 id="hero-heading">
+            Your voice shapes<br><span>CEU's academic excellence</span>
+          </h1>
+          <p>
+            FeedForward is a secure, anonymous feedback platform exclusively for CEU students.
+            Rate professors and courses, help improve teaching quality, and build a culture of
+            constructive academic dialogue — all compliant with GDPR and CEU data-protection policy.
+          </p>
+          <div class="ceu-hero-actions">
+            <button class="ceu-btn ceu-btn-primary" id="hero-register-btn" type="button">
+              Register with CEU email
+            </button>
+            <button class="ceu-btn ceu-btn-outline" data-page="feedback" type="button">
+              Explore demo
+            </button>
+          </div>
+          <div class="ceu-hero-stats" role="list" aria-label="Platform statistics">
+            <div class="ceu-hero-stat" role="listitem">
+              <span class="ceu-hero-stat-num">100%</span>
+              <span class="ceu-hero-stat-label">Anonymous submissions</span>
+            </div>
+            <div class="ceu-hero-stat" role="listitem">
+              <span class="ceu-hero-stat-num">GDPR</span>
+              <span class="ceu-hero-stat-label">Compliant by design</span>
+            </div>
+            <div class="ceu-hero-stat" role="listitem">
+              <span class="ceu-hero-stat-num">2</span>
+              <span class="ceu-hero-stat-label">Feedback types</span>
+            </div>
+            <div class="ceu-hero-stat" role="listitem">
+              <span class="ceu-hero-stat-num">CEU</span>
+              <span class="ceu-hero-stat-label">Students only</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="ceu-section ceu-section-alt" aria-labelledby="features-heading">
+        <div class="ceu-section-inner">
+          <div class="ceu-section-header">
+            <div class="ceu-section-eyebrow">What FeedForward offers</div>
+            <h2 id="features-heading" class="ceu-section-title">Built for meaningful academic feedback</h2>
+            <p class="ceu-section-desc">
+              A structured, trusted channel between CEU students and the institution — emphasising
+              transparency, anonymity and actionable insights.
+            </p>
+          </div>
+          <div class="ceu-features-grid" role="list">
+            <article class="ceu-feature-card" role="listitem">
+              <div class="ceu-feature-icon" aria-hidden="true">👤</div>
+              <h3>Professor Feedback</h3>
+              <p>Evaluate teaching quality, clarity, availability and engagement across structured rating dimensions and free-text comments.</p>
+            </article>
+            <article class="ceu-feature-card" role="listitem">
+              <div class="ceu-feature-icon" aria-hidden="true">📚</div>
+              <h3>Course Feedback</h3>
+              <p>Rate course design, workload, materials, learning outcomes and relevance — giving departments data to continuously improve curricula.</p>
+            </article>
+            <article class="ceu-feature-card" role="listitem">
+              <div class="ceu-feature-icon" aria-hidden="true">🔒</div>
+              <h3>Verified Access Only</h3>
+              <p>Registration requires a valid <strong>@student.ceu.edu</strong> email address, ensuring that only current enrolled students can participate.</p>
+            </article>
+            <article class="ceu-feature-card" role="listitem">
+              <div class="ceu-feature-icon" aria-hidden="true">🛡️</div>
+              <h3>Privacy by Design</h3>
+              <p>Feedback is anonymised at submission and never linked to student identity in reports. Data is processed under GDPR Article 6(1)(e).</p>
+            </article>
+            <article class="ceu-feature-card" role="listitem">
+              <div class="ceu-feature-icon" aria-hidden="true">📊</div>
+              <h3>Institutional Dashboards</h3>
+              <p>Aggregated, anonymised analytics are shared with department heads and the Academic Council to inform quality assurance decisions.</p>
+            </article>
+            <article class="ceu-feature-card" role="listitem">
+              <div class="ceu-feature-icon" aria-hidden="true">🗓️</div>
+              <h3>Time-limited Windows</h3>
+              <p>Feedback is open during defined periods per semester, preventing campaign abuse and aligning with course evaluation best practices.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="ceu-section ceu-section-dark" aria-labelledby="how-heading">
+        <div class="ceu-section-inner">
+          <div class="ceu-section-header">
+            <div class="ceu-section-eyebrow">Process</div>
+            <h2 id="how-heading" class="ceu-section-title">How it works</h2>
+          </div>
+          <div class="ceu-steps" role="list">
+            <div class="ceu-step" role="listitem">
+              <div class="ceu-step-number" aria-hidden="true">1</div>
+              <h3>Register</h3>
+              <p>Sign up with your <strong>@student.ceu.edu</strong> email. We send a one-time verification link — no password stored.</p>
+            </div>
+            <div class="ceu-step" role="listitem">
+              <div class="ceu-step-number" aria-hidden="true">2</div>
+              <h3>Select</h3>
+              <p>Choose to give professor feedback or course feedback for a term you've attended.</p>
+            </div>
+            <div class="ceu-step" role="listitem">
+              <div class="ceu-step-number" aria-hidden="true">3</div>
+              <h3>Rate &amp; Comment</h3>
+              <p>Answer structured rating questions and add optional free-text feedback. All responses are anonymised.</p>
+            </div>
+            <div class="ceu-step" role="listitem">
+              <div class="ceu-step-number" aria-hidden="true">4</div>
+              <h3>Impact</h3>
+              <p>Aggregated insights are reviewed by the Academic Council and shared with faculty each semester.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="ceu-section ceu-section-dark" style="padding-top:0" aria-labelledby="testimonials-heading">
+        <div class="ceu-section-inner">
+          <div class="ceu-section-header">
+            <div class="ceu-section-eyebrow">Student voices</div>
+            <h2 id="testimonials-heading" class="ceu-section-title">What students say</h2>
+          </div>
+          <div class="ceu-testimonials" role="list">
+            <blockquote class="ceu-testimonial" role="listitem">
+              <p class="ceu-testimonial-quote">"Finally a feedback system that doesn't feel like a bureaucratic form. The interface is clean and I actually feel like my input matters."</p>
+              <cite class="ceu-testimonial-author">MS Business Analytics, 2025–26</cite>
+            </blockquote>
+            <blockquote class="ceu-testimonial" role="listitem">
+              <p class="ceu-testimonial-quote">"Knowing my feedback is completely anonymous made me more honest. I hope this becomes the official CEU system."</p>
+              <cite class="ceu-testimonial-author">MA Political Science, 2025–26</cite>
+            </blockquote>
+            <blockquote class="ceu-testimonial" role="listitem">
+              <p class="ceu-testimonial-quote">"The professor and course split makes it much easier to give targeted feedback rather than cramming everything into one form."</p>
+              <cite class="ceu-testimonial-author">LLM Legal Studies, 2024–25</cite>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA BANNER -->
+      <section class="ceu-section" style="background:var(--ceu-white)" aria-labelledby="cta-heading">
+        <div class="ceu-section-inner" style="text-align:center">
+          <h2 id="cta-heading" class="ceu-section-title">Ready to make your feedback count?</h2>
+          <p class="ceu-section-desc" style="margin-bottom:2rem">
+            Register in under 60 seconds with your CEU student email. No app download required.
+          </p>
+          <button class="ceu-btn ceu-btn-navy" id="cta-register-btn" type="button" style="font-size:1rem;padding:0.8rem 2rem">
+            Register with @student.ceu.edu
+          </button>
+        </div>
+      </section>
+
+    </div><!-- /page-home -->
+
+
+    <!-- ══════════════════════════════════════
+         PAGE: FEEDBACK
+    ══════════════════════════════════════ -->
+    <div class="ceu-page" id="page-feedback">
+      <section class="ceu-section ceu-section-alt" aria-labelledby="feedback-heading">
+        <div class="ceu-section-inner">
+          <div class="ceu-section-header">
+            <div class="ceu-section-eyebrow">Submit Feedback</div>
+            <h2 id="feedback-heading" class="ceu-section-title">What would you like to review?</h2>
+            <p class="ceu-section-desc">Choose a feedback type and complete the form. All responses are anonymous.</p>
+          </div>
+
+          <!-- ANONYMITY BANNER -->
+          <div class="ceu-anon-banner" role="note" aria-label="Anonymity notice">
+            <div class="ceu-anon-banner-icon" aria-hidden="true">🔒</div>
+            <div class="ceu-anon-banner-text">
+              <h4>Your identity is protected</h4>
+              <p>Feedback is anonymised before storage. No personally identifiable information is retained beyond the verification step. Reports are aggregated only.</p>
+            </div>
+          </div>
+
+          <!-- FEEDBACK TYPE CHOOSER -->
+          <div class="ceu-feedback-cards" id="feedback-type-chooser" role="radiogroup" aria-label="Feedback type">
+            <div class="ceu-feedback-card" id="choose-professor" tabindex="0" role="radio" aria-checked="false" aria-label="Give professor feedback">
+              <div class="ceu-feedback-card-icon" aria-hidden="true">👩‍🏫</div>
+              <h3>Professor Feedback</h3>
+              <p>Evaluate a professor's teaching style, clarity, engagement, and support.</p>
+            </div>
+            <div class="ceu-feedback-card" id="choose-course" tabindex="0" role="radio" aria-checked="false" aria-label="Give course feedback">
+              <div class="ceu-feedback-card-icon" aria-hidden="true">📖</div>
+              <h3>Course Feedback</h3>
+              <p>Rate the course design, materials, workload, and learning outcomes.</p>
+            </div>
+          </div>
+
+          <!-- PROFESSOR FEEDBACK FORM -->
+          <div id="form-professor" style="display:none" aria-live="polite">
+            <div class="ceu-form-wrap">
+              <div class="ceu-form-progress" aria-label="Form progress">
+                <div class="ceu-form-step done" aria-label="Step 1 complete">
+                  <div class="ceu-form-step-dot" aria-hidden="true">✓</div>
+                  <span>Choose type</span>
+                </div>
+                <div class="ceu-form-step-line done" aria-hidden="true"></div>
+                <div class="ceu-form-step active" aria-label="Current step: Rate professor">
+                  <div class="ceu-form-step-dot" aria-hidden="true">2</div>
+                  <span>Rate professor</span>
+                </div>
+                <div class="ceu-form-step-line" aria-hidden="true"></div>
+                <div class="ceu-form-step" aria-label="Step 3: Submit">
+                  <div class="ceu-form-step-dot" aria-hidden="true">3</div>
+                  <span>Submit</span>
+                </div>
+              </div>
+
+              <h3 class="ceu-form-title">Professor Feedback</h3>
+              <p class="ceu-form-subtitle">All fields marked <span aria-hidden="true">*</span><span class="sr-only">required</span> are required. Your response is anonymous.</p>
+
+              <div class="ceu-alert ceu-alert-info" role="note">
+                <span class="ceu-alert-icon" aria-hidden="true">ℹ️</span>
+                <span>This is a <strong>demo form</strong>. No data is collected or transmitted.</span>
+              </div>
+
+              <form id="professor-form" novalidate aria-label="Professor feedback form">
+                <div class="ceu-field">
+                  <label class="ceu-label" for="prof-select">Professor <span class="req" aria-hidden="true">*</span></label>
+                  <select class="ceu-select" id="prof-select" name="professor" required aria-required="true">
+                    <option value="" disabled selected>Select a professor…</option>
+                    <option value="p1">Prof. Anna Kovács — Business Analytics</option>
+                    <option value="p2">Prof. James Miller — Economics</option>
+                    <option value="p3">Prof. Maria Schmidt — Legal Studies</option>
+                    <option value="p4">Prof. David Chen — Political Science</option>
+                    <option value="p5">Prof. Sara Varga — Network Science</option>
+                  </select>
+                  <div class="ceu-field-error" id="prof-select-error" role="alert">Please select a professor.</div>
+                </div>
+
+                <div class="ceu-field">
+                  <label class="ceu-label" for="prof-course">Course (associated) <span class="req" aria-hidden="true">*</span></label>
+                  <select class="ceu-select" id="prof-course" name="course" required aria-required="true">
+                    <option value="" disabled selected>Select a course…</option>
+                    <option value="c1">ECBS5293 — Data Science 1</option>
+                    <option value="c2">ECBS5301 — Business Analytics Methods</option>
+                    <option value="c3">ECBS5400 — Machine Learning</option>
+                    <option value="c4">LEGF5100 — EU Law Fundamentals</option>
+                    <option value="c5">POLS5201 — Comparative Politics</option>
+                  </select>
+                  <div class="ceu-field-error" id="prof-course-error" role="alert">Please select a course.</div>
+                </div>
+
+                <div class="ceu-field">
+                  <label class="ceu-label" for="prof-term">Academic term <span class="req" aria-hidden="true">*</span></label>
+                  <select class="ceu-select" id="prof-term" name="term" required aria-required="true">
+                    <option value="" disabled selected>Select term…</option>
+                    <option value="2526f">Fall 2025–26</option>
+                    <option value="2526w">Winter 2025–26</option>
+                    <option value="2425f">Fall 2024–25</option>
+                    <option value="2425w">Winter 2024–25</option>
+                  </select>
+                  <div class="ceu-field-error" id="prof-term-error" role="alert">Please select a term.</div>
+                </div>
+
+                <hr class="ceu-divider" aria-hidden="true">
+
+                <div class="ceu-rating-group" role="group" aria-label="Professor ratings">
+                  <div class="ceu-rating-item">
+                    <div class="ceu-label" id="lbl-clarity">Teaching clarity <span class="req" aria-hidden="true">*</span></div>
+                    <div class="ceu-stars" role="radiogroup" aria-labelledby="lbl-clarity">
+                      <input type="radio" id="pc5" name="clarity" value="5" required aria-required="true"><label for="pc5" title="5 — Excellent">★</label>
+                      <input type="radio" id="pc4" name="clarity" value="4"><label for="pc4" title="4 — Good">★</label>
+                      <input type="radio" id="pc3" name="clarity" value="3"><label for="pc3" title="3 — Average">★</label>
+                      <input type="radio" id="pc2" name="clarity" value="2"><label for="pc2" title="2 — Below average">★</label>
+                      <input type="radio" id="pc1" name="clarity" value="1"><label for="pc1" title="1 — Poor">★</label>
+                    </div>
+                    <div class="ceu-field-error" id="prof-clarity-error" role="alert">Please rate teaching clarity.</div>
+                  </div>
+                  <div class="ceu-rating-item">
+                    <div class="ceu-label" id="lbl-engagement">Student engagement <span class="req" aria-hidden="true">*</span></div>
+                    <div class="ceu-stars" role="radiogroup" aria-labelledby="lbl-engagement">
+                      <input type="radio" id="pe5" name="engagement" value="5" required aria-required="true"><label for="pe5" title="5 — Excellent">★</label>
+                      <input type="radio" id="pe4" name="engagement" value="4"><label for="pe4" title="4 — Good">★</label>
+                      <input type="radio" id="pe3" name="engagement" value="3"><label for="pe3" title="3 — Average">★</label>
+                      <input type="radio" id="pe2" name="engagement" value="2"><label for="pe2" title="2 — Below average">★</label>
+                      <input type="radio" id="pe1" name="engagement" value="1"><label for="pe1" title="1 — Poor">★</label>
+                    </div>
+                    <div class="ceu-field-error" id="prof-engagement-error" role="alert">Please rate student engagement.</div>
+                  </div>
+                  <div class="ceu-rating-item">
+                    <div class="ceu-label" id="lbl-availability">Office availability <span class="req" aria-hidden="true">*</span></div>
+                    <div class="ceu-stars" role="radiogroup" aria-labelledby="lbl-availability">
+                      <input type="radio" id="pa5" name="availability" value="5" required aria-required="true"><label for="pa5" title="5 — Excellent">★</label>
+                      <input type="radio" id="pa4" name="availability" value="4"><label for="pa4" title="4 — Good">★</label>
+                      <input type="radio" id="pa3" name="availability" value="3"><label for="pa3" title="3 — Average">★</label>
+                      <input type="radio" id="pa2" name="availability" value="2"><label for="pa2" title="2 — Below average">★</label>
+                      <input type="radio" id="pa1" name="availability" value="1"><label for="pa1" title="1 — Poor">★</label>
+                    </div>
+                    <div class="ceu-field-error" id="prof-availability-error" role="alert">Please rate office availability.</div>
+                  </div>
+                  <div class="ceu-rating-item">
+                    <div class="ceu-label" id="lbl-fairness">Assessment fairness <span class="req" aria-hidden="true">*</span></div>
+                    <div class="ceu-stars" role="radiogroup" aria-labelledby="lbl-fairness">
+                      <input type="radio" id="pf5" name="fairness" value="5" required aria-required="true"><label for="pf5" title="5 — Excellent">★</label>
+                      <input type="radio" id="pf4" name="fairness" value="4"><label for="pf4" title="4 — Good">★</label>
+                      <input type="radio" id="pf3" name="fairness" value="3"><label for="pf3" title="3 — Average">★</label>
+                      <input type="radio" id="pf2" name="fairness" value="2"><label for="pf2" title="2 — Below average">★</label>
+                      <input type="radio" id="pf1" name="fairness" value="1"><label for="pf1" title="1 — Poor">★</label>
+                    </div>
+                    <div class="ceu-field-error" id="prof-fairness-error" role="alert">Please rate assessment fairness.</div>
+                  </div>
+                </div>
+
+                <div class="ceu-field">
+                  <label class="ceu-label" for="prof-comment">Additional comments <span style="font-weight:400;color:var(--ceu-text-sec)">(optional)</span></label>
+                  <textarea class="ceu-textarea" id="prof-comment" name="comment" placeholder="Share specific observations, suggestions, or examples…" maxlength="1000"></textarea>
+                  <div class="ceu-field-hint"><span id="prof-comment-count">0</span>/1000 characters</div>
+                </div>
+
+                <div class="ceu-checkbox-wrap">
+                  <input type="checkbox" class="ceu-checkbox" id="prof-confirm" name="confirm" required aria-required="true">
+                  <label class="ceu-checkbox-label" for="prof-confirm">
+                    I confirm that this feedback is honest, constructive and does not contain personal attacks, discriminatory language, or false statements. I understand that misuse may result in account suspension.
+                  </label>
+                </div>
+                <div class="ceu-field-error" id="prof-confirm-error" role="alert">You must confirm before submitting.</div>
+
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+                  <button type="submit" class="ceu-btn ceu-btn-primary">Submit feedback</button>
+                  <button type="button" class="ceu-btn ceu-btn-ghost" id="prof-back-btn">← Change type</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Success -->
+            <div class="ceu-success-wrap" id="prof-success" aria-live="assertive">
+              <span class="ceu-success-icon" aria-hidden="true">✅</span>
+              <h2>Feedback submitted!</h2>
+              <p>Thank you. Your anonymous feedback has been recorded and will be included in the next Academic Council report.</p>
+              <button class="ceu-btn ceu-btn-navy" id="prof-submit-another" type="button">Submit another</button>
+            </div>
+          </div><!-- /form-professor -->
+
+          <!-- COURSE FEEDBACK FORM -->
+          <div id="form-course" style="display:none" aria-live="polite">
+            <div class="ceu-form-wrap">
+              <div class="ceu-form-progress" aria-label="Form progress">
+                <div class="ceu-form-step done" aria-label="Step 1 complete">
+                  <div class="ceu-form-step-dot" aria-hidden="true">✓</div>
+                  <span>Choose type</span>
+                </div>
+                <div class="ceu-form-step-line done" aria-hidden="true"></div>
+                <div class="ceu-form-step active" aria-label="Current step: Rate course">
+                  <div class="ceu-form-step-dot" aria-hidden="true">2</div>
+                  <span>Rate course</span>
+                </div>
+                <div class="ceu-form-step-line" aria-hidden="true"></div>
+                <div class="ceu-form-step" aria-label="Step 3: Submit">
+                  <div class="ceu-form-step-dot" aria-hidden="true">3</div>
+                  <span>Submit</span>
+                </div>
+              </div>
+
+              <h3 class="ceu-form-title">Course Feedback</h3>
+              <p class="ceu-form-subtitle">All fields marked <span aria-hidden="true">*</span><span class="sr-only">required</span> are required. Your response is anonymous.</p>
+
+              <div class="ceu-alert ceu-alert-info" role="note">
+                <span class="ceu-alert-icon" aria-hidden="true">ℹ️</span>
+                <span>This is a <strong>demo form</strong>. No data is collected or transmitted.</span>
+              </div>
+
+              <form id="course-form" novalidate aria-label="Course feedback form">
+                <div class="ceu-field">
+                  <label class="ceu-label" for="course-select">Course <span class="req" aria-hidden="true">*</span></label>
+                  <select class="ceu-select" id="course-select" name="course" required aria-required="true">
+                    <option value="" disabled selected>Select a course…</option>
+                    <option value="c1">ECBS5293 — Data Science 1</option>
+                    <option value="c2">ECBS5301 — Business Analytics Methods</option>
+                    <option value="c3">ECBS5400 — Machine Learning</option>
+                    <option value="c4">LEGF5100 — EU Law Fundamentals</option>
+                    <option value="c5">POLS5201 — Comparative Politics</option>
+                    <option value="c6">NECS5101 — Network Science</option>
+                  </select>
+                  <div class="ceu-field-error" id="course-select-error" role="alert">Please select a course.</div>
+                </div>
+
+                <div class="ceu-field">
+                  <label class="ceu-label" for="course-term">Academic term <span class="req" aria-hidden="true">*</span></label>
+                  <select class="ceu-select" id="course-term" name="term" required aria-required="true">
+                    <option value="" disabled selected>Select term…</option>
+                    <option value="2526f">Fall 2025–26</option>
+                    <option value="2526w">Winter 2025–26</option>
+                    <option value="2425f">Fall 2024–25</option>
+                    <option value="2425w">Winter 2024–25</option>
+                  </select>
+                  <div class="ceu-field-error" id="course-term-error" role="alert">Please select a term.</div>
+                </div>
+
+                <hr class="ceu-divider" aria-hidden="true">
+
+                <div class="ceu-rating-group" role="group" aria-label="Course ratings">
+                  <div class="ceu-rating-item">
+                    <div class="ceu-label" id="lbl-design">Course design <span class="req" aria-hidden="true">*</span></div>
+                    <div class="ceu-stars" role="radiogroup" aria-labelledby="lbl-design">
+                      <input type="radio" id="cd5" name="design" value="5" required aria-required="true"><label for="cd5" title="5 — Excellent">★</label>
+                      <input type="radio" id="cd4" name="design" value="4"><label for="cd4" title="4 — Good">★</label>
+                      <input type="radio" id="cd3" name="design" value="3"><label for="cd3" title="3 — Average">★</label>
+                      <input type="radio" id="cd2" name="design" value="2"><label for="cd2" title="2 — Below average">★</label>
+                      <input type="radio" id="cd1" name="design" value="1"><label for="cd1" title="1 — Poor">★</label>
+                    </div>
+                    <div class="ceu-field-error" id="course-design-error" role="alert">Please rate course design.</div>
+                  </div>
+                  <div class="ceu-rating-item">
+                    <div class="ceu-label" id="lbl-materials">Learning materials <span class="req" aria-hidden="true">*</span></div>
+                    <div class="ceu-stars" role="radiogroup" aria-labelledby="lbl-materials">
+                      <input type="radio" id="cm5" name="materials" value="5" required aria-required="true"><label for="cm5" title="5 — Excellent">★</label>
+                      <input type="radio" id="cm4" name="materials" value="4"><label for="cm4" title="4 — Good">★</label>
+                      <input type="radio" id="cm3" name="materials" value="3"><label for="cm3" title="3 — Average">★</label>
+                      <input type="radio" id="cm2" name="materials" value="2"><label for="cm2" title="2 — Below average">★</label>
+                      <input type="radio" id="cm1" name="materials" value="1"><label for="cm1" title="1 — Poor">★</label>
+                    </div>
+                    <div class="ceu-field-error" id="course-materials-error" role="alert">Please rate learning materials.</div>
+                  </div>
+                  <div class="ceu-rating-item">
+                    <div class="ceu-label" id="lbl-workload">Workload balance <span class="req" aria-hidden="true">*</span></div>
+                    <div class="ceu-stars" role="radiogroup" aria-labelledby="lbl-workload">
+                      <input type="radio" id="cw5" name="workload" value="5" required aria-required="true"><label for="cw5" title="5 — Excellent">★</label>
+                      <input type="radio" id="cw4" name="workload" value="4"><label for="cw4" title="4 — Good">★</label>
+                      <input type="radio" id="cw3" name="workload" value="3"><label for="cw3" title="3 — Average">★</label>
+                      <input type="radio" id="cw2" name="workload" value="2"><label for="cw2" title="2 — Below average">★</label>
+                      <input type="radio" id="cw1" name="workload" value="1"><label for="cw1" title="1 — Poor">★</label>
+                    </div>
+                    <div class="ceu-field-error" id="course-workload-error" role="alert">Please rate workload balance.</div>
+                  </div>
+                  <div class="ceu-rating-item">
+                    <div class="ceu-label" id="lbl-outcomes">Learning outcomes <span class="req" aria-hidden="true">*</span></div>
+                    <div class="ceu-stars" role="radiogroup" aria-labelledby="lbl-outcomes">
+                      <input type="radio" id="co5" name="outcomes" value="5" required aria-required="true"><label for="co5" title="5 — Excellent">★</label>
+                      <input type="radio" id="co4" name="outcomes" value="4"><label for="co4" title="4 — Good">★</label>
+                      <input type="radio" id="co3" name="outcomes" value="3"><label for="co3" title="3 — Average">★</label>
+                      <input type="radio" id="co2" name="outcomes" value="2"><label for="co2" title="2 — Below average">★</label>
+                      <input type="radio" id="co1" name="outcomes" value="1"><label for="co1" title="1 — Poor">★</label>
+                    </div>
+                    <div class="ceu-field-error" id="course-outcomes-error" role="alert">Please rate learning outcomes.</div>
+                  </div>
+                  <div class="ceu-rating-item">
+                    <div class="ceu-label" id="lbl-relevance">Real-world relevance <span class="req" aria-hidden="true">*</span></div>
+                    <div class="ceu-stars" role="radiogroup" aria-labelledby="lbl-relevance">
+                      <input type="radio" id="cr5" name="relevance" value="5" required aria-required="true"><label for="cr5" title="5 — Excellent">★</label>
+                      <input type="radio" id="cr4" name="relevance" value="4"><label for="cr4" title="4 — Good">★</label>
+                      <input type="radio" id="cr3" name="relevance" value="3"><label for="cr3" title="3 — Average">★</label>
+                      <input type="radio" id="cr2" name="relevance" value="2"><label for="cr2" title="2 — Below average">★</label>
+                      <input type="radio" id="cr1" name="relevance" value="1"><label for="cr1" title="1 — Poor">★</label>
+                    </div>
+                    <div class="ceu-field-error" id="course-relevance-error" role="alert">Please rate real-world relevance.</div>
+                  </div>
+                  <div class="ceu-rating-item">
+                    <div class="ceu-label" id="lbl-overall">Overall satisfaction <span class="req" aria-hidden="true">*</span></div>
+                    <div class="ceu-stars" role="radiogroup" aria-labelledby="lbl-overall">
+                      <input type="radio" id="cvr5" name="overall" value="5" required aria-required="true"><label for="cvr5" title="5 — Excellent">★</label>
+                      <input type="radio" id="cvr4" name="overall" value="4"><label for="cvr4" title="4 — Good">★</label>
+                      <input type="radio" id="cvr3" name="overall" value="3"><label for="cvr3" title="3 — Average">★</label>
+                      <input type="radio" id="cvr2" name="overall" value="2"><label for="cvr2" title="2 — Below average">★</label>
+                      <input type="radio" id="cvr1" name="overall" value="1"><label for="cvr1" title="1 — Poor">★</label>
+                    </div>
+                    <div class="ceu-field-error" id="course-overall-error" role="alert">Please rate overall satisfaction.</div>
+                  </div>
+                </div>
+
+                <div class="ceu-field">
+                  <label class="ceu-label" for="course-recommend">
+                    Would you recommend this course to other students? <span class="req" aria-hidden="true">*</span>
+                  </label>
+                  <select class="ceu-select" id="course-recommend" name="recommend" required aria-required="true">
+                    <option value="" disabled selected>Select…</option>
+                    <option value="yes">Yes, definitely</option>
+                    <option value="maybe">Maybe, with reservations</option>
+                    <option value="no">No</option>
+                  </select>
+                  <div class="ceu-field-error" id="course-recommend-error" role="alert">Please select an answer.</div>
+                </div>
+
+                <div class="ceu-field">
+                  <label class="ceu-label" for="course-comment">Additional comments <span style="font-weight:400;color:var(--ceu-text-sec)">(optional)</span></label>
+                  <textarea class="ceu-textarea" id="course-comment" name="comment" placeholder="Describe what worked well, what could be improved, or any specific suggestions…" maxlength="1000"></textarea>
+                  <div class="ceu-field-hint"><span id="course-comment-count">0</span>/1000 characters</div>
+                </div>
+
+                <div class="ceu-checkbox-wrap">
+                  <input type="checkbox" class="ceu-checkbox" id="course-confirm" name="confirm" required aria-required="true">
+                  <label class="ceu-checkbox-label" for="course-confirm">
+                    I confirm that this feedback is honest, constructive and does not contain personal attacks, discriminatory language, or false statements. I understand that misuse may result in account suspension.
+                  </label>
+                </div>
+                <div class="ceu-field-error" id="course-confirm-error" role="alert">You must confirm before submitting.</div>
+
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+                  <button type="submit" class="ceu-btn ceu-btn-primary">Submit feedback</button>
+                  <button type="button" class="ceu-btn ceu-btn-ghost" id="course-back-btn">← Change type</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Success -->
+            <div class="ceu-success-wrap" id="course-success" aria-live="assertive">
+              <span class="ceu-success-icon" aria-hidden="true">✅</span>
+              <h2>Feedback submitted!</h2>
+              <p>Thank you. Your anonymous feedback has been recorded and will be included in the next Academic Council report.</p>
+              <button class="ceu-btn ceu-btn-navy" id="course-submit-another" type="button">Submit another</button>
+            </div>
+          </div><!-- /form-course -->
+
+        </div>
+      </section>
+    </div><!-- /page-feedback -->
+
+
+    <!-- ══════════════════════════════════════
+         PAGE: COMPLIANCE
+    ══════════════════════════════════════ -->
+    <div class="ceu-page" id="page-compliance">
+      <section class="ceu-hero" style="padding:3.5rem 1.5rem 3rem" aria-labelledby="compliance-hero-heading">
+        <div class="ceu-hero-inner">
+          <div class="ceu-hero-badge">Compliance &amp; Privacy</div>
+          <h1 id="compliance-hero-heading" style="font-size:2rem">Built to meet CEU and EU standards</h1>
+          <p>FeedForward is designed from the ground up to comply with GDPR, CEU's Data Protection Policy, and Austrian education law — making university approval straightforward.</p>
+        </div>
+      </section>
+
+      <section class="ceu-section ceu-section-alt" aria-labelledby="compliance-heading">
+        <div class="ceu-section-inner">
+          <div class="ceu-section-header">
+            <div class="ceu-section-eyebrow">Regulatory framework</div>
+            <h2 id="compliance-heading" class="ceu-section-title">Compliance at every layer</h2>
+          </div>
+          <div class="ceu-compliance-grid" role="list">
+            <div class="ceu-compliance-card" role="listitem">
+              <div class="ceu-compliance-card-head">
+                <div class="ceu-compliance-card-icon" aria-hidden="true">🇪🇺</div>
+                <h3>GDPR — Art. 6(1)(e)</h3>
+              </div>
+              <p>Processing is based on a public-interest task — improving the quality of higher education. Data is minimised, and students are informed of their rights at registration.</p>
+            </div>
+            <div class="ceu-compliance-card" role="listitem">
+              <div class="ceu-compliance-card-head">
+                <div class="ceu-compliance-card-icon" aria-hidden="true">🔐</div>
+                <h3>Data Minimisation</h3>
+              </div>
+              <p>Only the email address is collected to verify eligibility. After verification, it is hashed and not stored alongside any feedback record. Feedback contains no PII.</p>
+            </div>
+            <div class="ceu-compliance-card" role="listitem">
+              <div class="ceu-compliance-card-head">
+                <div class="ceu-compliance-card-icon" aria-hidden="true">👤</div>
+                <h3>Full Anonymisation</h3>
+              </div>
+              <p>Submitted feedback is irreversibly decoupled from any student identity before persistence. Reports expose only aggregated statistics — never individual responses.</p>
+            </div>
+            <div class="ceu-compliance-card" role="listitem">
+              <div class="ceu-compliance-card-head">
+                <div class="ceu-compliance-card-icon" aria-hidden="true">🏛️</div>
+                <h3>Institutional Oversight</h3>
+              </div>
+              <p>The platform is operated under the authority of the CEU Academic Council. Dashboard access is restricted to authorised academic staff per department.</p>
+            </div>
+            <div class="ceu-compliance-card" role="listitem">
+              <div class="ceu-compliance-card-head">
+                <div class="ceu-compliance-card-icon" aria-hidden="true">🗂️</div>
+                <h3>Data Retention Limits</h3>
+              </div>
+              <p>Raw feedback data is retained for no longer than 5 years from collection, after which it is permanently deleted. Students may request early deletion at any time.</p>
+            </div>
+            <div class="ceu-compliance-card" role="listitem">
+              <div class="ceu-compliance-card-head">
+                <div class="ceu-compliance-card-icon" aria-hidden="true">🛡️</div>
+                <h3>Access Controls</h3>
+              </div>
+              <p>Role-based access control ensures that professors cannot access their own individual feedback records, only aggregated reports prepared by the Quality Assurance Office.</p>
+            </div>
+            <div class="ceu-compliance-card" role="listitem">
+              <div class="ceu-compliance-card-head">
+                <div class="ceu-compliance-card-icon" aria-hidden="true">✍️</div>
+                <h3>Student Rights</h3>
+              </div>
+              <p>Students retain the right to access, rectify, and erase their data at any time. A dedicated data-subject request portal is accessible from every page.</p>
+            </div>
+            <div class="ceu-compliance-card" role="listitem">
+              <div class="ceu-compliance-card-head">
+                <div class="ceu-compliance-card-icon" aria-hidden="true">🔑</div>
+                <h3>@student.ceu.edu Only</h3>
+              </div>
+              <p>Registration is restricted to the official CEU student email domain. This prevents external actors from submitting feedback and ensures all participants are current students.</p>
+            </div>
+            <div class="ceu-compliance-card" role="listitem">
+              <div class="ceu-compliance-card-head">
+                <div class="ceu-compliance-card-icon" aria-hidden="true">📋</div>
+                <h3>Audit Trail</h3>
+              </div>
+              <p>All administrative actions (access grants, report exports, deletion requests) are logged in an immutable audit trail available to the Data Protection Officer.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ceu-section" aria-labelledby="dpa-heading">
+        <div class="ceu-section-inner" style="max-width:720px;margin:0 auto">
+          <h2 id="dpa-heading" class="ceu-section-title">Data Protection Notice</h2>
+          <div class="ceu-alert ceu-alert-warning" role="note">
+            <span class="ceu-alert-icon" aria-hidden="true">⚠️</span>
+            <span>This is a <strong>MVP demo</strong> for university review purposes. The notice below reflects the intended production policy.</span>
+          </div>
+          <div style="background:var(--ceu-white);border:1px solid var(--ceu-border);border-radius:var(--radius-lg);padding:2rem;line-height:1.8;font-size:0.93rem;color:var(--ceu-text-sec)">
+            <p style="margin-bottom:1rem"><strong>Data Controller:</strong> Central European University, Quellenstraße 51, 1100 Vienna, Austria.</p>
+            <p style="margin-bottom:1rem"><strong>Purpose:</strong> To collect anonymous structured feedback from enrolled students to support teaching quality assurance and academic programme improvement.</p>
+            <p style="margin-bottom:1rem"><strong>Legal basis:</strong> GDPR Article 6(1)(e) — processing is necessary for the performance of a task carried out in the public interest (higher education quality assurance).</p>
+            <p style="margin-bottom:1rem"><strong>Data collected:</strong> Student email address (for eligibility verification only; not retained with feedback), ratings (1–5 per dimension), and optional free-text comments. No name, student ID, or demographic information is collected.</p>
+            <p style="margin-bottom:1rem"><strong>Anonymisation:</strong> Email addresses are used only to verify eligibility and prevent duplicate submissions. After submission, no linkage is maintained between feedback and the submitting student.</p>
+            <p style="margin-bottom:1rem"><strong>Recipients:</strong> Aggregated, anonymised reports are accessible to the Academic Council and, where relevant, department heads. Individual responses are never shared.</p>
+            <p style="margin-bottom:1rem"><strong>Retention:</strong> Feedback data is retained for five (5) academic years, after which it is permanently deleted from all systems.</p>
+            <p><strong>Your rights:</strong> You have the right to access, rectify, erase, or restrict the processing of your data, and to lodge a complaint with the Austrian Data Protection Authority (dsb.gv.at). To exercise these rights, contact <a href="mailto:dpo@ceu.edu">dpo@ceu.edu</a>.</p>
+          </div>
+        </div>
+      </section>
+    </div><!-- /page-compliance -->
+
+
+    <!-- ══════════════════════════════════════
+         PAGE: ABOUT
+    ══════════════════════════════════════ -->
+    <div class="ceu-page" id="page-about">
+      <section class="ceu-hero" style="padding:3.5rem 1.5rem 3rem" aria-labelledby="about-hero-heading">
+        <div class="ceu-hero-inner">
+          <div class="ceu-hero-badge">About the project</div>
+          <h1 id="about-hero-heading" style="font-size:2rem">Why FeedForward?</h1>
+          <p>A proposal to replace ad-hoc, paper-based evaluation forms with a digital-first, privacy-respecting platform that actually gets used.</p>
+        </div>
+      </section>
+
+      <section class="ceu-section ceu-section-alt" aria-labelledby="about-heading">
+        <div class="ceu-section-inner" style="max-width:720px;margin:0 auto">
+          <h2 id="about-heading" class="ceu-section-title">The problem</h2>
+          <p style="color:var(--ceu-text-sec);margin-bottom:1.5rem;font-size:1.02rem">
+            Current CEU end-of-term evaluation forms suffer from low completion rates, generic questions,
+            and no mechanism for students to track whether their feedback was acted upon. Anonymity
+            guarantees are unclear, reducing trust and the quality of input.
+          </p>
+          <h2 class="ceu-section-title" style="margin-top:2rem">The solution</h2>
+          <p style="color:var(--ceu-text-sec);margin-bottom:1.5rem;font-size:1.02rem">
+            FeedForward provides a dedicated, mobile-friendly web platform accessible with existing
+            CEU student credentials. It separates professor and course feedback, uses structured
+            rating dimensions that map to CEU quality criteria, and provides real-time anonymity
+            guarantees backed by technical controls.
+          </p>
+          <h2 class="ceu-section-title" style="margin-top:2rem">University approval pathway</h2>
+          <div class="ceu-compliance-grid" role="list">
+            <div class="ceu-compliance-card" role="listitem">
+              <div class="ceu-compliance-card-head">
+                <div class="ceu-compliance-card-icon" aria-hidden="true">📝</div>
+                <h3>Phase 1 — Pilot</h3>
+              </div>
+              <p>A controlled pilot with two departments and volunteer professors. Feedback collected under a full DPIA. Results shared with Academic Council.</p>
+            </div>
+            <div class="ceu-compliance-card" role="listitem">
+              <div class="ceu-compliance-card-head">
+                <div class="ceu-compliance-card-icon" aria-hidden="true">🔍</div>
+                <h3>Phase 2 — Audit</h3>
+              </div>
+              <p>Independent security and privacy audit by CEU's Data Protection Officer. Integration with CEU SSO for seamless authentication.</p>
+            </div>
+            <div class="ceu-compliance-card" role="listitem">
+              <div class="ceu-compliance-card-head">
+                <div class="ceu-compliance-card-icon" aria-hidden="true">🚀</div>
+                <h3>Phase 3 — Rollout</h3>
+              </div>
+              <p>University-wide deployment, replacing existing paper forms. Ongoing monitoring and a Student Advisory Board to guide future improvements.</p>
+            </div>
+          </div>
+
+          <div style="margin-top:2.5rem">
+            <h2 class="ceu-section-title">Contact</h2>
+            <p style="color:var(--ceu-text-sec);font-size:0.95rem">
+              This MVP was developed by a CEU MS Business Analytics student as a proposal for
+              the Academic Council. For questions or to discuss university approval, please contact
+              <a href="mailto:balint.decsi@student.ceu.edu">balint.decsi@student.ceu.edu</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div><!-- /page-about -->
+
+  </main>
+
+
+  <!-- ══════════════════════════════════════
+       REGISTRATION MODAL
+  ══════════════════════════════════════ -->
+  <div class="ceu-modal-overlay" id="register-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="ceu-modal">
+      <button class="ceu-modal-close" id="modal-close-btn" aria-label="Close registration dialog" type="button">&times;</button>
+
+      <!-- Step 1: Email entry -->
+      <div id="modal-step-1">
+        <h2 class="ceu-form-title" id="modal-title">Create your account</h2>
+        <p class="ceu-form-subtitle">Only students with a valid <strong>@student.ceu.edu</strong> email can register.</p>
+
+        <div class="ceu-alert ceu-alert-info" role="note">
+          <span class="ceu-alert-icon" aria-hidden="true">ℹ️</span>
+          <span>This is a <strong>demo</strong>. No account is created and no email is sent.</span>
+        </div>
+
+        <form id="register-form" novalidate aria-label="Registration form">
+          <div class="ceu-field">
+            <label class="ceu-label" for="reg-email">CEU student email <span class="req" aria-hidden="true">*</span></label>
+            <input
+              type="email"
+              class="ceu-input"
+              id="reg-email"
+              name="email"
+              placeholder="yourname@student.ceu.edu"
+              autocomplete="email"
+              required
+              aria-required="true"
+              aria-describedby="reg-email-hint reg-email-error"
+            >
+            <div class="ceu-email-domain-badge" aria-hidden="true">
+              <span>Must end in</span>
+              <span class="domain">@student.ceu.edu</span>
+            </div>
+            <div class="ceu-field-error" id="reg-email-error" role="alert"></div>
+          </div>
+
+          <div class="ceu-field">
+            <label class="ceu-label" for="reg-name">Full name <span class="req" aria-hidden="true">*</span></label>
+            <input
+              type="text"
+              class="ceu-input"
+              id="reg-name"
+              name="name"
+              placeholder="e.g. Jane Smith"
+              autocomplete="name"
+              required
+              aria-required="true"
+              aria-describedby="reg-name-error"
+            >
+            <div class="ceu-field-error" id="reg-name-error" role="alert">Please enter your full name.</div>
+          </div>
+
+          <div class="ceu-field">
+            <label class="ceu-label" for="reg-program">Programme <span class="req" aria-hidden="true">*</span></label>
+            <select class="ceu-select" id="reg-program" name="program" required aria-required="true">
+              <option value="" disabled selected>Select your programme…</option>
+              <optgroup label="Master's programmes">
+                <option value="msba">MS Business Analytics</option>
+                <option value="msecon">MS Economics</option>
+                <option value="mspols">MA Political Science</option>
+                <option value="mslaw">LLM Legal Studies</option>
+                <option value="msnet">MS Network Science</option>
+              </optgroup>
+              <optgroup label="Doctoral programmes">
+                <option value="phdecon">PhD Economics</option>
+                <option value="phdpols">PhD Political Science</option>
+              </optgroup>
+            </select>
+            <div class="ceu-field-error" id="reg-program-error" role="alert">Please select your programme.</div>
+          </div>
+
+          <div class="ceu-checkbox-wrap">
+            <input type="checkbox" class="ceu-checkbox" id="reg-privacy" name="privacy" required aria-required="true">
+            <label class="ceu-checkbox-label" for="reg-privacy">
+              I have read and accept the <button type="button" class="ceu-inline-link" id="show-privacy-btn" style="background:none;border:none;color:var(--ceu-teal);cursor:pointer;font-size:inherit;padding:0;text-decoration:underline">Privacy Notice</button>
+              and consent to the processing of my data for the purposes described therein.
+            </label>
+          </div>
+          <div class="ceu-field-error" id="reg-privacy-error" role="alert">You must accept the Privacy Notice to register.</div>
+
+          <button type="submit" class="ceu-btn ceu-btn-primary" style="width:100%;justify-content:center">
+            Continue with CEU email
+          </button>
+        </form>
+      </div>
+
+      <!-- Step 2: Verification sent -->
+      <div id="modal-step-2" style="display:none;text-align:center;padding:1rem 0">
+        <span style="font-size:3rem;display:block;margin-bottom:1rem" aria-hidden="true">📧</span>
+        <h2 class="ceu-form-title" style="text-align:center;margin-bottom:0.5rem">Check your inbox</h2>
+        <p style="color:var(--ceu-text-sec);font-size:0.93rem;margin-bottom:1.5rem">
+          A verification link has been sent to <strong id="confirm-email-display"></strong>.
+          Click the link to activate your account. The link expires in 24 hours.
+        </p>
+        <div class="ceu-alert ceu-alert-success" role="note" style="text-align:left">
+          <span class="ceu-alert-icon" aria-hidden="true">✅</span>
+          <span><strong>Demo mode:</strong> In production, a real email would be sent. For now, consider yourself registered!</span>
+        </div>
+        <button class="ceu-btn ceu-btn-navy" id="modal-go-feedback" type="button" style="margin-top:1rem">
+          Try the feedback forms →
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="ceu-footer" role="contentinfo">
+    <div class="ceu-footer-inner">
+      <div class="ceu-footer-grid">
+        <div class="ceu-footer-brand">
+          <div class="ceu-logo" style="margin-bottom:0.75rem;pointer-events:none">
+            <div class="ceu-logo-mark" aria-hidden="true">FF</div>
+            <div class="ceu-logo-text">
+              <span class="ceu-logo-title">FeedForward</span>
+              <span class="ceu-logo-sub">CEU Student Platform</span>
+            </div>
+          </div>
+          <p>A student feedback platform proposal for Central European University, Vienna. MVP demo for Academic Council review.</p>
+        </div>
+        <div class="ceu-footer-col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="#" data-page="home">Home</a></li>
+            <li><a href="#" data-page="feedback">Submit Feedback</a></li>
+            <li><a href="#" data-page="compliance">Compliance</a></li>
+            <li><a href="#" data-page="about">About</a></li>
+          </ul>
+        </div>
+        <div class="ceu-footer-col">
+          <h4>CEU</h4>
+          <ul>
+            <li><a href="https://www.ceu.edu" target="_blank" rel="noopener">ceu.edu</a></li>
+            <li><a href="https://www.ceu.edu/academics" target="_blank" rel="noopener">Academics</a></li>
+            <li><a href="https://www.ceu.edu/data-protection" target="_blank" rel="noopener">Data Protection</a></li>
+          </ul>
+        </div>
+        <div class="ceu-footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#" data-page="compliance">Privacy Notice</a></li>
+            <li><a href="#" data-page="compliance">GDPR Info</a></li>
+            <li><a href="mailto:dpo@ceu.edu">Contact DPO</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ceu-footer-bottom">
+        <span class="ceu-footer-copy">© 2026 FeedForward — CEU Student Feedback Platform. MVP Demo.</span>
+        <div class="ceu-footer-legal">
+          <a href="#" data-page="compliance">Privacy Policy</a>
+          <a href="#" data-page="compliance">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════ -->
+  <script>
+  (function () {
+    'use strict';
+
+    /* ─── PAGE NAVIGATION ──────────────────────────────────── */
+    var CEU_DOMAIN = '@student.ceu.edu';
+
+    function showPage(pageId) {
+      document.querySelectorAll('.ceu-page').forEach(function (p) {
+        p.classList.remove('active');
+      });
+      var page = document.getElementById('page-' + pageId);
+      if (page) {
+        page.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      document.querySelectorAll('[data-page]').forEach(function (el) {
+        el.classList.toggle('active', el.getAttribute('data-page') === pageId);
+      });
+    }
+
+    // Nav buttons
+    document.querySelectorAll('[data-page]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        showPage(el.getAttribute('data-page'));
+      });
+    });
+
+    // Logo → home
+    document.getElementById('logo-link').addEventListener('click', function (e) {
+      e.preventDefault();
+      showPage('home');
+    });
+
+    /* ─── REGISTER MODAL ────────────────────────────────────── */
+    var modal = document.getElementById('register-modal');
+
+    function openModal() {
+      modal.classList.add('active');
+      document.getElementById('reg-email').focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+    }
+
+    ['header-register-btn', 'hero-register-btn', 'cta-register-btn'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('click', openModal);
+    });
+
+    document.getElementById('topbar-login-link').addEventListener('click', function (e) {
+      e.preventDefault();
+      openModal();
+    });
+
+    document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+
+    /* ─── REGISTRATION FORM ─────────────────────────────────── */
+    var regForm = document.getElementById('register-form');
+    var regEmail = document.getElementById('reg-email');
+    var regEmailError = document.getElementById('reg-email-error');
+
+    function validateCeuEmail(val) {
+      val = (val || '').trim().toLowerCase();
+      if (!val) return 'Please enter your CEU student email address.';
+      // Basic email structure check
+      var emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(val)) return 'Please enter a valid email address.';
+      if (!val.endsWith(CEU_DOMAIN)) {
+        return 'Only @student.ceu.edu email addresses are accepted. Please use your official CEU student email.';
+      }
+      return null; // valid
+    }
+
+    regEmail.addEventListener('input', function () {
+      var err = validateCeuEmail(this.value);
+      if (err) {
+        this.classList.remove('success');
+        this.classList.add('error');
+        regEmailError.textContent = err;
+        regEmailError.classList.add('visible');
+      } else {
+        this.classList.remove('error');
+        this.classList.add('success');
+        regEmailError.textContent = '';
+        regEmailError.classList.remove('visible');
+      }
+    });
+
+    regForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var valid = true;
+
+      // Email
+      var emailErr = validateCeuEmail(regEmail.value);
+      if (emailErr) {
+        regEmail.classList.add('error');
+        regEmailError.textContent = emailErr;
+        regEmailError.classList.add('visible');
+        valid = false;
+      } else {
+        regEmail.classList.remove('error');
+        regEmail.classList.add('success');
+        regEmailError.classList.remove('visible');
+      }
+
+      // Name
+      var nameInput = document.getElementById('reg-name');
+      var nameError = document.getElementById('reg-name-error');
+      if (!nameInput.value.trim()) {
+        nameInput.classList.add('error');
+        nameError.classList.add('visible');
+        valid = false;
+      } else {
+        nameInput.classList.remove('error');
+        nameError.classList.remove('visible');
+      }
+
+      // Program
+      var progInput = document.getElementById('reg-program');
+      var progError = document.getElementById('reg-program-error');
+      if (!progInput.value) {
+        progError.classList.add('visible');
+        valid = false;
+      } else {
+        progError.classList.remove('visible');
+      }
+
+      // Privacy
+      var privacyInput = document.getElementById('reg-privacy');
+      var privacyError = document.getElementById('reg-privacy-error');
+      if (!privacyInput.checked) {
+        privacyError.classList.add('visible');
+        valid = false;
+      } else {
+        privacyError.classList.remove('visible');
+      }
+
+      if (!valid) return;
+
+      // Show step 2
+      document.getElementById('modal-step-1').style.display = 'none';
+      document.getElementById('modal-step-2').style.display = 'block';
+      document.getElementById('confirm-email-display').textContent = regEmail.value.trim().toLowerCase();
+    });
+
+    document.getElementById('modal-go-feedback').addEventListener('click', function () {
+      closeModal();
+      showPage('feedback');
+      resetFeedbackForms();
+    });
+
+    /* ─── COMPLIANCE TOPBAR LINK ─────────────────────────────── */
+    document.getElementById('topbar-compliance-link').addEventListener('click', function (e) {
+      e.preventDefault();
+      showPage('compliance');
+    });
+
+    /* ─── FEEDBACK TYPE CHOOSER ─────────────────────────────── */
+    var chooser = document.getElementById('feedback-type-chooser');
+    var formProfessor = document.getElementById('form-professor');
+    var formCourse = document.getElementById('form-course');
+
+    function showFeedbackType(type) {
+      chooser.style.display = 'none';
+      if (type === 'professor') {
+        formProfessor.style.display = 'block';
+        formCourse.style.display = 'none';
+      } else {
+        formCourse.style.display = 'block';
+        formProfessor.style.display = 'none';
+      }
+    }
+
+    function resetFeedbackForms() {
+      chooser.style.display = 'grid';
+      formProfessor.style.display = 'none';
+      formCourse.style.display = 'none';
+      document.getElementById('prof-success').classList.remove('visible');
+      document.getElementById('course-success').classList.remove('visible');
+      document.getElementById('professor-form').style.display = 'block';
+      document.getElementById('course-form').style.display = 'block';
+      document.getElementById('professor-form').reset();
+      document.getElementById('course-form').reset();
+      document.getElementById('prof-comment-count').textContent = '0';
+      document.getElementById('course-comment-count').textContent = '0';
+      // Clear errors
+      document.querySelectorAll('.ceu-field-error').forEach(function (el) { el.classList.remove('visible'); });
+      document.querySelectorAll('.ceu-input, .ceu-select, .ceu-textarea').forEach(function (el) {
+        el.classList.remove('error', 'success');
+      });
+      // Reset card selection
+      document.getElementById('choose-professor').classList.remove('selected');
+      document.getElementById('choose-professor').setAttribute('aria-checked', 'false');
+      document.getElementById('choose-course').classList.remove('selected');
+      document.getElementById('choose-course').setAttribute('aria-checked', 'false');
+    }
+
+    function activateCard(cardEl, type) {
+      document.querySelectorAll('.ceu-feedback-card').forEach(function (c) {
+        c.classList.remove('selected');
+        c.setAttribute('aria-checked', 'false');
+      });
+      cardEl.classList.add('selected');
+      cardEl.setAttribute('aria-checked', 'true');
+      setTimeout(function () { showFeedbackType(type); }, 200);
+    }
+
+    document.getElementById('choose-professor').addEventListener('click', function () { activateCard(this, 'professor'); });
+    document.getElementById('choose-course').addEventListener('click', function () { activateCard(this, 'course'); });
+    document.getElementById('choose-professor').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateCard(this, 'professor'); }
+    });
+    document.getElementById('choose-course').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateCard(this, 'course'); }
+    });
+
+    document.getElementById('prof-back-btn').addEventListener('click', resetFeedbackForms);
+    document.getElementById('course-back-btn').addEventListener('click', resetFeedbackForms);
+
+    /* ─── CHARACTER COUNTERS ────────────────────────────────── */
+    document.getElementById('prof-comment').addEventListener('input', function () {
+      document.getElementById('prof-comment-count').textContent = this.value.length;
+    });
+    document.getElementById('course-comment').addEventListener('input', function () {
+      document.getElementById('course-comment-count').textContent = this.value.length;
+    });
+
+    /* ─── PROFESSOR FORM SUBMIT ─────────────────────────────── */
+    document.getElementById('professor-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var valid = true;
+
+      function requireSelect(id, errId) {
+        var el = document.getElementById(id);
+        var err = document.getElementById(errId);
+        if (!el.value) { err.classList.add('visible'); valid = false; } else { err.classList.remove('visible'); }
+      }
+
+      function requireRadio(name, errId) {
+        var checked = document.querySelector('input[name="' + name + '"]:checked');
+        var err = document.getElementById(errId);
+        if (!checked) { err.classList.add('visible'); valid = false; } else { err.classList.remove('visible'); }
+      }
+
+      requireSelect('prof-select', 'prof-select-error');
+      requireSelect('prof-course', 'prof-course-error');
+      requireSelect('prof-term', 'prof-term-error');
+      requireRadio('clarity', 'prof-clarity-error');
+      requireRadio('engagement', 'prof-engagement-error');
+      requireRadio('availability', 'prof-availability-error');
+      requireRadio('fairness', 'prof-fairness-error');
+
+      var confirmCb = document.getElementById('prof-confirm');
+      var confirmErr = document.getElementById('prof-confirm-error');
+      if (!confirmCb.checked) { confirmErr.classList.add('visible'); valid = false; } else { confirmErr.classList.remove('visible'); }
+
+      if (!valid) return;
+
+      this.style.display = 'none';
+      document.getElementById('prof-success').classList.add('visible');
+    });
+
+    document.getElementById('prof-submit-another').addEventListener('click', function () {
+      resetFeedbackForms();
+    });
+
+    /* ─── COURSE FORM SUBMIT ────────────────────────────────── */
+    document.getElementById('course-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var valid = true;
+
+      function requireSelect(id, errId) {
+        var el = document.getElementById(id);
+        var err = document.getElementById(errId);
+        if (!el.value) { err.classList.add('visible'); valid = false; } else { err.classList.remove('visible'); }
+      }
+
+      function requireRadio(name, errId) {
+        var checked = document.querySelector('input[name="' + name + '"]:checked');
+        var err = document.getElementById(errId);
+        if (!checked) { err.classList.add('visible'); valid = false; } else { err.classList.remove('visible'); }
+      }
+
+      requireSelect('course-select', 'course-select-error');
+      requireSelect('course-term', 'course-term-error');
+      requireRadio('design', 'course-design-error');
+      requireRadio('materials', 'course-materials-error');
+      requireRadio('workload', 'course-workload-error');
+      requireRadio('outcomes', 'course-outcomes-error');
+      requireRadio('relevance', 'course-relevance-error');
+      requireRadio('overall', 'course-overall-error');
+      requireSelect('course-recommend', 'course-recommend-error');
+
+      var confirmCb = document.getElementById('course-confirm');
+      var confirmErr = document.getElementById('course-confirm-error');
+      if (!confirmCb.checked) { confirmErr.classList.add('visible'); valid = false; } else { confirmErr.classList.remove('visible'); }
+
+      if (!valid) return;
+
+      this.style.display = 'none';
+      document.getElementById('course-success').classList.add('visible');
+    });
+
+    document.getElementById('course-submit-another').addEventListener('click', function () {
+      resetFeedbackForms();
+    });
+
+    /* ─── PRIVACY MODAL ─────────────────────────────────────── */
+    document.getElementById('show-privacy-btn').addEventListener('click', function () {
+      closeModal();
+      showPage('compliance');
+    });
+
+  })();
+  </script>
+
+</body>
+</html>

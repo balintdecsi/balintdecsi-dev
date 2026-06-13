@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visa — UniBridge</title>
+  <meta name="description" content="Student visa guide for Austria — documents, timeline, costs, and embassy appointments.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/unibridge.css">
+</head>
+<body>
+  <header class="ub-header">
+    <nav class="ub-nav">
+      <a href="index.html" class="ub-logo">
+        <span class="ub-logo-icon">🎓</span>
+        <span class="ub-logo-text"><span class="ub-logo-uni">Uni</span><span class="ub-logo-bridge">Bridge</span></span>
+      </a>
+      <div class="ub-nav-right">
+        <button class="ub-lang-toggle" id="lang-toggle" title="Switch language">RU</button>
+        <a href="index.html" class="ub-nav-home" data-i18n="nav_home">Home</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="ub-main">
+    <a href="index.html" class="ub-back" data-i18n="back_home">← Back to Home</a>
+
+    <div class="ub-page-header">
+      <span class="ub-page-icon">🛂</span>
+      <h1 class="ub-page-title" data-i18n="visa_title">Visa</h1>
+      <p class="ub-page-subtitle" data-i18n="visa_subtitle">Student Visa (Aufenthaltsbewilligung Studierende) — everything you need to apply</p>
+    </div>
+
+    <div class="ub-countdown" id="countdown-section">
+      <div class="ub-countdown-display">
+        <span id="countdown-number">—</span>
+        <small id="countdown-label" data-i18n="visa_countdown_set">Set start date:</small>
+      </div>
+      <div class="ub-countdown-input">
+        <input type="date" id="countdown-date" aria-label="Program start date">
+      </div>
+    </div>
+
+    <div class="ub-grid">
+      <div class="ub-block open" id="block-docs">
+        <div class="ub-block-header" onclick="toggleBlock('block-docs')">
+          <h3 data-i18n="visa_docs">📄 Documents Required</h3>
+          <span class="ub-block-toggle">▾</span>
+        </div>
+        <div class="ub-block-body">
+          <div class="ub-block-content">
+            <div class="ub-checklist-counter" id="docs-counter">0 / 9<span data-i18n="visa_docs_counter"> complete</span></div>
+            <ul class="ub-checklist" id="visa-checklist">
+              <li><input type="checkbox" data-key="doc1"><span data-i18n="visa_doc_1">Valid passport (at least 12 months validity)</span></li>
+              <li><input type="checkbox" data-key="doc2"><span data-i18n="visa_doc_2">Passport-sized biometric photos (35 x 45 mm)</span></li>
+              <li><input type="checkbox" data-key="doc3"><span data-i18n="visa_doc_3">University admission letter (Zulassungsbescheid)</span></li>
+              <li><input type="checkbox" data-key="doc4"><span data-i18n="visa_doc_4">Proof of financial means (€ 12,707.44/year or blocked account)</span></li>
+              <li><input type="checkbox" data-key="doc5"><span data-i18n="visa_doc_5">Proof of accommodation in Austria</span></li>
+              <li><input type="checkbox" data-key="doc6"><span data-i18n="visa_doc_6">Health insurance covering Austria</span></li>
+              <li><input type="checkbox" data-key="doc7"><span data-i18n="visa_doc_7">Birth certificate (apostilled &amp; translated)</span></li>
+              <li><input type="checkbox" data-key="doc8"><span data-i18n="visa_doc_8">Criminal record certificate (apostilled &amp; translated)</span></li>
+              <li><input type="checkbox" data-key="doc9"><span data-i18n="visa_doc_9">Completed application form (signed)</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="ub-block" id="block-meeting">
+        <div class="ub-block-header" onclick="toggleBlock('block-meeting')">
+          <h3 data-i18n="visa_meeting">📅 Scheduling a Meeting</h3>
+          <span class="ub-block-toggle">▾</span>
+        </div>
+        <div class="ub-block-body">
+          <div class="ub-block-content">
+            <p data-i18n="visa_meeting_p">You must schedule an appointment at the Austrian Embassy or Consulate in your home country.</p>
+            <ul>
+              <li data-i18n="visa_meeting_1">Visit the embassy website for your country to book online</li>
+              <li data-i18n="visa_meeting_2">Appointments may have 2–6 week wait times — book early</li>
+              <li data-i18n="visa_meeting_3">Bring all original documents + one copy of each</li>
+              <li data-i18n="visa_meeting_4">Arrive 15 minutes before your scheduled time</li>
+            </ul>
+            <p data-i18n="visa_meeting_tip"><strong>Tip:</strong> Some embassies allow walk-in submission on specific days — check the local website.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ub-block" id="block-payments">
+        <div class="ub-block-header" onclick="toggleBlock('block-payments')">
+          <h3 data-i18n="visa_payments">💳 Necessary Payments</h3>
+          <span class="ub-block-toggle">▾</span>
+        </div>
+        <div class="ub-block-body">
+          <div class="ub-block-content">
+            <ul>
+              <li><strong data-i18n="visa_pay_1">Visa application fee: ~ € 160</strong></li>
+              <li><strong data-i18n="visa_pay_2">Residence permit fee: ~ € 160</strong></li>
+              <li><strong data-i18n="visa_pay_3">Translation &amp; apostille costs: ~ € 50–150 per document</strong></li>
+              <li><strong data-i18n="visa_pay_4">Blocked account deposit: € 12,707.44 (refundable, drawn monthly)</strong></li>
+              <li><strong data-i18n="visa_pay_5">Health insurance: ~ € 60–80 / month</strong></li>
+            </ul>
+            <p data-i18n="visa_pay_note">Payments are usually made by bank transfer; some embassies accept card.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ub-block" id="block-timeline">
+        <div class="ub-block-header" onclick="toggleBlock('block-timeline')">
+          <h3 data-i18n="visa_timeline">⏳ Application Timeline</h3>
+          <span class="ub-block-toggle">▾</span>
+        </div>
+        <div class="ub-block-body">
+          <div class="ub-block-content">
+            <div class="ub-timeline">
+              <div class="ub-timeline-step">
+                <strong data-i18n="visa_tl_1_title">6–8 months before</strong>
+                <span data-i18n="visa_tl_1_desc">Receive university admission &amp; start gathering documents</span>
+              </div>
+              <div class="ub-timeline-step">
+                <strong data-i18n="visa_tl_2_title">4–6 months before</strong>
+                <span data-i18n="visa_tl_2_desc">Open blocked bank account, arrange insurance &amp; housing</span>
+              </div>
+              <div class="ub-timeline-step">
+                <strong data-i18n="visa_tl_3_title">3–4 months before</strong>
+                <span data-i18n="visa_tl_3_desc">Book embassy appointment &amp; get translations/apostilles</span>
+              </div>
+              <div class="ub-timeline-step">
+                <strong data-i18n="visa_tl_4_title">2–3 months before</strong>
+                <span data-i18n="visa_tl_4_desc">Submit application at the embassy</span>
+              </div>
+              <div class="ub-timeline-step">
+                <strong data-i18n="visa_tl_5_title">6–12 weeks before</strong>
+                <span data-i18n="visa_tl_5_desc">Wait for visa decision (processing time varies)</span>
+              </div>
+              <div class="ub-timeline-step">
+                <strong data-i18n="visa_tl_6_title">2 weeks before</strong>
+                <span data-i18n="visa_tl_6_desc">Receive visa &amp; book flights</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ub-contacts">
+      <h3 data-i18n="visa_contacts">📞 Useful Contacts</h3>
+      <p><strong data-i18n="visa_contacts_embassy">Austrian Embassy general info:</strong> <a href="https://www.bmeia.gv.at/en/embassies-consulates/search-for-austrian-representations/" target="_blank" rel="noopener" data-i18n="visa_contacts_embassy_link">Find your nearest embassy</a></p>
+      <p><strong data-i18n="visa_contacts_ma35">MA 35 (Vienna immigration):</strong> <a href="https://www.wien.gv.at/english/administration/civilstatus/residence/index.html" target="_blank" rel="noopener">wien.gv.at</a></p>
+      <p><strong data-i18n="visa_contacts_email">Email (MA 35):</strong> <a href="mailto:post@ma35.wien.gv.at">post@ma35.wien.gv.at</a></p>
+      <p><strong data-i18n="visa_contacts_phone">Phone (MA 35):</strong> +43 1 4000-3535</p>
+    </div>
+
+    <section style="margin-top: 2rem;">
+      <h2 class="ub-section-heading" data-i18n="visa_faq_title">Frequently Asked Questions</h2>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div class="ub-block" id="faq-1">
+          <div class="ub-block-header" onclick="toggleBlock('faq-1')">
+            <h3 data-i18n="visa_faq_1_q">What if my visa is delayed?</h3>
+            <span class="ub-block-toggle">▾</span>
+          </div>
+          <div class="ub-block-body">
+            <div class="ub-block-content"><p data-i18n="visa_faq_1_a">Contact your university's international office — they can issue a letter supporting your enrollment. You may also contact MA 35 directly for a status update. In some cases, a temporary entry on a tourist visa is possible (max 90 days), but consult a lawyer first.</p></div>
+          </div>
+        </div>
+        <div class="ub-block" id="faq-2">
+          <div class="ub-block-header" onclick="toggleBlock('faq-2')">
+            <h3 data-i18n="visa_faq_2_q">Can I enter Austria on a tourist visa and convert it?</h3>
+            <span class="ub-block-toggle">▾</span>
+          </div>
+          <div class="ub-block-body">
+            <div class="ub-block-content"><p data-i18n="visa_faq_2_a">Technically, you can enter the Schengen area on a tourist visa, but you cannot convert it to a residence permit from within Austria. You must apply for a student residence permit from your home country.</p></div>
+          </div>
+        </div>
+        <div class="ub-block" id="faq-3">
+          <div class="ub-block-header" onclick="toggleBlock('faq-3')">
+            <h3 data-i18n="visa_faq_3_q">How long is the residence permit valid?</h3>
+            <span class="ub-block-toggle">▾</span>
+          </div>
+          <div class="ub-block-body">
+            <div class="ub-block-content"><p data-i18n="visa_faq_3_a">The initial student residence permit is typically valid for 12 months and can be renewed annually as long as you maintain your student status and meet all requirements.</p></div>
+          </div>
+        </div>
+        <div class="ub-block" id="faq-4">
+          <div class="ub-block-header" onclick="toggleBlock('faq-4')">
+            <h3 data-i18n="visa_faq_4_q">Can I work while studying?</h3>
+            <span class="ub-block-toggle">▾</span>
+          </div>
+          <div class="ub-block-body">
+            <div class="ub-block-content"><p data-i18n="visa_faq_4_a">Yes, students with a residence permit can work up to 20 hours/week. If you earn below the Geringfügigkeitsgrenze (€ 518.44/mo in 2024), you do not need a separate work permit.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="ub-qr" aria-label="QR code linking to UniBridge">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://balintdecsi.github.io/tools/unibridge/" alt="QR code to UniBridge" width="100" height="100">
+    <span class="ub-qr-label">Scan to visit</span>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script>
+  function toggleBlock(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+
+  (function() {
+    var STORAGE_KEY = 'ub-visa-checks';
+    var checks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    var checklist = document.getElementById('visa-checklist');
+    var boxes = checklist.querySelectorAll('input[type="checkbox"]');
+
+    function updateCounter() {
+      var count = Object.values(checks).filter(Boolean).length;
+      var lang = (window.UB_I18N && window.UB_I18N.getLang()) || 'en';
+      var suffix = lang === 'ru' ? ' готово' : ' complete';
+      document.getElementById('docs-counter').textContent = count + ' / 9' + suffix;
+    }
+
+    boxes.forEach(function(cb) {
+      var key = cb.getAttribute('data-key');
+      if (checks[key]) {
+        cb.checked = true;
+        cb.parentElement.classList.add('checked');
+      }
+      cb.addEventListener('change', function() {
+        checks[key] = cb.checked;
+        cb.parentElement.classList.toggle('checked', cb.checked);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(checks));
+        updateCounter();
+      });
+    });
+    updateCounter();
+  })();
+
+  (function() {
+    var dateInput = document.getElementById('countdown-date');
+    var display = document.getElementById('countdown-number');
+    var label = document.getElementById('countdown-label');
+    var saved = localStorage.getItem('ub-start-date');
+    if (saved) {
+      dateInput.value = saved;
+      showCountdown(saved);
+    }
+    dateInput.addEventListener('change', function() {
+      localStorage.setItem('ub-start-date', this.value);
+      showCountdown(this.value);
+    });
+    function showCountdown(dateStr) {
+      var diff = Math.ceil((new Date(dateStr) - new Date()) / (1000 * 60 * 60 * 24));
+      var lang = (window.UB_I18N && window.UB_I18N.getLang()) || 'en';
+      if (diff > 0) {
+        var dayWord = lang === 'ru' ? ' дн.' : ' days';
+        display.textContent = diff + dayWord;
+        label.textContent = lang === 'ru' ? 'До начала вашей программы' : 'Your program starts in';
+      } else {
+        display.textContent = lang === 'ru' ? 'Ваша программа уже началась!' : 'Your program has already started!';
+        label.textContent = '';
+      }
+    }
+  })();
+
+  </script>
+</body>
+</html>
