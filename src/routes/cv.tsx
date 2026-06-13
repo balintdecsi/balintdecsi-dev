@@ -25,15 +25,13 @@ function CV() {
   return (
     <article>
       <div className="flex items-start justify-between gap-6 mb-2 no-print">
-        <p className="font-mono text-xs text-[color:var(--color-ink-muted)]">
-          ~/cv.tex
-        </p>
+        <span />
         <button
           onClick={() => typeof window !== "undefined" && window.print()}
           className="font-mono text-sm border border-[color:var(--color-rule)] px-3 py-1.5 hover:bg-[color:var(--color-muted)] no-underline cursor-pointer"
           aria-label="Download CV as PDF"
         >
-          ↓ download.pdf
+          Download PDF
         </button>
       </div>
 
