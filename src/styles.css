@@ -199,8 +199,8 @@
 }
 
 /* Print: render CV as a clean academic PDF via window.print() */
+@page { size: A4; margin: 18mm 16mm; }
 @media print {
-  @page { size: A4; margin: 18mm 16mm; }
   body { font-size: 11pt; background: #fff; color: #000; }
   .no-print { display: none !important; }
   a { color: #000; text-decoration: none; }
