@@ -132,15 +132,15 @@ function Theses() {
 }
 
 const TOPIC_GROUPS: { topic: string; title: string; description?: string }[] = [
+  { topic: "foss", title: "Open-source contributions" },
   { topic: "side-project", title: "Side projects", description: "Personal builds and tools." },
   { topic: "hackathon", title: "Hackathons", description: "Weekend builds and competition entries." },
   { topic: "msc", title: "MSc coursework", description: "CEU MSc Business Analytics assignments and projects." },
   { topic: "bsc", title: "BSc coursework", description: "University of Szeged, Molecular Bionics." },
-  { topic: "foss", title: "Open-source contributions" },
   { topic: "assignment", title: "Other assignments" },
 ];
 
-const THESIS_REPOS = new Set(["THESIS", "ceu-public-thesis"]);
+const HIDDEN_REPOS = new Set(["THESIS", "ceu-public-thesis", "balintdecsi.github.io"]);
 
 function Repos() {
   const { data, isLoading, error } = useQuery({
@@ -175,7 +175,7 @@ function Repos() {
   }
 
   const repos = data
-    .filter((r) => !r.fork && !r.archived && !THESIS_REPOS.has(r.name))
+    .filter((r) => !r.fork && !r.archived && !HIDDEN_REPOS.has(r.name))
     .sort((a, b) => b.pushed_at.localeCompare(a.pushed_at));
 
   const used = new Set<number>();
