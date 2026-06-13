@@ -70,12 +70,77 @@ function Projects() {
         </div>
       </Section>
 
-      <Section number={2} title="Open source & experiments">
+      <Section number={2} title="Theses">
+        <Theses />
+      </Section>
+
+      <Section number={3} title="Open source & experiments">
         <Repos />
       </Section>
     </article>
   );
 }
+
+const thesisNotes: Record<string, { title: string; blurb: string }> = {
+  "ceu-public-thesis": {
+    title: "MSc capstone — Budapest rental price prediction (ingatlan.com)",
+    blurb:
+      "Public-facing deliverables from my CEU Business Analytics capstone with ingatlan.com: a HUF/sqm rental price model for the listing-upload flow, validated with time-ordered CV (best 9.84% MdAPE). Repo contains the CEU ETD public summary (LaTeX, CC BY 4.0) and the ~21-slide client defence deck. Full pipeline, data, and technical report stay under NDA in the private capstone repo.",
+  },
+  THESIS: {
+    title: "BSc thesis — Molecular Bionics (University of Szeged)",
+    blurb:
+      "Supplementary MATLAB source for my BSc Molecular Bionics thesis at the University of Szeged. The repo holds the analysis scripts that accompany the written thesis.",
+  },
+};
+
+function Theses() {
+  const { data } = useQuery({
+    queryKey: ["repos", "balintdecsi"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://api.github.com/users/balintdecsi/repos?per_page=100&sort=pushed"
+      );
+      if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+      return (await res.json()) as Repo[];
+    },
+    staleTime: 1000 * 60 * 30,
+  });
+
+  const order = ["ceu-public-thesis", "THESIS"];
+  const items = order
+    .map((name) => ({ note: thesisNotes[name], repo: data?.find((r) => r.name === name) }))
+    .filter((x) => x.repo);
+
+  if (!items.length) return null;
+
+  return (
+    <div className="space-y-7">
+      {items.map(({ note, repo }) => (
+        <div key={repo!.id}>
+          <h3 className="text-xl mb-1">{note.title}</h3>
+          <p className="mb-2">{note.blurb}</p>
+          <p className="font-mono text-sm">
+            <a href={repo!.html_url} target="_blank" rel="noopener noreferrer">
+              github.com/balintdecsi/{repo!.name}
+            </a>
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const TOPIC_GROUPS: { topic: string; title: string; description?: string }[] = [
+  { topic: "side-project", title: "Side projects", description: "Personal builds and tools." },
+  { topic: "hackathon", title: "Hackathons", description: "Weekend builds and competition entries." },
+  { topic: "msc", title: "MSc coursework", description: "CEU MSc Business Analytics assignments and projects." },
+  { topic: "bsc", title: "BSc coursework", description: "University of Szeged, Molecular Bionics." },
+  { topic: "foss", title: "Open-source contributions" },
+  { topic: "assignment", title: "Other assignments" },
+];
+
+const THESIS_REPOS = new Set(["THESIS", "ceu-public-thesis"]);
 
 function Repos() {
   const { data, isLoading, error } = useQuery({
@@ -110,33 +175,55 @@ function Repos() {
   }
 
   const repos = data
-    .filter((r) => !r.fork && !r.archived)
-    .sort((a, b) => b.stargazers_count - a.stargazers_count || b.pushed_at.localeCompare(a.pushed_at))
-    .slice(0, 12);
+    .filter((r) => !r.fork && !r.archived && !THESIS_REPOS.has(r.name))
+    .sort((a, b) => b.pushed_at.localeCompare(a.pushed_at));
+
+  const used = new Set<number>();
+  const groups = TOPIC_GROUPS.map((g) => {
+    const inGroup = repos.filter((r) => !used.has(r.id) && r.topics?.includes(g.topic));
+    inGroup.forEach((r) => used.add(r.id));
+    return { ...g, repos: inGroup };
+  }).filter((g) => g.repos.length);
+
+  const other = repos.filter((r) => !used.has(r.id));
+  if (other.length) {
+    groups.push({ topic: "other", title: "Other", repos: other });
+  }
 
   return (
-    <ul className="divide-y divide-[color:var(--color-rule)]">
-      {repos.map((r) => (
-        <li key={r.id} className="py-3 flex items-baseline justify-between gap-4">
-          <div className="min-w-0 flex-1">
-            <a href={r.html_url} target="_blank" rel="noopener noreferrer" className="font-mono">
-              {r.name}
-            </a>
-            {r.description && (
-              <p className="text-sm text-[color:var(--color-ink-muted)] mt-0.5">{r.description}</p>
-            )}
-            {(r.topics?.length || r.language) && (
-              <p className="mt-1">
-                {r.language && <BracketTag>{r.language.toLowerCase()}</BracketTag>}
-                {r.topics?.map((t) => <BracketTag key={t}>{t}</BracketTag>)}
-              </p>
-            )}
-          </div>
-          <span className="font-mono text-xs text-[color:var(--color-ink-muted)] whitespace-nowrap">
-            ★ {r.stargazers_count}
-          </span>
-        </li>
+    <div className="space-y-8">
+      {groups.map((g) => (
+        <div key={g.topic}>
+          <h3 className="text-xl mb-1">{g.title}</h3>
+          {g.description && (
+            <p className="text-sm text-[color:var(--color-ink-muted)] italic mb-2">{g.description}</p>
+          )}
+          <ul className="divide-y divide-[color:var(--color-rule)]">
+            {g.repos.map((r) => (
+              <li key={r.id} className="py-3 flex items-baseline justify-between gap-4">
+                <div className="min-w-0 flex-1">
+                  <a href={r.html_url} target="_blank" rel="noopener noreferrer" className="font-mono">
+                    {r.name}
+                  </a>
+                  {r.description && (
+                    <p className="text-sm text-[color:var(--color-ink-muted)] mt-0.5">{r.description}</p>
+                  )}
+                  {r.language && (
+                    <p className="mt-1">
+                      <BracketTag>{r.language.toLowerCase()}</BracketTag>
+                    </p>
+                  )}
+                </div>
+                {r.stargazers_count > 0 && (
+                  <span className="font-mono text-xs text-[color:var(--color-ink-muted)] whitespace-nowrap">
+                    ★ {r.stargazers_count}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
