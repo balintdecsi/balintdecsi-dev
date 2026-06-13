@@ -50,7 +50,7 @@ function Index() {
           <img
             src={profile}
             alt="Portrait of Bálint Décsi"
-            className="w-36 h-36 object-cover border border-[color:var(--color-rule)] grayscale"
+            className="w-36 h-36 object-cover border border-[color:var(--color-rule)]"
           />
         </div>
 
