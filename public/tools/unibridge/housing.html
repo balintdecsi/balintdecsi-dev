@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Housing — UniBridge</title>
+  <meta name="description" content="Student housing in Vienna — dormitories, shared flats, prices and co-livers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/unibridge.css">
+</head>
+<body>
+  <header class="ub-header">
+    <nav class="ub-nav">
+      <a href="index.html" class="ub-logo">
+        <span class="ub-logo-icon">🎓</span>
+        <span class="ub-logo-text"><span class="ub-logo-uni">Uni</span><span class="ub-logo-bridge">Bridge</span></span>
+      </a>
+      <div class="ub-nav-right">
+        <button class="ub-lang-toggle" id="lang-toggle" title="Switch language">RU</button>
+        <a href="index.html" class="ub-nav-home" data-i18n="nav_home">Home</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="ub-main">
+    <a href="index.html" class="ub-back" data-i18n="back_home">← Back to Home</a>
+
+    <div class="ub-page-header">
+      <span class="ub-page-icon">🏠</span>
+      <h1 class="ub-page-title" data-i18n="housing_title">Housing</h1>
+      <p class="ub-page-subtitle" data-i18n="housing_subtitle">Student dormitories and shared flats in Vienna — find your new home</p>
+    </div>
+
+    <div class="ub-housing-grid" id="housing-grid">
+      <div class="ub-housing-card" data-name="OeAD Guesthouse" data-price="499" data-occupants="3 people / flat" data-location="1020 Wien" data-colivers="Adrian (♂), Emma (♀)">
+        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=400&h=240&fit=crop" alt="OeAD Student Housing" class="ub-housing-photo">
+        <div class="ub-housing-body">
+          <h3 class="ub-housing-name">OeAD Guesthouse Molkereistraße</h3>
+          <div class="ub-housing-meta">
+            <span>👥 3 people / flat</span>
+            <span>📍 1020 Wien</span>
+          </div>
+          <p class="ub-housing-price">€ 499 / mo</p>
+          <div class="ub-housing-colivers"><strong data-i18n="housing_colivers_label">Co-livers:</strong> Adrian (♂), Emma (♀)</div>
+          <a href="https://housing.oead.at/" target="_blank" rel="noopener" class="ub-housing-link">View on OeAD →</a>
+          <label class="ub-compare-check"><input type="checkbox" class="compare-cb"> <span data-i18n="housing_compare_btn">Compare</span></label>
+        </div>
+      </div>
+
+      <div class="ub-housing-card" data-name="STUWO Döbling" data-price="449" data-occupants="2 people / flat" data-location="1190 Wien" data-colivers="Lena (♀)">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&h=240&fit=crop" alt="STUWO Dormitory" class="ub-housing-photo">
+        <div class="ub-housing-body">
+          <h3 class="ub-housing-name">STUWO Studentenheim Döbling</h3>
+          <div class="ub-housing-meta">
+            <span>👥 2 people / flat</span>
+            <span>📍 1190 Wien</span>
+          </div>
+          <p class="ub-housing-price">€ 449 / mo</p>
+          <div class="ub-housing-colivers"><strong data-i18n="housing_colivers_label">Co-livers:</strong> Lena (♀)</div>
+          <a href="https://www.stuwo.at/en/" target="_blank" rel="noopener" class="ub-housing-link">View on STUWO →</a>
+          <label class="ub-compare-check"><input type="checkbox" class="compare-cb"> <span data-i18n="housing_compare_btn">Compare</span></label>
+        </div>
+      </div>
+
+      <div class="ub-housing-card" data-name="Milestone Prater" data-price="599" data-occupants="Single studio" data-location="1020 Wien" data-colivers="None — private studio">
+        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&h=240&fit=crop" alt="Milestone Student Living" class="ub-housing-photo">
+        <div class="ub-housing-body">
+          <h3 class="ub-housing-name">Milestone Prater</h3>
+          <div class="ub-housing-meta">
+            <span>👤 Single studio</span>
+            <span>📍 1020 Wien</span>
+          </div>
+          <p class="ub-housing-price">€ 599 / mo</p>
+          <div class="ub-housing-colivers"><strong data-i18n="housing_colivers_label">Co-livers:</strong> <span data-i18n="housing_none_private">None — private studio</span></div>
+          <a href="https://www.milestone.net/en/" target="_blank" rel="noopener" class="ub-housing-link">View on Milestone →</a>
+          <label class="ub-compare-check"><input type="checkbox" class="compare-cb"> <span data-i18n="housing_compare_btn">Compare</span></label>
+        </div>
+      </div>
+
+      <div class="ub-housing-card" data-name="WIHAST Erasmus" data-price="399" data-occupants="4 people / flat" data-location="1100 Wien" data-colivers="Max (♂), Sophie (♀), Kemal (♂)">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=240&fit=crop" alt="WIHAST Dormitory" class="ub-housing-photo">
+        <div class="ub-housing-body">
+          <h3 class="ub-housing-name">WIHAST Haus Erasmus</h3>
+          <div class="ub-housing-meta">
+            <span>👥 4 people / flat</span>
+            <span>📍 1100 Wien</span>
+          </div>
+          <p class="ub-housing-price">€ 399 / mo</p>
+          <div class="ub-housing-colivers"><strong data-i18n="housing_colivers_label">Co-livers:</strong> Max (♂), Sophie (♀), Kemal (♂)</div>
+          <a href="https://www.wihast.at/en/" target="_blank" rel="noopener" class="ub-housing-link">View on WIHAST →</a>
+          <label class="ub-compare-check"><input type="checkbox" class="compare-cb"> <span data-i18n="housing_compare_btn">Compare</span></label>
+        </div>
+      </div>
+
+      <div class="ub-housing-card" data-name="base19" data-price="529" data-occupants="2 people / flat" data-location="1190 Wien" data-colivers="Nina (♀)">
+        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=400&h=240&fit=crop" alt="base19 Student Housing" class="ub-housing-photo">
+        <div class="ub-housing-body">
+          <h3 class="ub-housing-name">base19 Studentenwohnheim</h3>
+          <div class="ub-housing-meta">
+            <span>👥 2 people / flat</span>
+            <span>📍 1190 Wien</span>
+          </div>
+          <p class="ub-housing-price">€ 529 / mo</p>
+          <div class="ub-housing-colivers"><strong data-i18n="housing_colivers_label">Co-livers:</strong> Nina (♀)</div>
+          <a href="https://www.base19.at/en/" target="_blank" rel="noopener" class="ub-housing-link">View on base19 →</a>
+          <label class="ub-compare-check"><input type="checkbox" class="compare-cb"> <span data-i18n="housing_compare_btn">Compare</span></label>
+        </div>
+      </div>
+
+      <div class="ub-housing-card" data-name="WG-Gesucht Flat" data-price="649" data-occupants="3 people / flat" data-location="1070 Wien" data-colivers="Markus (♂), Julia (♀)">
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&h=240&fit=crop" alt="Shared flat on WG-Gesucht" class="ub-housing-photo">
+        <div class="ub-housing-body">
+          <h3 class="ub-housing-name">WG-Gesucht Shared Flat</h3>
+          <div class="ub-housing-meta">
+            <span>👥 3 people / flat</span>
+            <span>📍 1070 Wien</span>
+          </div>
+          <p class="ub-housing-price">€ 649 / mo</p>
+          <div class="ub-housing-colivers"><strong data-i18n="housing_colivers_label">Co-livers:</strong> Markus (♂), Julia (♀)</div>
+          <a href="https://www.wg-gesucht.de/" target="_blank" rel="noopener" class="ub-housing-link">View on WG-Gesucht →</a>
+          <label class="ub-compare-check"><input type="checkbox" class="compare-cb"> <span data-i18n="housing_compare_btn">Compare</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="ub-calculator">
+      <h2 data-i18n="housing_calc_title">Total Cost Calculator</h2>
+      <div class="ub-calc-grid">
+        <div class="ub-calc-group">
+          <label for="calc-rent" data-i18n="housing_calc_rent">Monthly Rent (€)</label>
+          <input type="number" id="calc-rent" value="499" min="0">
+        </div>
+        <div class="ub-calc-group">
+          <label for="calc-deposit" data-i18n="housing_calc_deposit">Deposit (€)</label>
+          <input type="number" id="calc-deposit" value="1497" min="0">
+        </div>
+        <div class="ub-calc-group">
+          <label for="calc-utilities" data-i18n="housing_calc_utilities">Utilities / month (€)</label>
+          <input type="number" id="calc-utilities" value="80" min="0">
+        </div>
+      </div>
+      <div class="ub-calc-results">
+        <div class="ub-calc-result">
+          <span class="ub-calc-result-label" data-i18n="housing_calc_first">1st month total:</span>
+          <span class="ub-calc-result-value" id="calc-first">€ 2,076</span>
+        </div>
+        <div class="ub-calc-result">
+          <span class="ub-calc-result-label" data-i18n="housing_calc_monthly">Ongoing monthly:</span>
+          <span class="ub-calc-result-value" id="calc-monthly">€ 579</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="compare-panel" class="ub-compare-panel">
+    <button class="ub-compare-close" id="compare-close">&times;</button>
+    <h3 data-i18n="housing_compare_title">Comparison</h3>
+    <table class="ub-compare-table">
+      <thead>
+        <tr><th></th><th id="cmp-name-1">—</th><th id="cmp-name-2">—</th></tr>
+      </thead>
+      <tbody>
+        <tr><td data-i18n="housing_compare_price">Price</td><td id="cmp-price-1">—</td><td id="cmp-price-2">—</td></tr>
+        <tr><td data-i18n="housing_compare_occupants">Occupants</td><td id="cmp-occ-1">—</td><td id="cmp-occ-2">—</td></tr>
+        <tr><td data-i18n="housing_compare_location">Location</td><td id="cmp-loc-1">—</td><td id="cmp-loc-2">—</td></tr>
+        <tr><td data-i18n="housing_compare_colivers">Co-livers</td><td id="cmp-col-1">—</td><td id="cmp-col-2">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ub-qr" aria-label="QR code linking to UniBridge">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://balintdecsi.github.io/tools/unibridge/" alt="QR code to UniBridge" width="100" height="100">
+    <span class="ub-qr-label">Scan to visit</span>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script>
+  (function() {
+    var selected = [];
+    var checkboxes = document.querySelectorAll('.compare-cb');
+    var panel = document.getElementById('compare-panel');
+
+    checkboxes.forEach(function(cb) {
+      cb.addEventListener('change', function() {
+        var card = cb.closest('.ub-housing-card');
+        if (cb.checked) {
+          selected.push(card);
+          if (selected.length > 2) {
+            var oldest = selected.shift();
+            oldest.querySelector('.compare-cb').checked = false;
+          }
+        } else {
+          selected = selected.filter(function(c) { return c !== card; });
+        }
+        if (selected.length === 2) {
+          fillCompare(selected[0], selected[1]);
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
+        }
+      });
+    });
+
+    document.getElementById('compare-close').addEventListener('click', function() {
+      panel.classList.remove('active');
+      selected.forEach(function(c) { c.querySelector('.compare-cb').checked = false; });
+      selected = [];
+    });
+
+    function fillCompare(a, b) {
+      document.getElementById('cmp-name-1').textContent = a.dataset.name;
+      document.getElementById('cmp-name-2').textContent = b.dataset.name;
+      document.getElementById('cmp-price-1').textContent = '€ ' + a.dataset.price + ' / mo';
+      document.getElementById('cmp-price-2').textContent = '€ ' + b.dataset.price + ' / mo';
+      document.getElementById('cmp-occ-1').textContent = a.dataset.occupants;
+      document.getElementById('cmp-occ-2').textContent = b.dataset.occupants;
+      document.getElementById('cmp-loc-1').textContent = a.dataset.location;
+      document.getElementById('cmp-loc-2').textContent = b.dataset.location;
+      document.getElementById('cmp-col-1').textContent = a.dataset.colivers;
+      document.getElementById('cmp-col-2').textContent = b.dataset.colivers;
+    }
+
+    var rent = document.getElementById('calc-rent');
+    var deposit = document.getElementById('calc-deposit');
+    var utilities = document.getElementById('calc-utilities');
+
+    function recalc() {
+      var r = parseFloat(rent.value) || 0;
+      var d = parseFloat(deposit.value) || 0;
+      var u = parseFloat(utilities.value) || 0;
+      document.getElementById('calc-first').textContent = '€ ' + (r + d + u).toLocaleString('en');
+      document.getElementById('calc-monthly').textContent = '€ ' + (r + u).toLocaleString('en');
+    }
+
+    rent.addEventListener('input', function() {
+      deposit.value = Math.round(parseFloat(rent.value) * 3) || 0;
+      recalc();
+    });
+    deposit.addEventListener('input', recalc);
+    utilities.addEventListener('input', recalc);
+    recalc();
+  })();
+
+  </script>
+</body>
+</html>

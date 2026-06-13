@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Insurance — UniBridge</title>
+  <meta name="description" content="Student health insurance in Austria — providers, costs, documents, and sign-up.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/unibridge.css">
+</head>
+<body>
+  <header class="ub-header">
+    <nav class="ub-nav">
+      <a href="index.html" class="ub-logo">
+        <span class="ub-logo-icon">🎓</span>
+        <span class="ub-logo-text"><span class="ub-logo-uni">Uni</span><span class="ub-logo-bridge">Bridge</span></span>
+      </a>
+      <div class="ub-nav-right">
+        <button class="ub-lang-toggle" id="lang-toggle" title="Switch language">RU</button>
+        <a href="index.html" class="ub-nav-home" data-i18n="nav_home">Home</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="ub-main">
+    <a href="index.html" class="ub-back" data-i18n="back_home">← Back to Home</a>
+
+    <div class="ub-page-header">
+      <span class="ub-page-icon">🏥</span>
+      <h1 class="ub-page-title" data-i18n="insurance_title">Health Insurance</h1>
+      <p class="ub-page-subtitle" data-i18n="insurance_subtitle">Student health insurance in Austria — providers, costs, and how to sign up</p>
+    </div>
+
+    <div class="ub-grid">
+      <div class="ub-block open" id="block-providers">
+        <div class="ub-block-header" onclick="toggleBlock('block-providers')">
+          <h3 data-i18n="ins_providers">🏢 Insurance Providers</h3>
+          <span class="ub-block-toggle">▾</span>
+        </div>
+        <div class="ub-block-body">
+          <div class="ub-block-content">
+            <ul class="ub-provider-list">
+              <li>
+                <span class="ub-provider-name">ÖGK (Austrian Health Insurance)</span>
+                <span class="ub-provider-price">€ 65.73 / mo</span>
+              </li>
+              <li>
+                <span class="ub-provider-name">FeelSafe by Generali</span>
+                <span class="ub-provider-price">€ 62 / mo</span>
+              </li>
+              <li>
+                <span class="ub-provider-name">UNIQA StudentProtect</span>
+                <span class="ub-provider-price">€ 58 / mo</span>
+              </li>
+              <li>
+                <span class="ub-provider-name">Care Concept (Care College)</span>
+                <span class="ub-provider-price">€ 50 / mo</span>
+              </li>
+            </ul>
+            <p style="margin-top: 0.75rem;" data-i18n="ins_providers_note"><strong>Note:</strong> ÖGK is the standard public insurance accepted everywhere. Private options may have limitations.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ub-block" id="block-payments">
+        <div class="ub-block-header" onclick="toggleBlock('block-payments')">
+          <h3 data-i18n="ins_payments">💰 Insurance Payments</h3>
+          <span class="ub-block-toggle">▾</span>
+        </div>
+        <div class="ub-block-body">
+          <div class="ub-block-content">
+            <p data-i18n="ins_payments_intro">Self-insured students pay a monthly contribution directly to the insurer.</p>
+            <ul>
+              <li data-i18n="ins_pay_1"><strong>ÖGK student rate:</strong> € 65.73 / month (2024/25)</li>
+              <li data-i18n="ins_pay_2"><strong>Payment methods:</strong> Direct debit (SEPA), bank transfer, or Erlagschein</li>
+              <li data-i18n="ins_pay_3"><strong>Payment frequency:</strong> Monthly or quarterly</li>
+              <li data-i18n="ins_pay_4"><strong>Penalty for late payment:</strong> Coverage may lapse after 6 weeks</li>
+            </ul>
+            <p data-i18n="ins_pay_note">If you work part-time (up to Geringfügigkeitsgrenze of € 518.44/mo), your employer covers insurance.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ub-block" id="block-docs">
+        <div class="ub-block-header" onclick="toggleBlock('block-docs')">
+          <h3 data-i18n="ins_docs">📄 Documents Required</h3>
+          <span class="ub-block-toggle">▾</span>
+        </div>
+        <div class="ub-block-body">
+          <div class="ub-block-content">
+            <ul>
+              <li data-i18n="ins_doc_1">Valid passport or residence permit</li>
+              <li data-i18n="ins_doc_2">Confirmation of enrollment (Studienbestätigung / Inskriptionsbestätigung)</li>
+              <li data-i18n="ins_doc_3">Meldezettel (proof of address registration)</li>
+              <li data-i18n="ins_doc_4">Austrian bank account details (IBAN)</li>
+              <li data-i18n="ins_doc_5">Completed application form from the insurer</li>
+              <li data-i18n="ins_doc_6">Passport-sized photo (for e-card)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="ub-block" id="block-timeslot">
+        <div class="ub-block-header" onclick="toggleBlock('block-timeslot')">
+          <h3 data-i18n="ins_timeslot">🗓️ Reserve Timeslot</h3>
+          <span class="ub-block-toggle">▾</span>
+        </div>
+        <div class="ub-block-body">
+          <div class="ub-block-content">
+            <p data-i18n="ins_timeslot_intro">Register with ÖGK in person at a service center or online:</p>
+            <ul>
+              <li><strong data-i18n="ins_ts_1">Online:</strong> <a href="https://www.gesundheitskasse.at/cdscontent/?contentid=10007.837775" target="_blank" rel="noopener" data-i18n="ins_ts_1_link">ÖGK Self-Insurance Portal</a></li>
+              <li data-i18n="ins_ts_2"><strong>In person:</strong> ÖGK Wien, Wienerbergstraße 15–19, 1100 Wien</li>
+              <li data-i18n="ins_ts_3"><strong>Hours:</strong> Mon–Fri 07:30–14:30</li>
+              <li data-i18n="ins_ts_4"><strong>Wait time:</strong> Walk-in, typically 15–45 min</li>
+            </ul>
+            <p data-i18n="ins_ts_tip"><strong>Tip:</strong> Arrive early in the morning for shorter wait times. Bring all documents listed above.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="ub-qr" aria-label="QR code linking to UniBridge">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://balintdecsi.github.io/tools/unibridge/" alt="QR code to UniBridge" width="100" height="100">
+    <span class="ub-qr-label">Scan to visit</span>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script>
+  function toggleBlock(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+
+  </script>
+</body>
+</html>

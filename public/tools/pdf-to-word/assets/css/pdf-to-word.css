@@ -1,0 +1,180 @@
+/* Tool: PDF to Word */
+.tool-drop-zone {
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius);
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  background: var(--color-surface);
+  margin-bottom: 1.5rem;
+}
+
+.tool-drop-zone:hover,
+.tool-drop-zone.drag-over {
+  border-color: var(--color-accent);
+  background: var(--color-tag-bg);
+}
+
+.tool-drop-zone .drop-icon {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tool-drop-zone p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.tool-drop-zone .drop-link {
+  color: var(--color-accent);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tool-drop-zone .drop-link:hover {
+  text-decoration: underline;
+}
+
+.tool-file-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--color-accent);
+  word-break: break-all;
+}
+
+.tool-file-remove {
+  all: unset;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.tool-file-remove:hover {
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
+}
+
+[data-theme="dark"] .tool-file-remove:hover {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.1);
+}
+
+.tool-options {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.tool-options label {
+  font-size: 0.95rem;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tool-options input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.tool-options .hint {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+
+.tool-btn {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tool-btn:hover {
+  background: var(--color-accent-hover);
+  color: #fff;
+}
+
+.tool-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tool-status {
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tool-status.error {
+  color: #dc2626;
+}
+
+[data-theme="dark"] .tool-status.error {
+  color: #f87171;
+}
+
+.tool-status.success {
+  color: var(--color-accent);
+}
+
+.tool-spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: tool-spin 0.6s linear infinite;
+}
+
+@keyframes tool-spin {
+  to { transform: rotate(360deg); }
+}
+
+.tool-privacy {
+  margin-top: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+
+
+@media (max-width: 600px) {
+  .tool-drop-zone {
+    padding: 2rem 1rem;
+  }
+
+  .tool-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

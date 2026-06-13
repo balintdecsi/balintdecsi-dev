@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UniBridge — Your Bridge to Studying in Austria</title>
+  <meta name="description" content="UniBridge helps international students from Central Asia navigate Austrian paperwork — visa, housing, insurance & registration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/unibridge.css">
+</head>
+<body>
+  <header class="ub-header">
+    <nav class="ub-nav">
+      <a href="index.html" class="ub-logo">
+        <span class="ub-logo-icon">🎓</span>
+        <span class="ub-logo-text"><span class="ub-logo-uni">Uni</span><span class="ub-logo-bridge">Bridge</span></span>
+      </a>
+      <div class="ub-nav-right">
+        <button class="ub-lang-toggle" id="lang-toggle" title="Switch language">RU</button>
+        <a href="index.html" class="ub-nav-home" data-i18n="nav_home">Home</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="ub-main">
+    <section class="ub-hero">
+      <video class="ub-hero-video" controls loop playsinline>
+        <source src="assets/promo_video.mp4" type="video/mp4">
+      </video>
+      <h1 class="ub-hero-title"><span data-i18n="hero_title_1">Your Bridge to </span><span data-i18n="hero_title_2">Studying in Austria</span></h1>
+      <p class="ub-hero-subtitle" data-i18n="hero_subtitle">Everything international students from Central Asia need to know about paperwork — before and after arriving in Vienna.</p>
+    </section>
+
+    <div class="ub-alert" data-i18n="urgency_text">⚠️ Visa appointment slots open 3 months ahead — start collecting documents early!</div>
+
+    <section class="ub-quick-section">
+      <h2 data-i18n="quick_title">What do you need help with?</h2>
+      <div class="ub-quick-grid">
+        <a href="visa.html" class="ub-quick-card">
+          <span class="ub-quick-card-icon">🛂</span>
+          <span data-i18n="modal_visa">Visa</span>
+        </a>
+        <a href="housing.html" class="ub-quick-card">
+          <span class="ub-quick-card-icon">🏠</span>
+          <span data-i18n="modal_housing">Housing</span>
+        </a>
+        <a href="insurance.html" class="ub-quick-card">
+          <span class="ub-quick-card-icon">🏥</span>
+          <span data-i18n="modal_insurance">Health Insurance</span>
+        </a>
+        <a href="admin.html" class="ub-quick-card">
+          <span class="ub-quick-card-icon">🏛️</span>
+          <span data-i18n="modal_admin">Address Registration</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="ub-country-section">
+      <label class="ub-country-label" for="country-select" data-i18n="country_label">Where are you from?</label>
+      <select id="country-select" class="ub-country-select">
+        <option value="" disabled selected data-i18n="country_placeholder">Select your country…</option>
+        <option value="KZ">🇰🇿  Kazakhstan</option>
+        <option value="UZ">🇺🇿  Uzbekistan</option>
+        <option value="KG">🇰🇬  Kyrgyzstan</option>
+        <option value="TJ">🇹🇯  Tajikistan</option>
+        <option value="TM">🇹🇲  Turkmenistan</option>
+      </select>
+    </section>
+
+    <section class="ub-progress-section">
+      <h2 data-i18n="progress_title">Your Progress</h2>
+      <div class="ub-progress-grid">
+        <a href="visa.html" class="ub-progress-card">
+          <span class="ub-progress-card-icon">🛂</span>
+          <span class="ub-progress-card-label" data-i18n="progress_visa">Visa</span>
+          <div class="ub-progress-bar"><div class="ub-progress-fill" id="prog-visa" style="width:0%"></div></div>
+          <span class="ub-progress-pct" id="prog-visa-pct">0%</span>
+        </a>
+        <a href="housing.html" class="ub-progress-card">
+          <span class="ub-progress-card-icon">🏠</span>
+          <span class="ub-progress-card-label" data-i18n="progress_housing">Housing</span>
+          <div class="ub-progress-bar"><div class="ub-progress-fill" id="prog-housing" style="width:0%"></div></div>
+          <span class="ub-progress-pct" id="prog-housing-pct">0%</span>
+        </a>
+        <a href="insurance.html" class="ub-progress-card">
+          <span class="ub-progress-card-icon">🏥</span>
+          <span class="ub-progress-card-label" data-i18n="progress_insurance">Insurance</span>
+          <div class="ub-progress-bar"><div class="ub-progress-fill" id="prog-insurance" style="width:0%"></div></div>
+          <span class="ub-progress-pct" id="prog-insurance-pct">0%</span>
+        </a>
+        <a href="admin.html" class="ub-progress-card">
+          <span class="ub-progress-card-icon">🏛️</span>
+          <span class="ub-progress-card-label" data-i18n="progress_admin">Registration</span>
+          <div class="ub-progress-bar"><div class="ub-progress-fill" id="prog-admin" style="width:0%"></div></div>
+          <span class="ub-progress-pct" id="prog-admin-pct">0%</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="ub-testimonials">
+      <h2 data-i18n="testimonials_title">Student Stories</h2>
+      <div class="ub-testimonials-grid">
+        <div class="ub-testimonial-card">
+          <div class="ub-tst-avatar">👨‍🎓</div>
+          <p class="ub-tst-text" data-i18n="testimonial_1_text">"UniBridge helped me understand the visa process step by step. I got my permit on the first try!"</p>
+          <p class="ub-tst-name" data-i18n="testimonial_1_name">Aibek N., Kazakhstan</p>
+        </div>
+        <div class="ub-testimonial-card">
+          <div class="ub-tst-avatar">👩‍🎓</div>
+          <p class="ub-tst-text" data-i18n="testimonial_2_text">"Finding student housing in Vienna was so stressful until I found this guide. The comparison tool is amazing!"</p>
+          <p class="ub-tst-name" data-i18n="testimonial_2_name">Dilnoza K., Uzbekistan</p>
+        </div>
+        <div class="ub-testimonial-card">
+          <div class="ub-tst-avatar">👨‍💻</div>
+          <p class="ub-tst-text" data-i18n="testimonial_3_text">"The insurance and registration sections saved me so much time. Everything was in one place."</p>
+          <p class="ub-tst-name" data-i18n="testimonial_3_name">Azamat T., Kyrgyzstan</p>
+        </div>
+      </div>
+    </section>
+
+    <div id="modal-overlay" class="ub-modal-overlay">
+      <div class="ub-modal">
+        <button class="ub-modal-close" id="modal-close" aria-label="Close">&times;</button>
+        <p class="ub-modal-country" id="modal-country"></p>
+        <div class="ub-modal-group">
+          <h2 class="ub-modal-group-title" data-i18n="modal_before">📋 Before Arriving in Austria</h2>
+          <div class="ub-modal-cards">
+            <a href="visa.html" class="ub-modal-card">
+              <span class="ub-modal-card-icon">🛂</span>
+              <span data-i18n="modal_visa">Visa</span>
+            </a>
+            <a href="housing.html" class="ub-modal-card">
+              <span class="ub-modal-card-icon">🏠</span>
+              <span data-i18n="modal_housing">Housing</span>
+            </a>
+          </div>
+        </div>
+        <div class="ub-modal-group">
+          <h2 class="ub-modal-group-title" data-i18n="modal_after">📝 After Arriving in Austria</h2>
+          <div class="ub-modal-cards">
+            <a href="insurance.html" class="ub-modal-card">
+              <span class="ub-modal-card-icon">🏥</span>
+              <span data-i18n="modal_insurance">Health Insurance</span>
+            </a>
+            <a href="admin.html" class="ub-modal-card">
+              <span class="ub-modal-card-icon">🏛️</span>
+              <span data-i18n="modal_admin">Address Registration</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="ub-qr" aria-label="QR code linking to UniBridge">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://balintdecsi.github.io/tools/unibridge/" alt="QR code to UniBridge" width="100" height="100">
+    <span class="ub-qr-label">Scan to visit</span>
+  </div>
+
+  <script src="assets/js/i18n.js"></script>
+  <script>
+  (function() {
+    var select = document.getElementById('country-select');
+    var overlay = document.getElementById('modal-overlay');
+    var closeBtn = document.getElementById('modal-close');
+    var countryLabel = document.getElementById('modal-country');
+    var names = { KZ: 'Kazakhstan', UZ: 'Uzbekistan', KG: 'Kyrgyzstan', TJ: 'Tajikistan', TM: 'Turkmenistan' };
+
+    select.addEventListener('change', function() {
+      countryLabel.textContent = 'Selected: ' + names[this.value];
+      overlay.classList.add('active');
+    });
+    closeBtn.addEventListener('click', function() { overlay.classList.remove('active'); });
+    overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.classList.remove('active'); });
+
+    function updateProgress() {
+      var visa = JSON.parse(localStorage.getItem('ub-visa-checks') || '{}');
+      var visaCount = Object.values(visa).filter(Boolean).length;
+      var visaPct = Math.round((visaCount / 9) * 100);
+      document.getElementById('prog-visa').style.width = visaPct + '%';
+      document.getElementById('prog-visa-pct').textContent = visaPct + '%';
+
+      var adminSteps = JSON.parse(localStorage.getItem('ub-admin-status') || '{}');
+      var adminCount = Object.values(adminSteps).filter(Boolean).length;
+      var adminPct = Math.round((adminCount / 4) * 100);
+      document.getElementById('prog-admin').style.width = adminPct + '%';
+      document.getElementById('prog-admin-pct').textContent = adminPct + '%';
+
+      document.getElementById('prog-housing').style.width = '0%';
+      document.getElementById('prog-housing-pct').textContent = '0%';
+      document.getElementById('prog-insurance').style.width = '0%';
+      document.getElementById('prog-insurance-pct').textContent = '0%';
+    }
+    updateProgress();
+  })();
+
+  </script>
+</body>
+</html>
