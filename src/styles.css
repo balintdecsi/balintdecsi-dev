@@ -209,5 +209,4 @@
   header.site-header, footer.site-footer { display: none !important; }
   .cv-entry { break-inside: avoid; page-break-inside: avoid; }
   h1, h2, h3 { color: #000; }
-  }
 }
