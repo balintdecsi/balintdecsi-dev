@@ -54,7 +54,7 @@ function CV() {
         <img
           src={profile}
           alt="Portrait of Bálint Décsi"
-          className="w-28 h-28 object-cover border border-[color:var(--color-rule)] grayscale no-print"
+          className="w-28 h-28 object-cover border border-[color:var(--color-rule)] no-print"
         />
       </header>
 
