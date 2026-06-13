@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Prompt, Section } from "@/components/tex";
+import { Section } from "@/components/tex";
 
 export const Route = createFileRoute("/tools")({
   head: () => ({
@@ -61,13 +61,9 @@ const tools: Tool[] = [
 function Tools() {
   return (
     <article>
-      <p className="font-mono text-xs text-[color:var(--color-ink-muted)] mt-4">~/tools</p>
       <h1 className="text-4xl mt-2 mb-3">Tools</h1>
       <p className="text-[color:var(--color-ink-muted)] italic mb-2">
         Small things I've built. Mostly demos, some genuinely useful.
-      </p>
-      <p className="font-mono text-sm text-[color:var(--color-ink-muted)]">
-        <Prompt>./tools --help</Prompt>
       </p>
 
       <Section number={1} title="Available">

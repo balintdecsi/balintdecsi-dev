@@ -30,9 +30,6 @@ function Index() {
       {/* Title block — academic preprint style */}
       <header className="pt-4 pb-2">
         <h1 className="text-5xl md:text-6xl tracking-tight mb-3">Bálint Décsi</h1>
-        <p className="font-mono text-sm text-[color:var(--color-ink-muted)] mb-6">
-          <Prompt caret>whoami</Prompt>
-        </p>
         <p className="text-lg italic text-[color:var(--color-ink-muted)] mb-8">
           CTO at Proximata · Data Engineer at Deutsche Telekom · Builder at mesh.
         </p>
@@ -95,10 +92,10 @@ function Index() {
       </Section>
 
       <Section number={3} title="Where to next">
-        <ul className="font-mono text-sm space-y-2">
-          <li><span className="text-[color:var(--color-link)]">$</span> <Link to="/cv">cat cv.tex</Link>  <span className="text-[color:var(--color-ink-muted)]"># experience, education, certifications, awards</span></li>
-          <li><span className="text-[color:var(--color-link)]">$</span> <Link to="/projects">ls projects/</Link>  <span className="text-[color:var(--color-ink-muted)]"># selected work and open-source experiments</span></li>
-          <li><span className="text-[color:var(--color-link)]">$</span> <Link to="/tools">./tools --help</Link>  <span className="text-[color:var(--color-ink-muted)]"># small tools and demos I've shipped</span></li>
+        <ul className="space-y-2">
+          <li><Link to="/cv">Full CV</Link> <span className="text-[color:var(--color-ink-muted)]">— experience, education, certifications, awards</span></li>
+          <li><Link to="/projects">Projects</Link> <span className="text-[color:var(--color-ink-muted)]">— selected work and open-source experiments</span></li>
+          <li><Link to="/tools">Tools</Link> <span className="text-[color:var(--color-ink-muted)]">— small tools and demos I've shipped</span></li>
         </ul>
       </Section>
     </article>

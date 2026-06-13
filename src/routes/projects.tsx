@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { BracketTag, Prompt, Section } from "@/components/tex";
+import { BracketTag, Section } from "@/components/tex";
 import { featured } from "@/content/projects";
 
 export const Route = createFileRoute("/projects")({
@@ -36,13 +36,9 @@ interface Repo {
 function Projects() {
   return (
     <article>
-      <p className="font-mono text-xs text-[color:var(--color-ink-muted)] mt-4">~/projects</p>
       <h1 className="text-4xl mt-2 mb-3">Projects</h1>
       <p className="text-[color:var(--color-ink-muted)] italic mb-2">
         Things I'm building, things I've shipped, things I've open-sourced.
-      </p>
-      <p className="font-mono text-sm text-[color:var(--color-ink-muted)]">
-        <Prompt>ls -1 featured/</Prompt>
       </p>
 
       <Section number={1} title="Featured">
@@ -74,9 +70,6 @@ function Projects() {
       </Section>
 
       <Section number={2} title="Open source & experiments">
-        <p className="font-mono text-sm text-[color:var(--color-ink-muted)] mb-4">
-          <Prompt>curl api.github.com/users/balintdecsi/repos</Prompt>
-        </p>
         <Repos />
       </Section>
     </article>
