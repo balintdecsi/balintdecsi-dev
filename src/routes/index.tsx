@@ -34,7 +34,7 @@ function Index() {
           Data Engineer at Deutsche Telekom · CTO at Proximata · Builder at mesh.
         </p>
 
-        <div className="flex flex-col-reverse md:flex-row gap-6 sm:gap-8 items-start">
+        <div className="flex flex-col-reverse md:flex-row gap-6 sm:gap-8 items-center md:items-start">
           <div className="flex-1 min-w-0">
             <h2 className="font-mono text-xs uppercase tracking-wider text-[color:var(--color-ink-muted)] mb-2">
               Abstract
@@ -50,7 +50,7 @@ function Index() {
           <img
             src={profile}
             alt="Portrait of Bálint Décsi"
-            className="w-28 h-28 sm:w-36 sm:h-36 object-cover border border-[color:var(--color-rule)] shrink-0"
+            className="w-32 h-32 sm:w-36 sm:h-36 object-cover border border-[color:var(--color-rule)] shrink-0 mx-auto md:mx-0"
           />
         </div>
 

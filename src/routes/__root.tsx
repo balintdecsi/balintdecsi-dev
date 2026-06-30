@@ -8,7 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Menu, X } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -172,6 +172,7 @@ function SiteHeader() {
     if (typeof document === "undefined") return false;
     return document.documentElement.classList.contains("dark");
   });
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleTheme = () => {
     const next = !isDark;
@@ -187,11 +188,13 @@ function SiteHeader() {
 
   return (
     <header className="site-header no-print border-b border-[color:var(--color-rule)] mb-10 sm:mb-14">
-      <div className="max-w-[72ch] mx-auto px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 flex-wrap">
-        <Link to="/" className="font-mono text-sm no-underline tracking-tight shrink-0">
+      <div className="max-w-[72ch] mx-auto px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4">
+        <Link to="/" className="font-mono text-sm no-underline tracking-tight shrink-0" onClick={() => setMenuOpen(false)}>
           <span className="text-[color:var(--color-link)]">~/</span>balint.decsi
         </Link>
-        <nav className="flex items-center gap-4 sm:gap-5">
+
+        {/* Desktop nav */}
+        <nav className="hidden sm:flex items-center gap-5">
           <Link to="/" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }} activeOptions={{ exact: true }}>about</Link>
           <Link to="/cv" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>cv</Link>
           <Link to="/projects" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>projects</Link>
@@ -204,7 +207,38 @@ function SiteHeader() {
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
         </nav>
+
+        {/* Mobile: theme toggle + hamburger */}
+        <div className="flex sm:hidden items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            className="p-2 -mr-1 no-underline hover:!text-[color:var(--color-link)] cursor-pointer bg-transparent border-0"
+          >
+            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            className="p-2 -mr-2 no-underline hover:!text-[color:var(--color-link)] cursor-pointer bg-transparent border-0"
+          >
+            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile drawer */}
+      {menuOpen && (
+        <nav className="sm:hidden border-t border-[color:var(--color-rule)]">
+          <div className="max-w-[72ch] mx-auto px-5 py-4 flex flex-col gap-3">
+            <Link to="/" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }} activeOptions={{ exact: true }}>about</Link>
+            <Link to="/cv" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>cv</Link>
+            <Link to="/projects" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>projects</Link>
+            <Link to="/tools" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>tools</Link>
+          </div>
+        </nav>
+      )}
     </header>
   );
 }
