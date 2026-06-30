@@ -76,7 +76,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "balintdecsi.dev" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: "Bálint Décsi" },
-      { name: "twitter:description", content: "Bálint Décsi's Portfolio Site." },
+      { name: "twitter:description", content: "Data Engineer at Deutsche Telekom, CTO at Proximata, builder at mesh. End-to-end data and ML systems, AI agents, and  prototyping." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ca8a252d-a05b-4675-86df-bb00f41ff0ad" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ca8a252d-a05b-4675-86df-bb00f41ff0ad" },
     ],
