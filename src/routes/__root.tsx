@@ -180,8 +180,6 @@ function SiteFooter() {
           <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline">github</a>
           {" · "}
           <a href="https://www.linkedin.com/in/balintdecsi4b6b53183" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline">linkedin</a>
-          {" · "}
-          <a href="mailto:balint.decsi@gmail.com" className="no-underline hover:underline">email</a>
         </span>
       </div>
     </footer>

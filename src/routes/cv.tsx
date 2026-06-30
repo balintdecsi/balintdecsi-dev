@@ -39,8 +39,6 @@ function CV() {
         <div className="flex-1">
           <h1 className="text-4xl mb-2">Bálint Décsi</h1>
           <p className="font-mono text-sm text-[color:var(--color-ink-muted)] flex flex-wrap gap-x-3 gap-y-1">
-            <a href="mailto:balint.decsi@gmail.com">balint.decsi@gmail.com</a>
-            <span>·</span>
             <a href="https://balintdecsi.dev">balintdecsi.dev</a>
             <span>·</span>
             <a href="https://www.linkedin.com/in/balintdecsi4b6b53183">linkedin</a>
