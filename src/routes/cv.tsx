@@ -26,9 +26,9 @@ function CV() {
   const [includePhoto, setIncludePhoto] = useState(true);
   return (
     <article className={includePhoto ? "" : "print-hide-photo"}>
-      <div className="flex items-start justify-between gap-6 mb-2 no-print">
+      <div className="flex flex-wrap items-center justify-end gap-3 sm:gap-4 mb-2 no-print">
         <span />
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4">
           <label className="font-mono text-xs text-[color:var(--color-ink-muted)] flex items-center gap-2 cursor-pointer select-none">
             <input
               type="checkbox"
@@ -48,9 +48,9 @@ function CV() {
         </div>
       </div>
 
-      <header className="border-y border-[color:var(--color-rule)] py-6 my-4 flex flex-row gap-6 items-start justify-between">
+      <header className="border-y border-[color:var(--color-rule)] py-5 sm:py-6 my-4 flex flex-col-reverse sm:flex-row gap-5 sm:gap-6 items-start sm:items-center sm:justify-between cv-header-print">
         <div className="flex-1 min-w-0">
-          <h1 className="text-4xl mb-2">Bálint Décsi</h1>
+          <h1 className="text-3xl sm:text-4xl mb-2">Bálint Décsi</h1>
           <p className="font-mono text-sm text-[color:var(--color-ink-muted)] flex flex-wrap gap-x-3 gap-y-1">
             <a href="https://balintdecsi.dev" target="_blank" rel="noopener noreferrer">balintdecsi.dev</a>
             <span>·</span>

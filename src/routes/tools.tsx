@@ -68,7 +68,7 @@ const tools: Tool[] = [
 function Tools() {
   return (
     <article>
-      <h1 className="text-4xl mt-2 mb-3">Tools</h1>
+      <h1 className="text-3xl sm:text-4xl mt-2 mb-3">Tools</h1>
       <p className="text-[color:var(--color-ink-muted)] italic mb-2">
         Small things I've built. Mostly demos, some genuinely useful.
       </p>
