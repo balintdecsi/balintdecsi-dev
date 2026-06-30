@@ -139,10 +139,14 @@
     color: var(--color-foreground);
     font-family: var(--font-serif);
     font-feature-settings: "kern", "liga", "onum", "ss01";
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 17px;
+    line-height: 1.65;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+  }
+
+  @media (min-width: 640px) {
+    body { font-size: 18px; line-height: 1.6; }
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -212,4 +216,5 @@
   .cv-entry { break-inside: avoid; page-break-inside: avoid; }
   h1, h2, h3 { color: #000; }
   .print-hide-photo img.cv-photo { display: none !important; }
+  .cv-header-print { flex-direction: row !important; align-items: center !important; }
 }

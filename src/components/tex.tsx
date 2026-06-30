@@ -13,8 +13,8 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className="mt-12">
-      <h2 className="text-2xl mb-4 flex items-baseline gap-3">
+    <section id={id} className="mt-12 sm:mt-16">
+      <h2 className="text-2xl mb-4 flex items-baseline gap-3 flex-wrap">
         <span className="font-mono text-base text-[color:var(--color-ink-muted)]">
           §{number}
         </span>

@@ -158,7 +158,7 @@ function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
       <SiteHeader />
-      <main className="flex-1 w-full max-w-[72ch] mx-auto px-6 pb-16">
+      <main className="flex-1 w-full max-w-[72ch] mx-auto px-5 sm:px-6 pb-16 sm:pb-20">
         {children}
       </main>
       <SiteFooter />
@@ -186,12 +186,12 @@ function SiteHeader() {
   };
 
   return (
-    <header className="site-header no-print border-b border-[color:var(--color-rule)] mb-12">
-      <div className="max-w-[72ch] mx-auto px-6 py-5 flex items-center justify-between gap-6">
-        <Link to="/" className="font-mono text-sm no-underline tracking-tight">
+    <header className="site-header no-print border-b border-[color:var(--color-rule)] mb-10 sm:mb-14">
+      <div className="max-w-[72ch] mx-auto px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 flex-wrap">
+        <Link to="/" className="font-mono text-sm no-underline tracking-tight shrink-0">
           <span className="text-[color:var(--color-link)]">~/</span>balint.decsi
         </Link>
-        <nav className="flex items-center gap-5">
+        <nav className="flex items-center gap-4 sm:gap-5">
           <Link to="/" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }} activeOptions={{ exact: true }}>about</Link>
           <Link to="/cv" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>cv</Link>
           <Link to="/projects" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>projects</Link>
@@ -212,7 +212,7 @@ function SiteHeader() {
 function SiteFooter() {
   return (
     <footer className="site-footer no-print border-t border-[color:var(--color-rule)] mt-12">
-      <div className="max-w-[72ch] mx-auto px-6 py-6 font-mono text-xs text-[color:var(--color-ink-muted)] flex flex-wrap items-center justify-between gap-3">
+      <div className="max-w-[72ch] mx-auto px-5 sm:px-6 py-6 font-mono text-xs text-[color:var(--color-ink-muted)] flex flex-wrap items-center justify-between gap-3">
         <span>© {new Date().getFullYear()} Bálint Décsi · typeset with care in Vienna &amp; Budapest</span>
         <span>
           <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline">github</a>
