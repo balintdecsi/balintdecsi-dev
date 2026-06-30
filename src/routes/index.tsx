@@ -10,12 +10,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "CTO at Proximata, Data Engineer at Deutsche Telekom, builder at mesh. End-to-end data and ML systems, AI agents, and SaaS prototyping.",
+          "Data Engineer at Deutsche Telekom, CTO at Proximata, builder at mesh. End-to-end data and ML systems, AI agents, and SaaS prototyping.",
       },
       { property: "og:title", content: "Bálint Décsi" },
       {
         property: "og:description",
-        content: "Data & ML engineer. CTO at Proximata, builder at mesh.",
+        content: "Data & ML engineer. Data Engineer at Deutsche Telekom, CTO at Proximata, builder at mesh.",
       },
       { property: "og:url", content: "/" },
     ],
@@ -70,9 +70,9 @@ function Index() {
         <dl className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
           <div>
             <DT>Current role</DT>
-            <DD>CTO, Proximata <span className="text-[color:var(--color-ink-muted)]">(Vienna-based hacker lab)</span></DD>
+            <DD>Data Engineer at Deutsche Telekom</DD>
             <DT>Also</DT>
-            <DD>Data Engineer at Deutsche Telekom · Builder at mesh.</DD>
+            <DD>CTO at Proximata <span className="text-[color:var(--color-ink-muted)]">(Vienna-based hacker lab)</span> · Builder at mesh.</DD>
           </div>
           <div>
             <DT>Education</DT>
