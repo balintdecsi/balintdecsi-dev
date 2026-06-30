@@ -167,6 +167,23 @@ function SiteShell({ children }: { children: ReactNode }) {
 
 function SiteHeader() {
   const linkCls = "font-mono text-sm no-underline hover:!text-[color:var(--color-link)]";
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof document === "undefined") return false;
+    return document.documentElement.classList.contains("dark");
+  });
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    setIsDark(next);
+    if (next) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
   return (
     <header className="site-header no-print border-b border-[color:var(--color-rule)] mb-12">
       <div className="max-w-[72ch] mx-auto px-6 py-5 flex items-center justify-between gap-6">
@@ -178,6 +195,13 @@ function SiteHeader() {
           <Link to="/cv" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>cv</Link>
           <Link to="/projects" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>projects</Link>
           <Link to="/tools" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>tools</Link>
+          <button
+            onClick={toggleTheme}
+            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            className="font-mono text-sm p-1 -mr-1 no-underline hover:!text-[color:var(--color-link)] cursor-pointer bg-transparent border-0"
+          >
+            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
         </nav>
       </div>
     </header>
