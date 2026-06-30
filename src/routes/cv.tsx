@@ -54,9 +54,9 @@ function CV() {
           <p className="font-mono text-sm text-[color:var(--color-ink-muted)] flex flex-wrap gap-x-3 gap-y-1">
             <a href="https://balintdecsi.dev" target="_blank" rel="noopener noreferrer">balintdecsi.dev</a>
             <span>·</span>
-            <a href="https://www.linkedin.com/in/balintdecsi4b6b53183" target="_blank" rel="noopener noreferrer">linkedin.com/in/balintdecsi4b6b53183</a>
+            <a href="https://www.linkedin.com/in/balintdecsi4b6b53183" target="_blank" rel="noopener noreferrer">linkedin</a>
             <span>·</span>
-            <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer">github.com/balintdecsi</a>
+            <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer">github</a>
           </p>
           <p className="font-mono text-sm text-[color:var(--color-ink-muted)] mt-2">
             Vienna, Austria / Budapest, Hungary
