@@ -1,0 +1,13 @@
+# Bálint Décsi
+
+> Personal portfolio and CV of Bálint Décsi — Data & ML Engineer, CTO at Proximata, and Builder at mesh. Covers work experience, projects, theses, and small tools.
+
+## Pages
+
+- [/](/): Landing page with biography, current roles, skills, and navigation.
+- [/cv](/cv): Full curriculum vitae — experience, education, certifications, awards, and a print-friendly PDF export.
+- [/projects](/projects): Selected projects and open-source work, grouped by category (open-source contributions, side projects, hackathons, MSc and BSc coursework, theses).
+- [/tools](/tools): Index of small tools and demos with descriptions and previews.
+- [/tools/ceu-feedback/index.html](/tools/ceu-feedback/index.html): CEU Feedback tool — a form-based utility.
+- [/tools/pdf-to-word/index.html](/tools/pdf-to-word/index.html): PDF to Word converter tool.
+- [/tools/unibridge/index.html](/tools/unibridge/index.html): Unibridge — a multi-page utility with housing, insurance, and visa helpers.
