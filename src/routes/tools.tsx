@@ -40,7 +40,7 @@ const tools: Tool[] = [
     description:
       "MVP demo of a secure, GDPR-compliant student feedback platform — registration with a verified @student.ceu.edu email, structured ratings, free-text comments, and institutional dashboards.",
     tags: ["civic tech", "privacy", "higher ed"],
-    href: "/tools/ceu-feedback/",
+    href: "/tools/ceu-feedback/index.html",
     thumb: ceuThumb,
   },
   {
@@ -50,7 +50,7 @@ const tools: Tool[] = [
     description:
       "Drop a PDF in and download an editable .docx. Runs entirely client-side using pdf.js — no file ever leaves your machine.",
     tags: ["utility", "client-only", "pdf"],
-    href: "/tools/pdf-to-word/",
+    href: "/tools/pdf-to-word/index.html",
     thumb: pdfThumb,
   },
   {
@@ -60,7 +60,7 @@ const tools: Tool[] = [
     description:
       "Multi-language prototype that walks new students through housing, health insurance, visa, and local admin. Built as a public-good civic-tech experiment.",
     tags: ["product", "i18n", "civic tech"],
-    href: "/tools/unibridge/",
+    href: "/tools/unibridge/index.html",
     thumb: unibridgeThumb,
   },
 ];
