@@ -61,8 +61,6 @@ function Index() {
           <sup>‡</sup> <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer">github</a>
           {"  ·  "}
           <sup>§</sup> <a href="https://www.linkedin.com/in/balintdecsi4b6b53183" target="_blank" rel="noopener noreferrer">linkedin</a>
-          {"  ·  "}
-          <sup>¶</sup> <a href="mailto:balint.decsi@gmail.com">balint.decsi@gmail.com</a>
         </p>
       </header>
 
