@@ -31,7 +31,7 @@ function Index() {
       <header className="pt-4 pb-2">
         <h1 className="text-5xl md:text-6xl tracking-tight mb-3">Bálint Décsi</h1>
         <p className="text-lg italic text-[color:var(--color-ink-muted)] mb-8">
-          CTO at Proximata · Data Engineer at Deutsche Telekom · Builder at mesh.
+          Data Engineer at Deutsche Telekom · CTO at Proximata · Builder at mesh.
         </p>
 
         <div className="flex flex-col md:flex-row gap-8 items-start">

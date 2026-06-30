@@ -12,6 +12,18 @@ export interface ExperienceEntry {
 
 export const experience: ExperienceEntry[] = [
   {
+    title: "Data Engineer",
+    org: "Deutsche Telekom IT Solutions HU",
+    date: "May 2024 — Present",
+    location: "Budapest, Hungary",
+    bullets: [
+      "Engineering scalable ML solutions and pipelines for the fixed-line business segment.",
+      "Building a modern Data Lakehouse using Apache Iceberg on Google Cloud Platform.",
+      "Developing automated Apache Airflow pipelines for robust data ingestion and processing.",
+    ],
+    tags: ["ML Engineering", "Apache Iceberg", "GCP", "Airflow", "Data Lakehouse"],
+  },
+  {
     title: "CTO",
     org: "Proximata",
     orgUrl: "https://proximata.io/",
@@ -36,18 +48,6 @@ export const experience: ExperienceEntry[] = [
       "Leveraging AI agents (Cursor, Gemini CLI, Copilot) for accelerated, parallelized development.",
     ],
     tags: ["AI Agents", "ML Prototyping", "SaaS", "Supabase", "Firebase", "LLMs"],
-  },
-  {
-    title: "Data Engineer",
-    org: "Deutsche Telekom IT Solutions HU",
-    date: "May 2024 — Present",
-    location: "Budapest, Hungary",
-    bullets: [
-      "Engineering scalable ML solutions and pipelines for the fixed-line business segment.",
-      "Building a modern Data Lakehouse using Apache Iceberg on Google Cloud Platform.",
-      "Developing automated Apache Airflow pipelines for robust data ingestion and processing.",
-    ],
-    tags: ["ML Engineering", "Apache Iceberg", "GCP", "Airflow", "Data Lakehouse"],
   },
   {
     title: "Advanced Analytics Expert",
