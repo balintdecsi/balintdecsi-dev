@@ -67,8 +67,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Bálint Décsi" },
-      { name: "description", content: "Bálint Décsi's Portfolio Site." },
+      { title: "Bálint Décsi — Data & ML Engineer" },
+      { name: "description", content: "Data Engineer at Deutsche Telekom, CTO at Proximata, builder at mesh. End-to-end data and ML systems, AI agents, and SaaS prototyping." },
       { name: "author", content: "Bálint Décsi" },
       { property: "og:title", content: "Bálint Décsi" },
       { property: "og:description", content: "Bálint Décsi's Portfolio Site." },
