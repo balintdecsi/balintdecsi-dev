@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
         content:
           "Data Engineer at Deutsche Telekom, CTO at Proximata, builder at mesh. End-to-end data and ML systems, AI agents, and SaaS prototyping.",
       },
-      { property: "og:title", content: "Bálint Décsi" },
+      { property: "og:title", content: "Bálint Décsi — Data & ML Engineer" },
       {
         property: "og:description",
         content: "Data & ML engineer. Data Engineer at Deutsche Telekom, CTO at Proximata, builder at mesh.",
