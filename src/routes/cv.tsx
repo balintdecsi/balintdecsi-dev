@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import profile from "@/assets/profile.jpg";
 import { BracketTag, Section } from "@/components/tex";
 import { awards, certifications, education, experience } from "@/content/cv";
@@ -22,28 +23,40 @@ export const Route = createFileRoute("/cv")({
 });
 
 function CV() {
+  const [includePhoto, setIncludePhoto] = useState(true);
   return (
-    <article>
+    <article className={includePhoto ? "" : "print-hide-photo"}>
       <div className="flex items-start justify-between gap-6 mb-2 no-print">
         <span />
-        <button
-          onClick={() => typeof window !== "undefined" && window.print()}
-          className="font-mono text-sm border border-[color:var(--color-rule)] px-3 py-1.5 hover:bg-[color:var(--color-muted)] no-underline cursor-pointer"
-          aria-label="Download CV as PDF"
-        >
-          Download PDF
-        </button>
+        <div className="flex items-center gap-4">
+          <label className="font-mono text-xs text-[color:var(--color-ink-muted)] flex items-center gap-2 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={includePhoto}
+              onChange={(e) => setIncludePhoto(e.target.checked)}
+              className="accent-[color:var(--color-link)] cursor-pointer"
+            />
+            include profile picture
+          </label>
+          <button
+            onClick={() => typeof window !== "undefined" && window.print()}
+            className="font-mono text-sm border border-[color:var(--color-rule)] px-3 py-1.5 hover:bg-[color:var(--color-muted)] no-underline cursor-pointer"
+            aria-label="Download CV as PDF"
+          >
+            Download PDF
+          </button>
+        </div>
       </div>
 
       <header className="border-y border-[color:var(--color-rule)] py-6 my-4 flex flex-col md:flex-row gap-6 items-start">
         <div className="flex-1">
           <h1 className="text-4xl mb-2">Bálint Décsi</h1>
           <p className="font-mono text-sm text-[color:var(--color-ink-muted)] flex flex-wrap gap-x-3 gap-y-1">
-            <a href="https://balintdecsi.dev">balintdecsi.dev</a>
+            <a href="https://balintdecsi.dev" target="_blank" rel="noopener noreferrer">balintdecsi.dev</a>
             <span>·</span>
-            <a href="https://www.linkedin.com/in/balintdecsi4b6b53183">linkedin</a>
+            <a href="https://www.linkedin.com/in/balintdecsi4b6b53183" target="_blank" rel="noopener noreferrer">linkedin.com/in/balintdecsi4b6b53183</a>
             <span>·</span>
-            <a href="https://github.com/balintdecsi">github</a>
+            <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer">github.com/balintdecsi</a>
           </p>
           <p className="font-mono text-sm text-[color:var(--color-ink-muted)] mt-2">
             Vienna, Austria / Budapest, Hungary
@@ -52,7 +65,7 @@ function CV() {
         <img
           src={profile}
           alt="Portrait of Bálint Décsi"
-          className="w-28 h-28 object-cover border border-[color:var(--color-rule)] no-print"
+          className="cv-photo w-28 h-28 object-cover border border-[color:var(--color-rule)]"
         />
       </header>
 
