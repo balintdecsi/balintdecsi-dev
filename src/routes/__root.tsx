@@ -70,7 +70,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Bálint Décsi — Data & ML Engineer" },
       { name: "description", content: "Data Engineer at Deutsche Telekom, CTO at Proximata, builder at mesh. End-to-end data and ML systems, AI agents, and SaaS prototyping." },
       { name: "author", content: "Bálint Décsi" },
-      { property: "og:title", content: "Bálint Décsi" },
+      { property: "og:title", content: "Bálint Décsi — Data & ML Engineer" },
       { property: "og:description", content: "Data Engineer at Deutsche Telekom, CTO at Proximata, builder at mesh. End-to-end data and ML systems, AI agents, and SaaS prototyping." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "balintdecsi.dev" },
