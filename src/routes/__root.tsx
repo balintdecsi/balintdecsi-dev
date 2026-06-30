@@ -79,6 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Data Engineer at Deutsche Telekom, CTO at Proximata, builder at mesh. End-to-end data and ML systems, AI agents, and SaaS prototyping." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ca8a252d-a05b-4675-86df-bb00f41ff0ad" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ca8a252d-a05b-4675-86df-bb00f41ff0ad" },
+      { name: "google-site-verification", content: "L9BnYAn6zJgpejqKDDEy01dO0FAjhQwnTK1L-AISOvA" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
