@@ -48,8 +48,8 @@ function CV() {
         </div>
       </div>
 
-      <header className="border-y border-[color:var(--color-rule)] py-6 my-4 flex flex-col md:flex-row gap-6 items-start">
-        <div className="flex-1">
+      <header className="border-y border-[color:var(--color-rule)] py-6 my-4 flex flex-row gap-6 items-start justify-between">
+        <div className="flex-1 min-w-0">
           <h1 className="text-4xl mb-2">Bálint Décsi</h1>
           <p className="font-mono text-sm text-[color:var(--color-ink-muted)] flex flex-wrap gap-x-3 gap-y-1">
             <a href="https://balintdecsi.dev" target="_blank" rel="noopener noreferrer">balintdecsi.dev</a>
@@ -65,7 +65,7 @@ function CV() {
         <img
           src={profile}
           alt="Portrait of Bálint Décsi"
-          className="cv-photo w-28 h-28 object-cover border border-[color:var(--color-rule)]"
+          className="cv-photo w-24 h-24 sm:w-28 sm:h-28 object-cover border border-[color:var(--color-rule)] shrink-0"
         />
       </header>
 

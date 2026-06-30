@@ -199,15 +199,15 @@
 }
 
 /* Print: render CV as a clean academic PDF via window.print().
-   @page margin: 0 suppresses the browser's auto-injected header/footer
-   (URL, date, page numbers). Real margins live on <main> below. */
-@page { size: A4; margin: 0; }
+   Margins follow LaTeX `article` defaults (~1in / 25mm) so every page —
+   not just the first — has comfortable top/bottom whitespace. */
+@page { size: A4; margin: 25mm 22mm 25mm 22mm; }
 @media print {
   body { font-size: 11pt; background: #fff; color: #000; margin: 0; }
   .no-print { display: none !important; }
   a { color: #000; text-decoration: underline; }
   .cv-print-only { display: block !important; }
-  main { max-width: none !important; padding: 18mm 16mm !important; margin: 0 !important; }
+  main { max-width: none !important; padding: 0 !important; margin: 0 !important; }
   header.site-header, footer.site-footer { display: none !important; }
   .cv-entry { break-inside: avoid; page-break-inside: avoid; }
   h1, h2, h3 { color: #000; }
