@@ -4,7 +4,7 @@ import ceuThumb from "@/assets/tools/ceu-feedback.jpg";
 import pdfThumb from "@/assets/tools/pdf-to-word.jpg";
 import unibridgeThumb from "@/assets/tools/unibridge.jpg";
 
-export const Route = createFileRoute("/tools")({
+export const Route = createFileRoute("/featured")({
   head: () => ({
     meta: [
       { title: "Tools — Bálint Décsi" },
