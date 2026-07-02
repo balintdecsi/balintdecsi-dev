@@ -14,6 +14,7 @@ import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as FeaturedRouteImport } from './routes/featured'
 import { Route as CvRouteImport } from './routes/cv'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FeaturedMscThesisRouteImport } from './routes/featured.msc-thesis'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -40,41 +41,68 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeaturedMscThesisRoute = FeaturedMscThesisRouteImport.update({
+  id: '/msc-thesis',
+  path: '/msc-thesis',
+  getParentRoute: () => FeaturedRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
-  '/featured': typeof FeaturedRoute
+  '/featured': typeof FeaturedRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/featured/msc-thesis': typeof FeaturedMscThesisRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
-  '/featured': typeof FeaturedRoute
+  '/featured': typeof FeaturedRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/featured/msc-thesis': typeof FeaturedMscThesisRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
-  '/featured': typeof FeaturedRoute
+  '/featured': typeof FeaturedRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/featured/msc-thesis': typeof FeaturedMscThesisRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cv' | '/featured' | '/projects' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/cv'
+    | '/featured'
+    | '/projects'
+    | '/sitemap.xml'
+    | '/featured/msc-thesis'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cv' | '/featured' | '/projects' | '/sitemap.xml'
-  id: '__root__' | '/' | '/cv' | '/featured' | '/projects' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/cv'
+    | '/featured'
+    | '/projects'
+    | '/sitemap.xml'
+    | '/featured/msc-thesis'
+  id:
+    | '__root__'
+    | '/'
+    | '/cv'
+    | '/featured'
+    | '/projects'
+    | '/sitemap.xml'
+    | '/featured/msc-thesis'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CvRoute: typeof CvRoute
-  FeaturedRoute: typeof FeaturedRoute
+  FeaturedRoute: typeof FeaturedRouteWithChildren
   ProjectsRoute: typeof ProjectsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -116,13 +144,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/featured/msc-thesis': {
+      id: '/featured/msc-thesis'
+      path: '/msc-thesis'
+      fullPath: '/featured/msc-thesis'
+      preLoaderRoute: typeof FeaturedMscThesisRouteImport
+      parentRoute: typeof FeaturedRoute
+    }
   }
 }
+
+interface FeaturedRouteChildren {
+  FeaturedMscThesisRoute: typeof FeaturedMscThesisRoute
+}
+
+const FeaturedRouteChildren: FeaturedRouteChildren = {
+  FeaturedMscThesisRoute: FeaturedMscThesisRoute,
+}
+
+const FeaturedRouteWithChildren = FeaturedRoute._addFileChildren(
+  FeaturedRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CvRoute: CvRoute,
-  FeaturedRoute: FeaturedRoute,
+  FeaturedRoute: FeaturedRouteWithChildren,
   ProjectsRoute: ProjectsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
