@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { BracketTag, Section } from "@/components/tex";
-import { featured } from "@/content/projects";
+import { sideProjects } from "@/content/projects";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -10,7 +10,7 @@ export const Route = createFileRoute("/projects")({
       {
         name: "description",
         content:
-          "Selected work: Proximata, mesh comic SaaS, Unibridge, CEU FeedForward, and open-source repos.",
+          "Selected work: side projects, theses, and open-source repos.",
       },
       { property: "og:title", content: "Projects — Bálint Décsi" },
       { property: "og:description", content: "Selected work and open-source experiments." },
@@ -42,9 +42,9 @@ function Projects() {
         Things I'm building, things I've shipped, things I've open-sourced.
       </p>
 
-      <Section number={1} title="Featured">
+      <Section number={1} title="Side projects">
         <div className="space-y-7">
-          {featured.map((p) => (
+          {sideProjects.map((p) => (
             <div key={p.name}>
               <h3 className="text-xl mb-1">{p.name}</h3>
               <p className="mb-2">{p.blurb}</p>
@@ -140,7 +140,7 @@ const TOPIC_GROUPS: { topic: string; title: string; description?: string }[] = [
   { topic: "assignment", title: "Other assignments" },
 ];
 
-const HIDDEN_REPOS = new Set(["THESIS", "ceu-public-thesis", "balintdecsi.github.io"]);
+const HIDDEN_REPOS = new Set(["THESIS", "ceu-public-thesis", "balintdecsi.github.io", "balintdecsi-dev"]);
 
 function Repos() {
   const { data, isLoading, error } = useQuery({

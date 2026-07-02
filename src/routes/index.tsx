@@ -91,7 +91,7 @@ function Index() {
         <ul className="space-y-2">
           <li><Link to="/cv">Full CV</Link> <span className="text-[color:var(--color-ink-muted)]">— experience, education, certifications, awards</span></li>
           <li><Link to="/projects">Projects</Link> <span className="text-[color:var(--color-ink-muted)]">— selected work and open-source experiments</span></li>
-          <li><Link to="/tools">Tools</Link> <span className="text-[color:var(--color-ink-muted)]">— small tools and demos I've shipped</span></li>
+          <li><Link to="/featured">Featured</Link> <span className="text-[color:var(--color-ink-muted)]">— Proximata, tools, and demos I'd point to first</span></li>
         </ul>
       </Section>
     </article>
