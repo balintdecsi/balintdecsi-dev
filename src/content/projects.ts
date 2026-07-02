@@ -21,7 +21,7 @@ export const featured: Project[] = [
     blurb:
       "ML-driven SaaS that generates stylized comics with consistent characters from a handful of reference images. Built at Hungary's first hacker space using Supabase, Firebase, and modern image-gen pipelines.",
     tags: ["LLMs", "Image Gen", "SaaS", "Supabase"],
-    links: [{ label: "mesh.", href: "https://www.mesh.community" }],
+    links: [{ label: "mesh.", href: "https://growmesh.io" }],
   },
   {
     name: "Unibridge",
