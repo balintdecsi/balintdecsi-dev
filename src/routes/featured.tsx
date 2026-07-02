@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import ceuThumb from "@/assets/tools/ceu-feedback.jpg";
 import pdfThumb from "@/assets/tools/pdf-to-word.jpg";
 import unibridgeThumb from "@/assets/tools/unibridge.jpg";
@@ -30,6 +30,7 @@ interface Tool {
   tags: string[];
   href: string;
   thumb: string;
+  internal?: boolean;
 }
 
 const tools: Tool[] = [
@@ -42,6 +43,17 @@ const tools: Tool[] = [
     tags: ["ai systems", "venture building", "infrastructure"],
     href: "https://proximata.io",
     thumb: proximataThumb,
+  },
+  {
+    slug: "msc-thesis",
+    name: "MSc capstone — Budapest rental prediction",
+    one_liner: "ingatlan.com × CEU · end-to-end modelling report",
+    description:
+      "Public-facing summary of my MSc Business Analytics capstone: temporal validation, geospatial enrichment (WorldPop + Sentinel-2 NDVI on H3), model leaderboard, SHAP diagnostics, and product recommendations.",
+    tags: ["ml", "geospatial", "capstone"],
+    href: "/featured/msc-thesis",
+    thumb: "/thesis/shap_group_importance.png",
+    internal: true,
   },
   {
     slug: "ceu-feedback",
@@ -86,7 +98,25 @@ function Featured() {
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 list-none p-0">
         {tools.map((t) => (
           <li key={t.slug} className="border border-[color:var(--color-rule)] hover:bg-[color:var(--color-muted)] transition-colors">
-            <a href={t.href} className="block no-underline group">
+            {t.internal ? (
+              <Link to={t.href} className="block no-underline group">
+                <TileBody t={t} />
+              </Link>
+            ) : (
+              <a href={t.href} className="block no-underline group">
+                <TileBody t={t} />
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </article>
+  );
+}
+
+function TileBody({ t }: { t: Tool }) {
+  return (
+    <>
               <div className="aspect-[16/10] overflow-hidden border-b border-[color:var(--color-rule)] bg-[color:var(--color-muted)]">
                 <img
                   src={t.thumb}
@@ -94,7 +124,7 @@ function Featured() {
                   loading="lazy"
                   width={1024}
                   height={640}
-                  className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform"
+                  className="w-full h-full object-contain object-top group-hover:scale-[1.02] transition-transform"
                 />
               </div>
               <div className="p-4">
@@ -110,10 +140,6 @@ function Featured() {
                   {t.tags.map((tag) => `[${tag}]`).join(" ")}
                 </p>
               </div>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </article>
+    </>
   );
 }
