@@ -53,7 +53,7 @@ const tools: Tool[] = [
       "Public-facing summary of my MSc Business Analytics capstone: temporal validation, geospatial enrichment (WorldPop + Sentinel-2 NDVI on H3), model leaderboard, SHAP diagnostics, and product recommendations.",
     tags: ["ml", "geospatial", "capstone"],
     href: "/featured/msc-thesis",
-    thumb: "/thesis/shap_group_importance.png",
+    thumb: "/thesis/shap_beeswarm.png",
     internal: true,
     thumbFit: "contain",
   },
