@@ -31,6 +31,7 @@ interface Tool {
   href: string;
   thumb: string;
   internal?: boolean;
+  thumbFit?: "cover" | "contain";
 }
 
 const tools: Tool[] = [
@@ -54,6 +55,7 @@ const tools: Tool[] = [
     href: "/featured/msc-thesis",
     thumb: "/thesis/shap_group_importance.png",
     internal: true,
+    thumbFit: "contain",
   },
   {
     slug: "ceu-feedback",
@@ -124,7 +126,7 @@ function TileBody({ t }: { t: Tool }) {
                   loading="lazy"
                   width={1024}
                   height={640}
-                  className="w-full h-full object-contain object-top group-hover:scale-[1.02] transition-transform"
+                  className={`w-full h-full ${t.thumbFit === "contain" ? "object-contain p-3 bg-white" : "object-cover object-top"} group-hover:scale-[1.02] transition-transform`}
                 />
               </div>
               <div className="p-4">
