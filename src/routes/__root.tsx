@@ -168,10 +168,10 @@ function SiteShell({ children }: { children: ReactNode }) {
 
 function SiteHeader() {
   const linkCls = "font-mono text-sm no-underline hover:!text-[color:var(--color-link)]";
-  const [isDark, setIsDark] = useState(() => {
-    if (typeof document === "undefined") return false;
-    return document.documentElement.classList.contains("dark");
-  });
+  const [isDark, setIsDark] = useState(false);
+  useEffect(() => {
+    setIsDark(document.documentElement.classList.contains("dark"));
+  }, []);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleTheme = () => {
