@@ -8,19 +8,19 @@ import unibridgeThumb from "@/assets/tools/unibridge.jpg";
 export const Route = createFileRoute("/featured")({
   head: () => ({
     meta: [
-      { title: "Tools — Bálint Décsi" },
+      { title: "Featured — Bálint Décsi" },
       {
         name: "description",
         content:
-          "Small tools and demos: CEU FeedForward, PDF→Word converter, Unibridge onboarding companion.",
+          "Featured work: Proximata (co-founder & CTO), plus small tools and demos I've shipped.",
       },
-      { property: "og:title", content: "Tools — Bálint Décsi" },
-      { property: "og:description", content: "Small tools and demos I've shipped." },
-      { property: "og:url", content: "/tools" },
+      { property: "og:title", content: "Featured — Bálint Décsi" },
+      { property: "og:description", content: "Featured work: Proximata, tools, and demos." },
+      { property: "og:url", content: "/featured" },
     ],
-    links: [{ rel: "canonical", href: "/tools" }],
+    links: [{ rel: "canonical", href: "/featured" }],
   }),
-  component: Tools,
+  component: Featured,
 });
 
 interface Tool {
@@ -66,15 +66,35 @@ const tools: Tool[] = [
   },
 ];
 
-function Tools() {
+function Featured() {
   return (
     <article>
-      <h1 className="text-3xl sm:text-4xl mt-2 mb-3">Tools</h1>
+      <h1 className="text-3xl sm:text-4xl mt-2 mb-3">Featured</h1>
       <p className="text-[color:var(--color-ink-muted)] italic mb-2">
-        Small things I've built. Mostly demos, some genuinely useful.
+        The work I'd point to first — the venture I'm building, plus small tools and demos I've shipped.
       </p>
 
-      <Section number={1} title="Available">
+      <Section number={1} title="Proximata">
+        <div>
+          <h3 className="text-xl mb-1">Proximata — co-founder & CTO</h3>
+          <p className="mb-2">
+            Vienna-based hacker lab building AI-native products. I co-founded Proximata and lead
+            technical strategy as CTO — from infrastructure to venture-building and spinoffs.
+          </p>
+          <p className="mb-1">
+            {["AI Systems", "Venture Building", "Infrastructure"].map((t) => (
+              <BracketTag key={t}>{t.toLowerCase()}</BracketTag>
+            ))}
+          </p>
+          <p className="font-mono text-sm">
+            <a href="https://proximata.io" target="_blank" rel="noopener noreferrer">proximata.io</a>
+            <span className="text-[color:var(--color-ink-muted)]"> · </span>
+            <a href="https://www.linkedin.com/company/proximata" target="_blank" rel="noopener noreferrer">linkedin</a>
+          </p>
+        </div>
+      </Section>
+
+      <Section number={2} title="Tools & demos">
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 list-none p-0">
           {tools.map((t) => (
             <li key={t.slug} className="border border-[color:var(--color-rule)] hover:bg-[color:var(--color-muted)] transition-colors">
