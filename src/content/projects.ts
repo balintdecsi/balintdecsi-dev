@@ -11,6 +11,9 @@ export const sideProjects: Project[] = [
     blurb:
       "ML-driven SaaS that generates stylized comics with consistent characters from a handful of reference images. Built at Hungary's first hacker space using Supabase, Firebase, and modern image-gen pipelines.",
     tags: ["LLMs", "Image Gen", "SaaS", "Supabase"],
-    links: [{ label: "growmesh.io", href: "https://growmesh.io" }],
+    links: [
+      { label: "comicsfactory.tech", href: "https://comicsfactory.tech" },
+      { label: "growmesh.io", href: "https://growmesh.io" },
+    ],
   },
 ];
