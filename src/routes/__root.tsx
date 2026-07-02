@@ -198,7 +198,7 @@ function SiteHeader() {
           <Link to="/" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }} activeOptions={{ exact: true }}>about</Link>
           <Link to="/cv" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>cv</Link>
           <Link to="/projects" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>projects</Link>
-          <Link to="/tools" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>tools</Link>
+          <Link to="/featured" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>featured</Link>
           <button
             onClick={toggleTheme}
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
@@ -235,7 +235,7 @@ function SiteHeader() {
             <Link to="/" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }} activeOptions={{ exact: true }}>about</Link>
             <Link to="/cv" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>cv</Link>
             <Link to="/projects" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>projects</Link>
-            <Link to="/tools" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>tools</Link>
+            <Link to="/featured" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>featured</Link>
           </div>
         </nav>
       )}
