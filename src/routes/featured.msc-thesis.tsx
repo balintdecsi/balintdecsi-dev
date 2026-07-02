@@ -79,6 +79,7 @@ function Report() {
       </p>
 
       <nav className="font-mono text-xs text-[color:var(--color-ink-muted)] border-y border-[color:var(--color-rule)] py-2 my-4 flex flex-wrap gap-x-4 gap-y-1">
+        <a href="#usecase" className="no-underline hover:underline">[use case]</a>
         <a href="#decision" className="no-underline hover:underline">[decision]</a>
         <a href="#data" className="no-underline hover:underline">[data]</a>
         <a href="#pipeline" className="no-underline hover:underline">[pipeline]</a>
@@ -90,24 +91,45 @@ function Report() {
         <a href="#appendix" className="no-underline hover:underline">[appendix]</a>
       </nav>
 
+      {/* Use case */}
+      <section id="usecase">
+        <Kicker id="U">Use case</Kicker>
+        <h2 className="text-2xl mb-2">Suggest a rent in seconds, list faster</h2>
+        <p>
+          A landlord opens the upload flow and enters the characteristics of the
+          flat they want to let — area, rooms, floor, condition, balcony, and so
+          on. Before they finish, the page shows a suggested monthly rent. Because
+          the number is credible and arrives instantly, they price competitively
+          from day one, list sooner, and start earning rent earlier.
+        </p>
+        <p className="mt-2">
+          The chain is simple: faster pricing → quicker listing → happier
+          landlord → higher engagement → more supply on the platform. For
+          ingatlan.com, which leads the Hungarian <em>for-sale</em> market but
+          faces stiffer competition in rentals, this is a direct lever to grow
+          the rental user base.
+        </p>
+        <Figure
+          src="/thesis/ingatlan-ui-mock.png"
+          alt="Mock of a stepped ingatlan.com listing upload flow with an inline price estimator (BÉTA), showing area, balcony, rooms and half-rooms inputs."
+          caption={
+            <>
+              Reference UI direction: a stepped upload flow with an inline
+              <em> Ingatlan árbecslő </em> (price estimator) — the model output
+              slots into an existing wizard step rather than a separate tool.
+            </>
+          }
+        />
+      </section>
+
       {/* Decision */}
       <section id="decision">
         <Kicker id="1">The decision this supports</Kicker>
         <h2 className="text-2xl mb-2">Can we suggest a credible rent at upload?</h2>
         <p>
-          The product question: can ingatlan.com show landlords a credible rent
-          suggestion during listing upload, so they price competitively and
-          reduce time-on-market? The capstone stays offline — modelling and
-          recommendations, not deployment or A/B testing.
-        </p>
-        <p className="mt-2">
-          Strategic context: ingatlan.com is the market leader in the Hungarian
-          <em> for-sale </em> segment, but the <em>rental</em> side is more
-          fragmented and still contested. A credible, friction-reducing rent
-          suggestion at upload is one of the levers to grow the rental user base
-          — landlords who get a defensible number in seconds are more likely to
-          list here first, which compounds into supply, traffic, and eventually
-          tenant-side share.
+          The capstone stays offline — modelling and recommendations, not
+          deployment or A/B testing. The question is whether a model can hit the
+          accuracy target given the data, scope, and product constraints.
         </p>
         <ul className="mt-2">
           <li><strong>Scope:</strong> Budapest rental flats.</li>
@@ -361,17 +383,6 @@ function Report() {
             </ul>
           </div>
         </div>
-        <Figure
-          src="/thesis/ingatlan-ui-mock.png"
-          alt="Mock of a stepped ingatlan.com listing upload flow with an inline price estimator (BÉTA), showing area, balcony, rooms and half-rooms inputs."
-          caption={
-            <>
-              Reference UI direction: a stepped upload flow with an inline
-              <em> Ingatlan árbecslő </em> (price estimator) — the model output
-              slots into an existing wizard step rather than a separate tool.
-            </>
-          }
-        />
       </section>
 
       {/* Risks */}
