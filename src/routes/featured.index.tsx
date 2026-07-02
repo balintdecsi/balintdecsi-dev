@@ -4,7 +4,7 @@ import pdfThumb from "@/assets/tools/pdf-to-word.jpg";
 import unibridgeThumb from "@/assets/tools/unibridge.jpg";
 import proximataThumb from "@/assets/tools/proximata.jpg";
 
-export const Route = createFileRoute("/featured")({
+export const Route = createFileRoute("/featured/")({
   head: () => ({
     meta: [
       { title: "Featured — Bálint Décsi" },
