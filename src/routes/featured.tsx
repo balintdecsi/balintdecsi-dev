@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Section, BracketTag } from "@/components/tex";
 import ceuThumb from "@/assets/tools/ceu-feedback.jpg";
 import pdfThumb from "@/assets/tools/pdf-to-word.jpg";
 import unibridgeThumb from "@/assets/tools/unibridge.jpg";
+import proximataThumb from "@/assets/tools/proximata.jpg";
 
 export const Route = createFileRoute("/featured")({
   head: () => ({
@@ -33,6 +33,16 @@ interface Tool {
 }
 
 const tools: Tool[] = [
+  {
+    slug: "proximata",
+    name: "Proximata",
+    one_liner: "Co-founder & CTO — AI-native products lab",
+    description:
+      "Vienna-based hacker lab building AI-native products. I co-founded Proximata and lead technical strategy as CTO — from infrastructure to venture-building and spinoffs.",
+    tags: ["ai systems", "venture building", "infrastructure"],
+    href: "https://proximata.io",
+    thumb: proximataThumb,
+  },
   {
     slug: "ceu-feedback",
     name: "CEU FeedForward",
@@ -73,62 +83,37 @@ function Featured() {
         The work I'd point to first — the venture I'm a co-founder of, plus small tools and demos I've shipped.
       </p>
 
-      <Section number={1} title="Proximata">
-        <div>
-          <h3 className="text-xl mb-1">Proximata — co-founder & CTO</h3>
-          <p className="mb-2">
-            Vienna-based hacker lab building AI-native products. I co-founded Proximata and lead
-            technical strategy as CTO — from infrastructure to venture-building and spinoffs.
-          </p>
-          <p className="mb-1">
-            {["AI Systems", "Venture Building", "Infrastructure"].map((t) => (
-              <BracketTag key={t}>{t.toLowerCase()}</BracketTag>
-            ))}
-          </p>
-          <p className="font-mono text-sm">
-            <a href="https://proximata.io" target="_blank" rel="noopener noreferrer">proximata.io</a>
-            <span className="text-[color:var(--color-ink-muted)]"> · </span>
-            <a href="https://www.linkedin.com/company/proximata" target="_blank" rel="noopener noreferrer">linkedin</a>
-          </p>
-        </div>
-      </Section>
-
-      <Section number={2} title="Tools & demos">
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 list-none p-0">
-          {tools.map((t) => (
-            <li key={t.slug} className="border border-[color:var(--color-rule)] hover:bg-[color:var(--color-muted)] transition-colors">
-              <a href={t.href} className="block no-underline group">
-                <div className="aspect-[16/10] overflow-hidden border-b border-[color:var(--color-rule)] bg-[color:var(--color-muted)]">
-                  <img
-                    src={t.thumb}
-                    alt={`${t.name} preview`}
-                    loading="lazy"
-                    className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform"
-                  />
+      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 list-none p-0">
+        {tools.map((t) => (
+          <li key={t.slug} className="border border-[color:var(--color-rule)] hover:bg-[color:var(--color-muted)] transition-colors">
+            <a href={t.href} className="block no-underline group">
+              <div className="aspect-[16/10] overflow-hidden border-b border-[color:var(--color-rule)] bg-[color:var(--color-muted)]">
+                <img
+                  src={t.thumb}
+                  alt={`${t.name} preview`}
+                  loading="lazy"
+                  width={1024}
+                  height={640}
+                  className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform"
+                />
+              </div>
+              <div className="p-4">
+                <div className="flex items-baseline justify-between gap-4 mb-1">
+                  <h3 className="text-xl m-0">{t.name}</h3>
+                  <span className="font-mono text-sm whitespace-nowrap text-[color:var(--color-ink-muted)]">open ↗</span>
                 </div>
-                <div className="p-4">
-                  <div className="flex items-baseline justify-between gap-4 mb-1">
-                    <h3 className="text-xl m-0">{t.name}</h3>
-                    <span className="font-mono text-sm whitespace-nowrap text-[color:var(--color-ink-muted)]">open ↗</span>
-                  </div>
-                  <p className="font-mono text-xs text-[color:var(--color-ink-muted)] mb-2">
-                    {t.one_liner}
-                  </p>
-                  <p className="mb-2 text-sm">{t.description}</p>
-                  <p className="font-mono text-xs text-[color:var(--color-ink-muted)]">
-                    {t.tags.map((tag) => `[${tag}]`).join(" ")}
-                  </p>
-                </div>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <p className="mt-12 font-mono text-xs text-[color:var(--color-ink-muted)]">
-        Tools open in a new tab and keep their original look — they're standalone
-        mini-sites preserved as I shipped them.
-      </p>
+                <p className="font-mono text-xs text-[color:var(--color-ink-muted)] mb-2">
+                  {t.one_liner}
+                </p>
+                <p className="mb-2 text-sm">{t.description}</p>
+                <p className="font-mono text-xs text-[color:var(--color-ink-muted)]">
+                  {t.tags.map((tag) => `[${tag}]`).join(" ")}
+                </p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
     </article>
   );
 }
