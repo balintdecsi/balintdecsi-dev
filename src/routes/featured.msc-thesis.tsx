@@ -383,17 +383,6 @@ function Report() {
             </ul>
           </div>
         </div>
-        <Figure
-          src="/thesis/ingatlan-ui-mock.png"
-          alt="Mock of a stepped ingatlan.com listing upload flow with an inline price estimator (BÉTA), showing area, balcony, rooms and half-rooms inputs."
-          caption={
-            <>
-              Reference UI direction: a stepped upload flow with an inline
-              <em> Ingatlan árbecslő </em> (price estimator) — the model output
-              slots into an existing wizard step rather than a separate tool.
-            </>
-          }
-        />
       </section>
 
       {/* Risks */}
