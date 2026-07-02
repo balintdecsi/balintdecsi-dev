@@ -100,6 +100,15 @@ function Report() {
           reduce time-on-market? The capstone stays offline — modelling and
           recommendations, not deployment or A/B testing.
         </p>
+        <p className="mt-2">
+          Strategic context: ingatlan.com is the market leader in the Hungarian
+          <em> for-sale </em> segment, but the <em>rental</em> side is more
+          fragmented and still contested. A credible, friction-reducing rent
+          suggestion at upload is one of the levers to grow the rental user base
+          — landlords who get a defensible number in seconds are more likely to
+          list here first, which compounds into supply, traffic, and eventually
+          tenant-side share.
+        </p>
         <ul className="mt-2">
           <li><strong>Scope:</strong> Budapest rental flats.</li>
           <li><strong>Target:</strong> monthly rent per square metre (HUF/sqm).</li>
@@ -352,6 +361,17 @@ function Report() {
             </ul>
           </div>
         </div>
+        <Figure
+          src="/thesis/ingatlan-ui-mock.png"
+          alt="Mock of a stepped ingatlan.com listing upload flow with an inline price estimator (BÉTA), showing area, balcony, rooms and half-rooms inputs."
+          caption={
+            <>
+              Reference UI direction: a stepped upload flow with an inline
+              <em> Ingatlan árbecslő </em> (price estimator) — the model output
+              slots into an existing wizard step rather than a separate tool.
+            </>
+          }
+        />
       </section>
 
       {/* Risks */}
