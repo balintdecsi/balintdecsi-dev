@@ -40,7 +40,7 @@ const tools: Tool[] = [
     description:
       "Vienna-based hacker lab building AI-native products. I co-founded Proximata and lead technical strategy as CTO — from infrastructure to venture-building and spinoffs.",
     tags: ["ai systems", "venture building", "infrastructure"],
-avy: "https://proximata.io",
+    href: "https://proximata.io",
     thumb: proximataThumb,
   },
   {
