@@ -7,7 +7,7 @@ export interface Project {
 
 export const sideProjects: Project[] = [
   {
-    name: "ComicFactory",
+    name: "Comics Factory",
     blurb:
       "ML-driven SaaS that generates stylized comics with consistent characters from a handful of reference images. Built at Hungary's first hacker space using Supabase, Firebase, and modern image-gen pipelines.",
     tags: ["LLMs", "Image Gen", "SaaS", "Supabase"],
