@@ -1,76 +1,68 @@
-## Visual direction
 
-Hybrid: LaTeX-grade typography as the backbone, monospace/terminal flourishes as accents.
+## Goal
 
-- **Type system**: serif body (EB Garamond or Crimson Pro — Computer Modern–adjacent, web-safe), JetBrains Mono for code/tags/UI chrome, small-caps for section headings. Tight measure (~68ch), generous leading.
-- **Color**: paper-white `#fbfaf6` background, near-black `#16161a` ink, single muted accent (deep crimson `#7a1f1f`, LaTeX-link feel). Dark mode flips to soft cream-on-charcoal. No gradients, no shadows.
-- **Layout**: single column, left-aligned. Section numbering (`§1`, `§2`) like a paper. Horizontal hairline rules. Footnote-style citations for sources/links.
-- **Terminal accents**: `$ ` prompt before the tagline, blinking caret on hero, `[python]` `[airflow]` bracket-style skill tags, ASCII-rule dividers between major sections, subtle `~/projects/` breadcrumb on subpages. Used sparingly — typography leads.
-- **Motion**: none beyond a 600ms caret blink and instant page transitions. No scroll-jacking.
+Add a tile in `/featured` for the MSc thesis. It links to a new subpage `/featured/msc-thesis` that is a single scrollable report — concise, in the site's typeset + terminal aesthetic — built from the current `client_final_presentation_june2026.html` deck in the `ceu-public-thesis` repo. Reuse the actual figures and the NDVI H3 map from the repo. Add short primers (medallion architecture, H3) so the report also works when projected. Leave the existing Theses section on `/projects` untouched.
 
-## Information architecture
+## Assets to pull from the thesis repo into `public/thesis/`
 
-```
-/                  Hero + abstract + at-a-glance (current "About")
-/cv                Full CV: experience, education, certifications, awards
-/projects          Projects + repo highlights with tags and live demo links
-/tools             Index of in-house tools
-/tools/ceu-feedback        Ported from current site
-/tools/pdf-to-word         Ported (client-side, uses pdf.js + docx)
-/tools/unibridge           Ported, with sub-pages: housing, insurance, visa, admin
-```
+From `presentation_assets/` in `balintdecsi/ceu-public-thesis`:
+- `20_best_model_shap_beeswarm.png`
+- `20_best_model_shap_group_importance.png`
+- `20_best_model_permutation_importance.png`
+- `11_geo_ndvi_h3_r8_map.html` (embedded via `<iframe>`)
 
-Tools are rebuilt as native TanStack routes (not iframes). Existing client-side JS (PDF→Word) gets reimplemented in TS; Unibridge mockups become an image gallery + i18n toggle.
+For the tile thumbnail I'll use `20_best_model_shap_group_importance.png` (or a lightly generated cover if a cleaner preview is preferred).
 
-## Stack & infrastructure
+## Files touched
 
-- TanStack Start (existing template) — file-based routes, SSR for SEO.
-- Content stored as typed TS modules in `src/content/` (`experience.ts`, `education.ts`, `projects.ts`, `tools.ts`) so it's trivial to update without a DB. No Lovable Cloud needed.
-- CV PDF: replace `html2pdf.js` with a print-stylesheet (`@media print`) approach so users get a crisp, real PDF via the browser's "Save as PDF". One-click "Download CV" button triggers `window.print()` on `/cv`.
-- Repos: fetch `https://api.github.com/users/balintdecsi/repos` at build time via a server function, cache in a loader, render pinned/starred ones on `/projects`.
-- Domain: `balintdecsi.dev` wired into canonical URLs, `og:url`, sitemap, and robots.
+1. `public/thesis/` — new folder with the 4 assets above.
+2. `src/routes/featured.tsx` — add a 5th tile "MSc capstone — Budapest rental prediction" that links to `/featured/msc-thesis` (internal route, not a static file).
+3. `src/routes/featured.msc-thesis.tsx` — new route rendering the report.
+4. `src/assets/tools/msc-thesis.jpg` — tile thumbnail (either the SHAP group importance PNG copied in, or a small generated cover using the deck's orange/black palette on the site's neutral background).
 
-## Pages — what each contains
+No changes to `/projects` — the Theses section stays as-is.
 
-**`/` (Home)**
-- Hero: name in display serif, monospace tagline with `$` prompt and caret, 3–4 line abstract.
-- "At a glance" as a definition list (`<dl>`) — role, also, education, location.
-- Bracket-tag skill cloud.
-- Footnote-style links: GitHub, LinkedIn, Email, View CV.
+## Report structure (scrollable, one page)
 
-**`/cv`**
-- Header with portrait + contact line.
-- Numbered sections: Experience, Education, Certifications, Awards. Each role: title, org (linked), date range, location, bullets, bracket tags.
-- Sticky "Download PDF" button (uses print stylesheet).
+Kept short so it also reads as speaker-ready sections on a projector. Each section: one-line kicker, 2–4 sentences or a compact list, and a figure/table where relevant. Duplicates from the deck (repeated executive-summary + since-interim + risks table restatements) collapsed.
 
-**`/projects`**
-- Featured projects with screenshots/demos and live links (Proximata, mesh comic SaaS, Unibridge, etc.).
-- "Open source & experiments" — auto-listed GitHub repos with language, stars, last-updated, link.
+1. **Header** — title, subtitle, "MSc Business Analytics · CEU · June 2026", tags. Anchor nav at top (terminal-style `[data]  [pipeline]  [models]  [geo]  [product]  [appendix]`).
+2. **The decision this supports** — 2 sentences on the product question, target (HUF/sqm), success criterion (≤10% MdAPE).
+3. **Data & temporal validation** — key numbers as a small stat row (50,898 rows / 40,718 train / 10,180 test / +17.6% test-period shift). Brief note on why the newest 20% is reserved.
+4. **NEW: Pipeline & medallion architecture** — 3–4 sentence primer on bronze/silver/gold layering (raw → cleaned/typed → modelling-ready feature marts), then how this thesis maps to it (raw dumps → layered data prep → modelling extract → geospatial enrichment → CV/holdout). Small ASCII/CSS diagram of the three layers.
+5. **Model leaderboard** — condensed table of the top 5 models + 2 baselines from Appendix A (MdAPE, MAPE, MAE). One sentence takeaway: boosting ~9.8–9.9%, OLS/Ridge ~10.1%, baselines 16.8–17.9%.
+6. **What the model pays attention to** — SHAP beeswarm image + 3-bullet "how to read it". Feature-group pills (size, comparables, condition, balcony ratio, aircon, centrality).
+7. **Interaction terms** — compact 3-column table from slide 12.
+8. **Geospatial enrichment** — WorldPop + NDVI two-column card. Note on lagging to avoid leakage.
+9. **NEW: H3 primer + NDVI map** — 3 sentences on Uber's H3 hexagonal grid (why hexagons, res 6/7/8, cell IDs), then the iframe of `11_geo_ndvi_h3_r8_map.html`. Short caption.
+10. **Implications for the upload flow** — the two-column "fields to prioritize" vs "UX pattern" content, compacted.
+11. **Risks & recommended next steps** — merged: risks table (5 rows) + 3-step recommendation as an inline callout row.
+12. **Appendix (collapsible or just lower section)** — SHAP group importance PNG, permutation importance PNG, feature policy (included / excluded), data-quality table. Link out to the source repo and to the raw deck.
 
-**`/tools`** and tool sub-routes
-- Index page listing each tool with one-line description.
-- Each tool ported into its own route, restyled to match the design system.
+Content that gets cut as duplicates: the executive-summary slide, the "what changed since interim" slide, the artifact-package inventory slide, and the discussion-questions slide (all restate points made elsewhere).
 
-## Step-by-step build
+## Styling / aesthetic
 
-1. Add fonts (EB Garamond + JetBrains Mono via `<link>` in `__root.tsx`) and rewrite `src/styles.css` tokens for the LaTeX/terminal palette and typography scale.
-2. Build shared primitives: `<Section>` (numbered heading + hairline), `<BracketTag>`, `<Prompt>` (terminal `$` with blink), `<FootnoteLink>`, `<DefinitionList>`.
-3. Create content modules in `src/content/` from the existing repo's `cv.html` and `projects.html`. Copy `profile.jpg` and tool assets into `src/assets/`.
-4. Implement routes `/`, `/cv`, `/projects`, `/tools`, `/tools/*` with proper `head()` per route (title, description, og:title/description/url, canonical, JSON-LD `Person` on `/`).
-5. Print stylesheet for `/cv` → single-column, no nav/buttons, black ink on white, page-break rules. Replace `html2pdf.js` button with `window.print()`.
-6. Port tools:
-   - CEU Feedback → React form, same fields, restyled.
-   - PDF→Word → reuse `pdf.js` + `docx` libs as ES modules; client-only component (`'use client'`-style guard / dynamic import) since they touch `window`.
-   - Unibridge → multi-route mini-site with i18n via simple context (EN/HU), image gallery, video embed.
-7. Add `public/robots.txt`, `src/routes/sitemap[.]xml.ts` server route, and a `Person` + `WebSite` JSON-LD block.
-8. Theme toggle (light/dark) persisted in `localStorage`; honor `prefers-color-scheme`.
-9. 404 + error boundaries get a terminal-style "command not found" treatment.
-10. Final pass: Lighthouse, alt text on portrait + mockups, semantic landmarks, verify print output, confirm all external links open in new tab with `rel="noopener"`.
+- Use the existing site tokens (`--color-ink`, `--color-ink-muted`, `--color-rule`, `--color-muted`, EB Garamond + JetBrains Mono). No orange from the deck — keep site palette.
+- Section headers as small-caps or `##` LaTeX-style with terminal `[section]` accents.
+- Figures wrapped in a bordered frame matching the tile borders on `/featured`.
+- The NDVI map iframe: full-width, ~60vh, `border` + `border-[color:var(--color-rule)]`, `loading="lazy"`.
+- All tables use the site's existing borderless typeset look, not the deck's black-header cards.
+- Works in both light and dark theme (existing theme toggle).
+- Responsive: on mobile, tile grids collapse to one column; map iframe drops to ~50vh.
 
-## Out of scope (call out so you can confirm)
+## Technical details
 
-- Blog / writing section — not in current site, not adding unless you want it.
-- Analytics — not adding by default.
-- Contact form with backend — current site uses `mailto:`, keeping that (no Lovable Cloud needed).
+- Route file naming: `src/routes/featured.msc-thesis.tsx` (flat dot convention). Child of `/featured` conceptually but no shared layout needed — `/featured` is a leaf, not a layout with `<Outlet />`.
+- New route sets its own `head()` with title `MSc capstone — Budapest rental prediction — Bálint Décsi`, unique description, `og:title`, `og:description`, `canonical`.
+- Add the route to `src/routes/sitemap[.]xml.ts` if it enumerates routes there.
+- Tile in `featured.tsx` uses `href="/featured/msc-thesis"` (SPA link — switch the anchor to `<Link to="/featured/msc-thesis">` since it's internal, keeping the external tools on plain `<a>`).
+- Assets copied under `public/thesis/` so they're served at `/thesis/...` without going through the bundler; the iframe stays functional and the PNGs load as plain images.
+- Charts from the deck (temporal median, CV leaderboard bar, fold stability) are represented as compact tables in the report rather than re-implementing Chart.js — keeps the page light and matches the typeset aesthetic. If you'd prefer actual bar charts I can add a tiny inline SVG per chart.
+- No new npm dependencies.
 
-After you approve, switch to Build mode and I'll execute steps 1–10.
+## Out of scope
+
+- Editing the `/projects` Theses section.
+- Reformatting the deck itself in the source repo.
+- Any backend/data changes.
