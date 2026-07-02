@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/tex";
+import { BracketTag } from "@/components/tex";
 import ceuThumb from "@/assets/tools/ceu-feedback.jpg";
 import pdfThumb from "@/assets/tools/pdf-to-word.jpg";
 import unibridgeThumb from "@/assets/tools/unibridge.jpg";
