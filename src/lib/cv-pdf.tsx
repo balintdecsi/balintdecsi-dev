@@ -17,11 +17,23 @@ import {
 // Disable ligature substitution so extractors always see the source glyphs.
 Font.registerHyphenationCallback((word) => [word]);
 
+// Alias the built-in Standard 14 Times family so fontWeight/fontStyle map
+// to the right embedded font. These are the PDF core fonts, so no file is
+// fetched or embedded — the PDF stays small and text extraction is clean.
+Font.register({
+  family: "CvSerif",
+  fonts: [
+    { src: "Times-Roman" },
+    { src: "Times-Bold", fontWeight: "bold" },
+    { src: "Times-Italic", fontStyle: "italic" },
+  ],
+});
+
 const styles = StyleSheet.create({
   page: {
     // Built-in Standard 14 PDF font — no embedding needed, guaranteed
     // ToUnicode mapping so extractors read clean text.
-    fontFamily: "Times-Roman",
+    fontFamily: "CvSerif",
     fontSize: 11,
     color: "#111",
     paddingTop: 64,
