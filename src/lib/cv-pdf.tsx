@@ -14,21 +14,14 @@ import {
   experience,
 } from "@/content/cv";
 
-Font.register({
-  family: "EB Garamond",
-  fonts: [
-    { src: "/fonts/EBGaramond-Regular.ttf" },
-    { src: "/fonts/EBGaramond-Bold.ttf", fontWeight: "bold" },
-    { src: "/fonts/EBGaramond-Italic.ttf", fontStyle: "italic" },
-  ],
-});
-
 // Disable ligature substitution so extractors always see the source glyphs.
 Font.registerHyphenationCallback((word) => [word]);
 
 const styles = StyleSheet.create({
   page: {
-    fontFamily: "EB Garamond",
+    // Built-in Standard 14 PDF font — no embedding needed, guaranteed
+    // ToUnicode mapping so extractors read clean text.
+    fontFamily: "Times-Roman",
     fontSize: 11,
     color: "#111",
     paddingTop: 64,
