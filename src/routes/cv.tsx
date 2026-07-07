@@ -24,6 +24,43 @@ export const Route = createFileRoute("/cv")({
 
 function CV() {
   const [includePhoto, setIncludePhoto] = useState(true);
+  const [downloading, setDownloading] = useState(false);
+
+  async function handleDownload() {
+    if (downloading) return;
+    setDownloading(true);
+    try {
+      const [{ pdf }, { CvDoc }] = await Promise.all([
+        import("@react-pdf/renderer"),
+        import("@/lib/cv-pdf"),
+      ]);
+      let photoDataUrl: string | undefined;
+      if (includePhoto) {
+        const res = await fetch(profile);
+        const blob = await res.blob();
+        photoDataUrl = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result as string);
+          reader.onerror = () => reject(reader.error);
+          reader.readAsDataURL(blob);
+        });
+      }
+      const blob = await pdf(
+        <CvDoc includePhoto={includePhoto} photoDataUrl={photoDataUrl} />,
+      ).toBlob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Balint-Decsi-CV.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } finally {
+      setDownloading(false);
+    }
+  }
+
   return (
     <article className={includePhoto ? "" : "print-hide-photo"}>
       <div className="flex flex-wrap items-center justify-end gap-3 sm:gap-4 mb-2 no-print">
@@ -39,11 +76,12 @@ function CV() {
             include profile picture
           </label>
           <button
-            onClick={() => typeof window !== "undefined" && window.print()}
-            className="font-mono text-sm border border-[color:var(--color-rule)] px-3 py-1.5 hover:bg-[color:var(--color-muted)] no-underline cursor-pointer"
+            onClick={handleDownload}
+            disabled={downloading}
+            className="font-mono text-sm border border-[color:var(--color-rule)] px-3 py-1.5 hover:bg-[color:var(--color-muted)] no-underline cursor-pointer disabled:opacity-60"
             aria-label="Download CV as PDF"
           >
-            Download PDF
+            {downloading ? "Generating…" : "Download PDF"}
           </button>
         </div>
       </div>
