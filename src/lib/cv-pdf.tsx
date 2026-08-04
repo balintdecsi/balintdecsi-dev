@@ -2,6 +2,7 @@ import {
   Document,
   Font,
   Image,
+  Link,
   Page,
   StyleSheet,
   Text,
@@ -48,15 +49,18 @@ const styles = StyleSheet.create({
     borderTopWidth: 0.75,
     borderBottomWidth: 0.75,
     borderColor: "#999",
-    paddingVertical: 12,
-    marginBottom: 18,
+    paddingVertical: 16,
+    marginBottom: 20,
   },
   headerText: { flexGrow: 1, flexShrink: 1 },
-  name: { fontSize: 22, fontWeight: "bold", marginBottom: 4 },
-  meta: { fontSize: 9.5, color: "#444" },
+  name: { fontSize: 24, fontWeight: "bold", marginBottom: 8, letterSpacing: 0.3 },
+  linkRow: { flexDirection: "row", alignItems: "center", marginBottom: 5 },
+  link: { fontSize: 10, color: "#1a3d7c", textDecoration: "underline" },
+  sep: { fontSize: 10, color: "#888", marginHorizontal: 6 },
+  meta: { fontSize: 10, color: "#444" },
   photo: {
-    width: 72,
-    height: 72,
+    width: 84,
+    height: 84,
     marginLeft: 16,
     objectFit: "cover",
     borderWidth: 0.5,
@@ -97,10 +101,23 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
       <Page size="A4" style={styles.page}>
         <View style={styles.header} fixed>
           <View style={styles.headerText}>
-            <Text style={styles.name}>Balint Decsi</Text>
-            <Text style={styles.meta}>
-              balintdecsi.dev · linkedin.com/in/balintdecsi4b6b53183 · github.com/balintdecsi
-            </Text>
+            <Text style={styles.name}>Bálint Décsi</Text>
+            <View style={styles.linkRow}>
+              <Link src="https://balintdecsi.dev" style={styles.link}>
+                balintdecsi.dev
+              </Link>
+              <Text style={styles.sep}>·</Text>
+              <Link
+                src="https://www.linkedin.com/in/balintdecsi4b6b53183"
+                style={styles.link}
+              >
+                linkedin
+              </Link>
+              <Text style={styles.sep}>·</Text>
+              <Link src="https://github.com/balintdecsi" style={styles.link}>
+                github
+              </Link>
+            </View>
             <Text style={styles.meta}>Vienna, Austria / Budapest, Hungary</Text>
           </View>
           {includePhoto && photoDataUrl ? (
