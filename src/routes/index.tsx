@@ -42,8 +42,8 @@ function Index() {
             <p className="leading-relaxed">
               Engineer focused on the end-to-end data and ML systems lifecycle —
               from building cloud pipelines and lakehouse platforms to shipping
-              machine-learning solutions with AI agents. Currently pursuing an
-              MS in Business Analytics at Central European University while
+              machine-learning solutions with AI agents. Recently graduated from
+              MS in Business Analytics at Central European University. Also love
               prototyping ML-driven products.
             </p>
           </div>
