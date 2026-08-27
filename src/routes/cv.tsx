@@ -131,7 +131,34 @@ function CV() {
         </div>
       </Section>
 
-      <Section number={2} title="Education">
+      <Section number={2} title="Selected projects">
+        <div className="space-y-7">
+          {selectedProjects.map((p, i) => (
+            <div key={i} className="cv-entry">
+              <h3 className="text-xl">{p.name}</h3>
+              <p className="font-mono text-xs text-[color:var(--color-ink-muted)] mb-2">
+                {p.role} · {p.client} · {p.date}
+              </p>
+              <p className="mb-2">{p.summary}</p>
+              <ul className="list-disc pl-5 space-y-1 mb-2">
+                {p.highlights.map((h, j) => <li key={j}>{h}</li>)}
+              </ul>
+              {p.links.length > 0 ? (
+                <p className="font-mono text-xs mb-1 flex flex-wrap gap-x-3">
+                  {p.links.map((l) => (
+                    <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+                  ))}
+                </p>
+              ) : null}
+              <p className="mt-1">
+                {p.tags.map((t) => <BracketTag key={t}>{t.toLowerCase()}</BracketTag>)}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section number={3} title="Education">
         <div className="space-y-4">
           {education.map((e, i) => (
             <div key={i} className="cv-entry">
@@ -144,17 +171,27 @@ function CV() {
         </div>
       </Section>
 
-      <Section number={3} title="Certifications">
+      <Section number={4} title="Certifications">
         <ul className="list-disc pl-5 space-y-1">
-          {certifications.map((c) => <li key={c}>{c}</li>)}
+          {certifications.map((c) => (
+            <li key={c.name}>
+              {c.url ? (
+                <a href={c.url} target="_blank" rel="noopener noreferrer">{c.name}</a>
+              ) : (
+                c.name
+              )}
+              <span className="font-mono text-xs text-[color:var(--color-ink-muted)]"> · {c.issuer} · {c.date}</span>
+            </li>
+          ))}
         </ul>
       </Section>
 
-      <Section number={4} title="Awards & scholarships">
+      <Section number={5} title="Awards & scholarships">
         <ul className="list-disc pl-5 space-y-1">
           {awards.map((a) => <li key={a}>{a}</li>)}
         </ul>
       </Section>
+
     </article>
   );
 }
