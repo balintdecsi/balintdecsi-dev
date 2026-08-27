@@ -1,7 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import profile from "@/assets/profile.jpg";
-import { BracketTag, DD, DT, Prompt, Section } from "@/components/tex";
+import { BracketTag, DD, DT, Section } from "@/components/tex";
 import { skills } from "@/content/cv";
+import { WorkSection } from "@/components/sections/work";
+import { ExperienceSection } from "@/components/sections/experience";
+import { CertificationsSection } from "@/components/sections/certifications";
+import { CodeSection } from "@/components/sections/code";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,7 +32,7 @@ function Index() {
   return (
     <article>
       {/* Title block — academic preprint style */}
-      <header className="pt-2 sm:pt-4 pb-2">
+      <header id="about" className="scroll-mt-8 pt-2 sm:pt-4 pb-2">
         <h1 className="text-4xl sm:text-5xl md:text-6xl tracking-tight mb-3">Bálint Décsi</h1>
         <p className="text-base sm:text-lg italic text-[color:var(--color-ink-muted)] mb-8 sm:mb-10">
           Data Engineer at Deutsche Telekom · CTO at Proximata · Builder at mesh.
@@ -56,9 +60,10 @@ function Index() {
 
         {/* Footnote-style links */}
         <p className="mt-8 sm:mt-10 font-mono text-sm text-[color:var(--color-ink-muted)] flex flex-wrap gap-x-4 gap-y-2">
-          <span><sup>†</sup> <Link to="/cv">read full CV</Link></span>
+          <span><sup>†</sup> <Link to="/" hash="experience">experience</Link></span>
           <span><sup>‡</sup> <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer">github</a></span>
           <span><sup>§</sup> <a href="https://www.linkedin.com/in/balintdecsi4b6b53183" target="_blank" rel="noopener noreferrer">linkedin</a></span>
+          <span><sup>¶</sup> <a href="https://en.malt.de/profile/balintdecsi?origin=site_nav_bar" target="_blank" rel="noopener noreferrer">malt</a></span>
         </p>
       </header>
 
@@ -87,13 +92,10 @@ function Index() {
         </p>
       </Section>
 
-      <Section number={3} title="Where to next">
-        <ul className="space-y-2">
-          <li><Link to="/cv">Full CV</Link> <span className="text-[color:var(--color-ink-muted)]">— experience, education, certifications, awards</span></li>
-          <li><Link to="/projects">Projects</Link> <span className="text-[color:var(--color-ink-muted)]">— selected work and open-source experiments</span></li>
-          <li><Link to="/featured">Featured</Link> <span className="text-[color:var(--color-ink-muted)]">— Proximata, tools, and demos I'd point to first</span></li>
-        </ul>
-      </Section>
+      <WorkSection number={3} />
+      <ExperienceSection number={4} />
+      <CertificationsSection number={5} />
+      <CodeSection number={6} />
     </article>
   );
 }
