@@ -14,17 +14,18 @@ const engagements = selectedProjects.filter(
 export const Route = createFileRoute("/featured/")({
   head: () => ({
     meta: [
-      { title: "Featured — Bálint Décsi" },
+      { title: "Work — Bálint Décsi" },
       {
         name: "description",
         content:
-          "Featured work: Proximata (co-founder & CTO), plus small tools and demos I've shipped.",
+          "Selected work: Proximata (co-founder & CTO), an ML rent-prediction capstone for ingatlan.com, client data/ML engagements, plus small tools and demos.",
       },
-      { property: "og:title", content: "Featured — Bálint Décsi" },
-      { property: "og:description", content: "Featured work: Proximata, tools, and demos." },
+      { property: "og:title", content: "Work — Bálint Décsi" },
+      { property: "og:description", content: "Projects, client engagements, tools, and demos." },
       { property: "og:url", content: "/featured" },
     ],
     links: [{ rel: "canonical", href: "/featured" }],
+
   }),
   component: Featured,
 });
