@@ -196,9 +196,10 @@ function SiteHeader() {
         {/* Desktop nav */}
         <nav className="hidden sm:flex items-center gap-5">
           <Link to="/" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }} activeOptions={{ exact: true }}>about</Link>
+          <Link to="/featured" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>work</Link>
+          <Link to="/projects" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>code</Link>
           <Link to="/cv" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>cv</Link>
-          <Link to="/projects" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>projects</Link>
-          <Link to="/featured" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>featured</Link>
+
           <button
             onClick={toggleTheme}
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
