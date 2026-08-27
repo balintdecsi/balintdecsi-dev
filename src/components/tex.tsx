@@ -63,3 +63,44 @@ export function DT({ children }: { children: ReactNode }) {
 export function DD({ children }: { children: ReactNode }) {
   return <dd className="mb-3">{children}</dd>;
 }
+/** Top-level page/section heading: <h1> on its own route, numbered <h2> on the one-pager. */
+export function PageSection({
+  id,
+  standalone,
+  number,
+  title,
+  subtitle,
+  children,
+}: {
+  id: string;
+  standalone?: boolean;
+  number: number;
+  title: string;
+  subtitle?: ReactNode;
+  children: ReactNode;
+}) {
+  if (standalone) {
+    return (
+      <section id={id} className="scroll-mt-8">
+        <h1 className="text-3xl sm:text-4xl mt-2 mb-3">{title}</h1>
+        {subtitle && <p className="text-[color:var(--color-ink-muted)] italic mb-2">{subtitle}</p>}
+        {children}
+      </section>
+    );
+  }
+  return (
+    <section id={id} className="scroll-mt-8 mt-16 sm:mt-24 pt-8 border-t-2 border-[color:var(--color-rule)]">
+      <h2 className="text-3xl mt-2 mb-3 flex items-baseline gap-3 flex-wrap">
+        <span className="font-mono text-base text-[color:var(--color-ink-muted)]">§{number}</span>
+        <span>{title}</span>
+      </h2>
+      {subtitle && <p className="text-[color:var(--color-ink-muted)] italic mb-2">{subtitle}</p>}
+      {children}
+    </section>
+  );
+}
+
+/** Numbering helper: "2.1" on the one-pager, "1" on a standalone route. */
+export function subNumber(standalone: boolean | undefined, number: number, i: number) {
+  return standalone ? String(i) : `${number}.${i}`;
+}

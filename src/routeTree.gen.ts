@@ -9,14 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WorkRouteImport } from './routes/work'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as FeaturedRouteImport } from './routes/featured'
+import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as CvRouteImport } from './routes/cv'
+import { Route as CodeRouteImport } from './routes/code'
+import { Route as CertificationsRouteImport } from './routes/certifications'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FeaturedIndexRouteImport } from './routes/featured.index'
 import { Route as FeaturedMscThesisRouteImport } from './routes/featured.msc-thesis'
 
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -32,9 +41,24 @@ const FeaturedRoute = FeaturedRouteImport.update({
   path: '/featured',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExperienceRoute = ExperienceRouteImport.update({
+  id: '/experience',
+  path: '/experience',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CvRoute = CvRouteImport.update({
   id: '/cv',
   path: '/cv',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CodeRoute = CodeRouteImport.update({
+  id: '/code',
+  path: '/code',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CertificationsRoute = CertificationsRouteImport.update({
+  id: '/certifications',
+  path: '/certifications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -55,28 +79,40 @@ const FeaturedMscThesisRoute = FeaturedMscThesisRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/certifications': typeof CertificationsRoute
+  '/code': typeof CodeRoute
   '/cv': typeof CvRoute
+  '/experience': typeof ExperienceRoute
   '/featured': typeof FeaturedRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/work': typeof WorkRoute
   '/featured/msc-thesis': typeof FeaturedMscThesisRoute
   '/featured/': typeof FeaturedIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/certifications': typeof CertificationsRoute
+  '/code': typeof CodeRoute
   '/cv': typeof CvRoute
+  '/experience': typeof ExperienceRoute
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/work': typeof WorkRoute
   '/featured/msc-thesis': typeof FeaturedMscThesisRoute
   '/featured': typeof FeaturedIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/certifications': typeof CertificationsRoute
+  '/code': typeof CodeRoute
   '/cv': typeof CvRoute
+  '/experience': typeof ExperienceRoute
   '/featured': typeof FeaturedRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/work': typeof WorkRoute
   '/featured/msc-thesis': typeof FeaturedMscThesisRoute
   '/featured/': typeof FeaturedIndexRoute
 }
@@ -84,41 +120,64 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/certifications'
+    | '/code'
     | '/cv'
+    | '/experience'
     | '/featured'
     | '/projects'
     | '/sitemap.xml'
+    | '/work'
     | '/featured/msc-thesis'
     | '/featured/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/certifications'
+    | '/code'
     | '/cv'
+    | '/experience'
     | '/projects'
     | '/sitemap.xml'
+    | '/work'
     | '/featured/msc-thesis'
     | '/featured'
   id:
     | '__root__'
     | '/'
+    | '/certifications'
+    | '/code'
     | '/cv'
+    | '/experience'
     | '/featured'
     | '/projects'
     | '/sitemap.xml'
+    | '/work'
     | '/featured/msc-thesis'
     | '/featured/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CertificationsRoute: typeof CertificationsRoute
+  CodeRoute: typeof CodeRoute
   CvRoute: typeof CvRoute
+  ExperienceRoute: typeof ExperienceRoute
   FeaturedRoute: typeof FeaturedRouteWithChildren
   ProjectsRoute: typeof ProjectsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  WorkRoute: typeof WorkRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -140,11 +199,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/experience': {
+      id: '/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof ExperienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cv': {
       id: '/cv'
       path: '/cv'
       fullPath: '/cv'
       preLoaderRoute: typeof CvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/code': {
+      id: '/code'
+      path: '/code'
+      fullPath: '/code'
+      preLoaderRoute: typeof CodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certifications': {
+      id: '/certifications'
+      path: '/certifications'
+      fullPath: '/certifications'
+      preLoaderRoute: typeof CertificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -187,10 +267,14 @@ const FeaturedRouteWithChildren = FeaturedRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CertificationsRoute: CertificationsRoute,
+  CodeRoute: CodeRoute,
   CvRoute: CvRoute,
+  ExperienceRoute: ExperienceRoute,
   FeaturedRoute: FeaturedRouteWithChildren,
   ProjectsRoute: ProjectsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  WorkRoute: WorkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
