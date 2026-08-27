@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WorkRouteImport } from './routes/work'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as FeaturedRouteImport } from './routes/featured'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as FeaturedIndexRouteImport } from './routes/featured.index'
 import { Route as FeaturedMscThesisRouteImport } from './routes/featured.msc-thesis'
 
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/featured': typeof FeaturedRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/work': typeof WorkRoute
   '/featured/msc-thesis': typeof FeaturedMscThesisRoute
   '/featured/': typeof FeaturedIndexRoute
 }
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/cv': typeof CvRoute
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/work': typeof WorkRoute
   '/featured/msc-thesis': typeof FeaturedMscThesisRoute
   '/featured': typeof FeaturedIndexRoute
 }
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/featured': typeof FeaturedRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/work': typeof WorkRoute
   '/featured/msc-thesis': typeof FeaturedMscThesisRoute
   '/featured/': typeof FeaturedIndexRoute
 }
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/featured'
     | '/projects'
     | '/sitemap.xml'
+    | '/work'
     | '/featured/msc-thesis'
     | '/featured/'
   fileRoutesByTo: FileRoutesByTo
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/cv'
     | '/projects'
     | '/sitemap.xml'
+    | '/work'
     | '/featured/msc-thesis'
     | '/featured'
   id:
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/featured'
     | '/projects'
     | '/sitemap.xml'
+    | '/work'
     | '/featured/msc-thesis'
     | '/featured/'
   fileRoutesById: FileRoutesById
@@ -115,10 +127,18 @@ export interface RootRouteChildren {
   FeaturedRoute: typeof FeaturedRouteWithChildren
   ProjectsRoute: typeof ProjectsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  WorkRoute: typeof WorkRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -191,6 +211,7 @@ const rootRouteChildren: RootRouteChildren = {
   FeaturedRoute: FeaturedRouteWithChildren,
   ProjectsRoute: ProjectsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  WorkRoute: WorkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
