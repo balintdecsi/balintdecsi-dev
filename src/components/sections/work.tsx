@@ -25,6 +25,9 @@ const live: WorkItem[] = [
     links: [{ label: "proximata.io", href: "https://proximata.io" }],
     tags: ["ai systems", "venture building", "infrastructure"],
   },
+];
+
+const caseStudies: WorkItem[] = [
   {
     slug: "msc-thesis",
     name: "MSc capstone — Budapest rental prediction",
@@ -35,6 +38,13 @@ const live: WorkItem[] = [
     tags: ["ml", "geospatial", "capstone"],
     internal: true,
   },
+  ...selectedProjects.filter(
+    (p) =>
+      ![
+        "Central European hacker-space movement",
+        "Budapest rental price prediction",
+      ].includes(p.name),
+  ),
 ];
 
 const demos: WorkItem[] = [
@@ -76,10 +86,6 @@ const demos: WorkItem[] = [
   },
 ];
 
-const engagements = selectedProjects.filter(
-  (p) => !["Central European hacker-space movement", "Budapest rental price prediction"].includes(p.name),
-);
-
 export function WorkSection({ standalone, number = 1 }: { standalone?: boolean; number?: number }) {
   return (
     <PageSection
@@ -87,43 +93,25 @@ export function WorkSection({ standalone, number = 1 }: { standalone?: boolean; 
       standalone={standalone}
       number={number}
       title="Work"
-      subtitle="The work I'd point to first — ventures I co-founded, client engagements, plus tools and demos I've shipped."
+      subtitle="The work I'd point to first — the venture I'm a co-founder of, plus case studies and demos I've shipped."
     >
       <Section number={subNumber(standalone, number, 1)} title="Live">
         <div className="space-y-8">
           {live.map((p) => (
             <WorkEntry key={p.slug} item={p} />
           ))}
-          {engagements.map((p) => (
-            <div key={p.name} className="border-l-2 border-[color:var(--color-rule)] pl-4">
-              <h3 className="text-xl m-0">{p.name}</h3>
-              <p className="font-mono text-xs text-[color:var(--color-ink-muted)] mb-2">
-                {p.role} · {p.client} · {p.date}
-              </p>
-              <p className="mb-2 text-sm">{p.summary}</p>
-              <ul className="list-disc pl-5 space-y-1 mb-2 text-sm">
-                {p.highlights.map((h, j) => (
-                  <li key={j}>{h}</li>
-                ))}
-              </ul>
-              {p.links.length > 0 ? (
-                <p className="font-mono text-xs mb-1 flex flex-wrap gap-x-3">
-                  {p.links.map((l) => (
-                    <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">
-                      {l.label} ↗
-                    </a>
-                  ))}
-                </p>
-              ) : null}
-              <p className="font-mono text-xs text-[color:var(--color-ink-muted)]">
-                {p.tags.map((tag) => `[${tag.toLowerCase()}]`).join(" ")}
-              </p>
-            </div>
+        </div>
+      </Section>
+
+      <Section number={subNumber(standalone, number, 2)} title="Case studies">
+        <div className="space-y-8">
+          {caseStudies.map((p) => (
+            <WorkEntry key={p.slug} item={p} />
           ))}
         </div>
       </Section>
 
-      <Section number={subNumber(standalone, number, 2)} title="Demos">
+      <Section number={subNumber(standalone, number, 3)} title="Demos">
         <div className="space-y-8">
           {demos.map((p) => (
             <WorkEntry key={p.slug} item={p} />
