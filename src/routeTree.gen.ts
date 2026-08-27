@@ -15,6 +15,7 @@ import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as FeaturedRouteImport } from './routes/featured'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as CvRouteImport } from './routes/cv'
+import { Route as CodeRouteImport } from './routes/code'
 import { Route as CertificationsRouteImport } from './routes/certifications'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FeaturedIndexRouteImport } from './routes/featured.index'
@@ -50,6 +51,11 @@ const CvRoute = CvRouteImport.update({
   path: '/cv',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CodeRoute = CodeRouteImport.update({
+  id: '/code',
+  path: '/code',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CertificationsRoute = CertificationsRouteImport.update({
   id: '/certifications',
   path: '/certifications',
@@ -74,6 +80,7 @@ const FeaturedMscThesisRoute = FeaturedMscThesisRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/certifications': typeof CertificationsRoute
+  '/code': typeof CodeRoute
   '/cv': typeof CvRoute
   '/experience': typeof ExperienceRoute
   '/featured': typeof FeaturedRouteWithChildren
@@ -86,6 +93,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/certifications': typeof CertificationsRoute
+  '/code': typeof CodeRoute
   '/cv': typeof CvRoute
   '/experience': typeof ExperienceRoute
   '/projects': typeof ProjectsRoute
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/certifications': typeof CertificationsRoute
+  '/code': typeof CodeRoute
   '/cv': typeof CvRoute
   '/experience': typeof ExperienceRoute
   '/featured': typeof FeaturedRouteWithChildren
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/certifications'
+    | '/code'
     | '/cv'
     | '/experience'
     | '/featured'
@@ -124,6 +134,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/certifications'
+    | '/code'
     | '/cv'
     | '/experience'
     | '/projects'
@@ -135,6 +146,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/certifications'
+    | '/code'
     | '/cv'
     | '/experience'
     | '/featured'
@@ -148,6 +160,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CertificationsRoute: typeof CertificationsRoute
+  CodeRoute: typeof CodeRoute
   CvRoute: typeof CvRoute
   ExperienceRoute: typeof ExperienceRoute
   FeaturedRoute: typeof FeaturedRouteWithChildren
@@ -200,6 +213,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CvRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/code': {
+      id: '/code'
+      path: '/code'
+      fullPath: '/code'
+      preLoaderRoute: typeof CodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/certifications': {
       id: '/certifications'
       path: '/certifications'
@@ -248,6 +268,7 @@ const FeaturedRouteWithChildren = FeaturedRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CertificationsRoute: CertificationsRoute,
+  CodeRoute: CodeRoute,
   CvRoute: CvRoute,
   ExperienceRoute: ExperienceRoute,
   FeaturedRoute: FeaturedRouteWithChildren,
