@@ -218,3 +218,6 @@
   .print-hide-photo img.cv-photo { display: none !important; }
   .cv-header-print { flex-direction: row !important; align-items: center !important; }
 }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

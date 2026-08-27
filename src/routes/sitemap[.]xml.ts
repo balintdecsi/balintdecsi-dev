@@ -5,9 +5,10 @@ const BASE_URL = "https://balintdecsi.dev";
 
 const entries: { path: string; changefreq: string; priority: string }[] = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
-  { path: "/cv", changefreq: "monthly", priority: "0.9" },
-  { path: "/projects", changefreq: "weekly", priority: "0.8" },
-  { path: "/featured", changefreq: "monthly", priority: "0.6" },
+  { path: "/work", changefreq: "monthly", priority: "0.9" },
+  { path: "/experience", changefreq: "monthly", priority: "0.9" },
+  { path: "/certifications", changefreq: "monthly", priority: "0.7" },
+  { path: "/code", changefreq: "weekly", priority: "0.8" },
   { path: "/featured/msc-thesis", changefreq: "monthly", priority: "0.6" },
 ];
 
