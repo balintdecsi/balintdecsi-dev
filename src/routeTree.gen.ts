@@ -13,6 +13,7 @@ import { Route as WorkRouteImport } from './routes/work'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as FeaturedRouteImport } from './routes/featured'
+import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as CvRouteImport } from './routes/cv'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FeaturedIndexRouteImport } from './routes/featured.index'
@@ -36,6 +37,11 @@ const ProjectsRoute = ProjectsRouteImport.update({
 const FeaturedRoute = FeaturedRouteImport.update({
   id: '/featured',
   path: '/featured',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperienceRoute = ExperienceRouteImport.update({
+  id: '/experience',
+  path: '/experience',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CvRoute = CvRouteImport.update({
@@ -62,6 +68,7 @@ const FeaturedMscThesisRoute = FeaturedMscThesisRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
+  '/experience': typeof ExperienceRoute
   '/featured': typeof FeaturedRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
+  '/experience': typeof ExperienceRoute
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work': typeof WorkRoute
@@ -82,6 +90,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cv': typeof CvRoute
+  '/experience': typeof ExperienceRoute
   '/featured': typeof FeaturedRouteWithChildren
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -94,6 +103,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/cv'
+    | '/experience'
     | '/featured'
     | '/projects'
     | '/sitemap.xml'
@@ -104,6 +114,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/cv'
+    | '/experience'
     | '/projects'
     | '/sitemap.xml'
     | '/work'
@@ -113,6 +124,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/cv'
+    | '/experience'
     | '/featured'
     | '/projects'
     | '/sitemap.xml'
@@ -124,6 +136,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CvRoute: typeof CvRoute
+  ExperienceRoute: typeof ExperienceRoute
   FeaturedRoute: typeof FeaturedRouteWithChildren
   ProjectsRoute: typeof ProjectsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       path: '/featured'
       fullPath: '/featured'
       preLoaderRoute: typeof FeaturedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experience': {
+      id: '/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof ExperienceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cv': {
@@ -208,6 +228,7 @@ const FeaturedRouteWithChildren = FeaturedRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CvRoute: CvRoute,
+  ExperienceRoute: ExperienceRoute,
   FeaturedRoute: FeaturedRouteWithChildren,
   ProjectsRoute: ProjectsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
