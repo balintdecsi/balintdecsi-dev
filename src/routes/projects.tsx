@@ -37,10 +37,11 @@ interface Repo {
 function Projects() {
   return (
     <article>
-      <h1 className="text-3xl sm:text-4xl mt-2 mb-3">Projects</h1>
+      <h1 className="text-3xl sm:text-4xl mt-2 mb-3">Code</h1>
       <p className="text-[color:var(--color-ink-muted)] italic mb-2">
-        Things I'm building, things I've shipped, things I've open-sourced.
+        Repositories and side projects — what I've built, shipped, and open-sourced.
       </p>
+
 
       <Section number={1} title="Side projects">
         <div className="space-y-7">
