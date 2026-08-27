@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import profile from "@/assets/profile.jpg";
 import { BracketTag, Section } from "@/components/tex";
-import { awards, certifications, education, experience } from "@/content/cv";
+import { awards, certifications, education, experience, selectedProjects } from "@/content/cv";
 
 export const Route = createFileRoute("/cv")({
   head: () => ({
