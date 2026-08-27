@@ -38,13 +38,18 @@ const caseStudies: WorkItem[] = [
     tags: ["ml", "geospatial", "capstone"],
     internal: true,
   },
-  ...selectedProjects.filter(
-    (p) =>
-      ![
-        "Central European hacker-space movement",
-        "Budapest rental price prediction",
-      ].includes(p.name),
-  ),
+  ...selectedProjects
+    .filter(
+      (p) =>
+        ![
+          "Central European hacker-space movement",
+          "Budapest rental price prediction",
+        ].includes(p.name),
+    )
+    .map((p) => ({
+      ...p,
+      slug: p.name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, ""),
+    })),
 ];
 
 const demos: WorkItem[] = [
