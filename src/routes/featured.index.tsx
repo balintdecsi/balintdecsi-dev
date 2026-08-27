@@ -113,9 +113,39 @@ function Featured() {
           </li>
         ))}
       </ul>
+
+      <h2 className="text-2xl mt-12 mb-2">Client engagements</h2>
+      <p className="text-[color:var(--color-ink-muted)] italic mb-6">
+        Longer-running work delivered inside client teams.
+      </p>
+      <div className="space-y-8">
+        {engagements.map((p) => (
+          <div key={p.name} className="border-l-2 border-[color:var(--color-rule)] pl-4">
+            <h3 className="text-xl m-0">{p.name}</h3>
+            <p className="font-mono text-xs text-[color:var(--color-ink-muted)] mb-2">
+              {p.role} · {p.client} · {p.date}
+            </p>
+            <p className="mb-2 text-sm">{p.summary}</p>
+            <ul className="list-disc pl-5 space-y-1 mb-2 text-sm">
+              {p.highlights.map((h, j) => <li key={j}>{h}</li>)}
+            </ul>
+            {p.links.length > 0 ? (
+              <p className="font-mono text-xs mb-1 flex flex-wrap gap-x-3">
+                {p.links.map((l) => (
+                  <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+                ))}
+              </p>
+            ) : null}
+            <p className="font-mono text-xs text-[color:var(--color-ink-muted)]">
+              {p.tags.map((tag) => `[${tag.toLowerCase()}]`).join(" ")}
+            </p>
+          </div>
+        ))}
+      </div>
     </article>
   );
 }
+
 
 function TileBody({ t }: { t: Tool }) {
   return (
