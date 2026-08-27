@@ -5,10 +5,13 @@ import { PageSection, Section, subNumber } from "@/components/tex";
 interface WorkItem {
   slug: string;
   name: string;
-  one_liner: string;
-  description: string;
+  role: string;
+  client?: string;
+  date?: string;
+  summary: string;
+  highlights?: string[];
+  links: { label: string; href: string }[];
   tags: string[];
-  href: string;
   internal?: boolean;
 }
 
@@ -16,20 +19,20 @@ const live: WorkItem[] = [
   {
     slug: "proximata",
     name: "Proximata",
-    one_liner: "Co-founder & CTO — AI-native products lab",
-    description:
+    role: "Co-founder & CTO — AI-native products lab",
+    summary:
       "Vienna-based hacker lab building AI-native products. I co-founded Proximata and lead technical strategy as CTO — from infrastructure to venture-building and spinoffs.",
+    links: [{ label: "proximata.io", href: "https://proximata.io" }],
     tags: ["ai systems", "venture building", "infrastructure"],
-    href: "https://proximata.io",
   },
   {
     slug: "msc-thesis",
     name: "MSc capstone — Budapest rental prediction",
-    one_liner: "ingatlan.com × CEU · end-to-end modelling report",
-    description:
+    role: "ingatlan.com × CEU · end-to-end modelling report",
+    summary:
       "Public-facing summary of my MSc Business Analytics capstone: temporal validation, geospatial enrichment (WorldPop + Sentinel-2 NDVI on H3), model leaderboard, SHAP diagnostics, and product recommendations.",
+    links: [{ label: "read report", href: "/featured/msc-thesis" }],
     tags: ["ml", "geospatial", "capstone"],
-    href: "/featured/msc-thesis",
     internal: true,
   },
 ];
@@ -38,38 +41,38 @@ const demos: WorkItem[] = [
   {
     slug: "comics-factory",
     name: "Comics Factory",
-    one_liner: "ML-driven SaaS for stylized comics with consistent characters",
-    description:
+    role: "ML-driven SaaS for stylized comics with consistent characters",
+    summary:
       "Generate stylized comics with consistent characters from a handful of reference images. Built at Hungary's first hacker space using Supabase, Firebase, and modern image-gen pipelines.",
+    links: [{ label: "comicsfactory.tech", href: "https://comicsfactory.tech" }],
     tags: ["llms", "image gen", "saas", "supabase"],
-    href: "https://comicsfactory.tech",
   },
   {
     slug: "ceu-feedback",
     name: "CEU FeedForward",
-    one_liner: "Anonymous student-feedback platform for CEU",
-    description:
+    role: "Anonymous student-feedback platform for CEU",
+    summary:
       "MVP demo of a secure, GDPR-compliant student feedback platform — registration with a verified @student.ceu.edu email, structured ratings, free-text comments, and institutional dashboards.",
+    links: [{ label: "open demo", href: "/tools/ceu-feedback/index.html" }],
     tags: ["civic tech", "privacy", "higher ed"],
-    href: "/tools/ceu-feedback/index.html",
   },
   {
     slug: "pdf-to-word",
     name: "PDF → Word",
-    one_liner: "Convert a PDF to .docx, all in the browser",
-    description:
+    role: "Convert a PDF to .docx, all in the browser",
+    summary:
       "Drop a PDF in and download an editable .docx. Runs entirely client-side using pdf.js — no file ever leaves your machine.",
+    links: [{ label: "open tool", href: "/tools/pdf-to-word/index.html" }],
     tags: ["utility", "client-only", "pdf"],
-    href: "/tools/pdf-to-word/index.html",
   },
   {
     slug: "unibridge",
     name: "Unibridge",
-    one_liner: "Onboarding companion for international students in Vienna",
-    description:
+    role: "Onboarding companion for international students in Vienna",
+    summary:
       "Multi-language prototype that walks new students through housing, health insurance, visa, and local admin. Built as a public-good civic-tech experiment.",
+    links: [{ label: "open demo", href: "/tools/unibridge/index.html" }],
     tags: ["product", "i18n", "civic tech"],
-    href: "/tools/unibridge/index.html",
   },
 ];
 
@@ -87,26 +90,10 @@ export function WorkSection({ standalone, number = 1 }: { standalone?: boolean; 
       subtitle="The work I'd point to first — ventures I co-founded, client engagements, plus tools and demos I've shipped."
     >
       <Section number={subNumber(standalone, number, 1)} title="Live">
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
-          {live.map((t) => (
-            <li
-              key={t.slug}
-              className="border border-[color:var(--color-rule)] hover:bg-[color:var(--color-muted)] transition-colors"
-            >
-              {t.internal ? (
-                <Link to={t.href} className="block no-underline group p-4">
-                  <WorkItemBody t={t} />
-                </Link>
-              ) : (
-                <a href={t.href} className="block no-underline group p-4">
-                  <WorkItemBody t={t} />
-                </a>
-              )}
-            </li>
+        <div className="space-y-8">
+          {live.map((p) => (
+            <WorkEntry key={p.slug} item={p} />
           ))}
-        </ul>
-
-        <div className="mt-8 space-y-8">
           {engagements.map((p) => (
             <div key={p.name} className="border-l-2 border-[color:var(--color-rule)] pl-4">
               <h3 className="text-xl m-0">{p.name}</h3>
@@ -137,41 +124,59 @@ export function WorkSection({ standalone, number = 1 }: { standalone?: boolean; 
       </Section>
 
       <Section number={subNumber(standalone, number, 2)} title="Demos">
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
-          {demos.map((t) => (
-            <li
-              key={t.slug}
-              className="border border-[color:var(--color-rule)] hover:bg-[color:var(--color-muted)] transition-colors"
-            >
-              {t.internal ? (
-                <Link to={t.href} className="block no-underline group p-4">
-                  <WorkItemBody t={t} />
-                </Link>
-              ) : (
-                <a href={t.href} className="block no-underline group p-4">
-                  <WorkItemBody t={t} />
-                </a>
-              )}
-            </li>
+        <div className="space-y-8">
+          {demos.map((p) => (
+            <WorkEntry key={p.slug} item={p} />
           ))}
-        </ul>
+        </div>
       </Section>
     </PageSection>
   );
 }
 
-function WorkItemBody({ t }: { t: WorkItem }) {
+function WorkEntry({ item }: { item: WorkItem }) {
+  const primary = item.links[0];
+  const LinkWrapper = item.internal ? Link : "a";
+  const linkProps = item.internal ? { to: primary.href } : { href: primary.href };
+
   return (
-    <>
-      <div className="flex items-baseline justify-between gap-4 mb-1">
-        <h3 className="text-xl m-0">{t.name}</h3>
-        <span className="font-mono text-sm whitespace-nowrap text-[color:var(--color-ink-muted)]">open ↗</span>
-      </div>
-      <p className="font-mono text-xs text-[color:var(--color-ink-muted)] mb-2">{t.one_liner}</p>
-      <p className="mb-2 text-sm">{t.description}</p>
+    <div className="border-l-2 border-[color:var(--color-rule)] pl-4">
+      <h3 className="text-xl m-0">
+        <LinkWrapper
+          {...linkProps}
+          className="no-underline"
+          target={item.internal ? undefined : "_blank"}
+          rel={item.internal ? undefined : "noopener noreferrer"}
+        >
+          {item.name}
+        </LinkWrapper>
+      </h3>
+      <p className="font-mono text-xs text-[color:var(--color-ink-muted)] mb-2">{item.role}</p>
+      <p className="mb-2 text-sm">{item.summary}</p>
+      {item.highlights && item.highlights.length > 0 ? (
+        <ul className="list-disc pl-5 space-y-1 mb-2 text-sm">
+          {item.highlights.map((h, j) => (
+            <li key={j}>{h}</li>
+          ))}
+        </ul>
+      ) : null}
+      {item.links.length > 0 ? (
+        <p className="font-mono text-xs mb-1 flex flex-wrap gap-x-3">
+          {item.links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              target={item.internal ? undefined : "_blank"}
+              rel={item.internal ? undefined : "noopener noreferrer"}
+            >
+              {l.label} ↗
+            </a>
+          ))}
+        </p>
+      ) : null}
       <p className="font-mono text-xs text-[color:var(--color-ink-muted)]">
-        {t.tags.map((tag) => `[${tag}]`).join(" ")}
+        {item.tags.map((tag) => `[${tag.toLowerCase()}]`).join(" ")}
       </p>
-    </>
+    </div>
   );
 }
