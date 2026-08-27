@@ -217,13 +217,18 @@ export const selectedProjects: SelectedProject[] = [
     client: "Deutsche Telekom",
     date: "May 2024 — present",
     summary:
-      "Turning a 20-year-old telco data estate, full of sensitive customer data and bound by strict EU regulation, into a cloud-native lakehouse.",
+      "Turning a 20-year-old telco data estate — full of sensitive customer data and bound by strict EU regulation — into a nimble, cloud-native lakehouse.",
     highlights: [
-      "Apache Iceberg lakehouse on GCP with automated Airflow ingestion for the fixed-line segment.",
-      "Scalable ML pipelines delivered through GitLab CI/CD.",
+      "Apache Iceberg lakehouse on Google Cloud with automated Airflow ingestion for the fixed-line segment.",
+      "Scalable ML solutions and pipelines delivered through GitLab CI/CD.",
     ],
-    tags: ["Iceberg", "GCP", "BigQuery", "Airflow"],
-    links: [],
+    tags: ["GCP", "BigQuery", "Python", "Apache Iceberg", "Airflow", "GitLab CI/CD"],
+    links: [
+      {
+        label: "google cloud case study",
+        href: "https://cloud.google.com/blog/topics/customers/engineering-deutsche-telekoms-sovereign-data-platform",
+      },
+    ],
   },
   {
     name: "Domestic network optimization",
@@ -231,13 +236,34 @@ export const selectedProjects: SelectedProject[] = [
     client: "Vodafone Hungary (B2B: telco & banking)",
     date: "Dec 2022 — Apr 2024",
     summary:
-      "Greenfield geospatial ML for retail-network optimization at Hungary's largest telco and banking clients — end-to-end from feature store to client presentation.",
+      "Greenfield geospatial machine learning for domestic retail-network optimization at Hungary's largest telco and banking companies. A small team covered end-to-end data and ML modelling, from feature store to client presentation.",
     highlights: [
-      "Custom geospatial feature store plus automated scraping for competitive intelligence.",
-      "Unsupervised models with Explainable AI and interactive maps to win stakeholder trust.",
+      "End-to-end delivery of ML models for external B2B clients, on a custom geospatial and location-based feature store.",
+      "Unsupervised models for network-infrastructure optimization, with Explainable AI (XAI) to build business trust in model decisions.",
+      "Automated web scraping for competitive intelligence and interactive geospatial visualizations for strategic network planning.",
     ],
-    tags: ["Geospatial ML", "XAI", "scikit-learn", "GIS"],
+    tags: ["Python", "scikit-learn", "TensorFlow", "GIS", "BigQuery"],
     links: [],
+  },
+  {
+    name: "Vodafone Hungary data migration",
+    role: "Data Engineer",
+    client: "Vodafone Hungary",
+    date: "Sep 2021 — Sep 2022",
+    summary:
+      "Moving the data and analytics platform of Hungary's second-largest telco — ~3.8M residential and business subscribers after the UPC Hungary acquisition — to Google Cloud.",
+    highlights: [
+      "Built ETL pipelines migrating critical on-premise data to cloud-based environments.",
+      "Designed and implemented optimized data marts on a cloud-native lakehouse architecture.",
+      "Worked with cross-functional stakeholders to define technical data requirements.",
+    ],
+    tags: ["GCP", "BigQuery", "SQL", "ETL", "Lakehouse"],
+    links: [
+      {
+        label: "google cloud case study",
+        href: "https://cloud.google.com/blog/products/data-analytics/vodafone-hungary-data-platform-migration",
+      },
+    ],
   },
 ];
 
