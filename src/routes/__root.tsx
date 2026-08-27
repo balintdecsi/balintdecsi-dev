@@ -166,6 +166,15 @@ function SiteShell({ children }: { children: ReactNode }) {
   );
 }
 
+/** One-pager sections; the menu scrolls to them. */
+const NAV = [
+  { hash: "about", label: "about" },
+  { hash: "work", label: "work" },
+  { hash: "experience", label: "experience" },
+  { hash: "certifications", label: "certs" },
+  { hash: "code", label: "code" },
+] as const;
+
 function SiteHeader() {
   const linkCls = "font-mono text-sm no-underline hover:!text-[color:var(--color-link)]";
   const [isDark, setIsDark] = useState(false);
