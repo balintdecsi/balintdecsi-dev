@@ -241,11 +241,18 @@ function SiteHeader() {
       {menuOpen && (
         <nav className="sm:hidden border-t border-[color:var(--color-rule)]">
           <div className="max-w-[72ch] mx-auto px-5 py-4 flex flex-col gap-3">
-            <Link to="/" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }} activeOptions={{ exact: true }}>about</Link>
-            <Link to="/featured" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>work</Link>
-            <Link to="/projects" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>code</Link>
-            <Link to="/cv" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>cv</Link>
-
+            {NAV.map((n) => (
+              <Link
+                key={n.hash}
+                to="/"
+                hash={n.hash}
+                onClick={() => setMenuOpen(false)}
+                className={linkCls}
+                activeProps={{ className: linkCls }}
+              >
+                {n.label}
+              </Link>
+            ))}
           </div>
         </nav>
       )}
