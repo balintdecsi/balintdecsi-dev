@@ -3,6 +3,13 @@ import ceuThumb from "@/assets/tools/ceu-feedback.jpg";
 import pdfThumb from "@/assets/tools/pdf-to-word.jpg";
 import unibridgeThumb from "@/assets/tools/unibridge.jpg";
 import proximataThumb from "@/assets/tools/proximata.jpg";
+import { selectedProjects } from "@/content/cv";
+
+/** Case studies without their own tile above (tiles cover Proximata and the MSc capstone). */
+const engagements = selectedProjects.filter(
+  (p) => !["Central European hacker-space movement", "Budapest rental price prediction"].includes(p.name),
+);
+
 
 export const Route = createFileRoute("/featured/")({
   head: () => ({
