@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Document,
   Font,
@@ -13,7 +14,9 @@ import {
   certifications,
   education,
   experience,
+  selectedProjects,
 } from "@/content/cv";
+
 
 // Disable ligature substitution so extractors always see the source glyphs.
 Font.registerHyphenationCallback((word) => [word]);
@@ -144,6 +147,36 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
           </View>
         ))}
 
+        <Text style={styles.sectionTitle}>Selected projects</Text>
+        {selectedProjects.map((p, i) => (
+          <View key={i} style={styles.entry} wrap={false}>
+            <Text style={styles.entryTitle}>{p.name}</Text>
+            <Text style={styles.entryMeta}>
+              {p.role} · {p.client} · {p.date}
+            </Text>
+            <Text style={{ marginBottom: 2 }}>{p.summary}</Text>
+            {p.highlights.map((h, j) => (
+              <View key={j} style={styles.bullet}>
+                <Text style={styles.bulletMark}>•</Text>
+                <Text style={styles.bulletText}>{h}</Text>
+              </View>
+            ))}
+            {p.links.length > 0 ? (
+              <View style={styles.linkRow}>
+                {p.links.map((l, j) => (
+                  <React.Fragment key={l.href}>
+                    {j > 0 ? <Text style={styles.sep}>·</Text> : null}
+                    <Link src={l.href} style={styles.link}>{l.label}</Link>
+                  </React.Fragment>
+                ))}
+              </View>
+            ) : null}
+            {p.tags.length > 0 ? (
+              <Text style={styles.tags}>{p.tags.join(" · ")}</Text>
+            ) : null}
+          </View>
+        ))}
+
         <Text style={styles.sectionTitle}>Education</Text>
         {education.map((e, i) => (
           <View key={i} style={styles.entry} wrap={false}>
@@ -158,7 +191,14 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
         {certifications.map((c, i) => (
           <View key={i} style={styles.listItem}>
             <Text style={styles.bulletMark}>•</Text>
-            <Text style={styles.bulletText}>{c}</Text>
+            <Text style={styles.bulletText}>
+              {c.url ? (
+                <Link src={c.url} style={styles.link}>{c.name}</Link>
+              ) : (
+                <Text>{c.name}</Text>
+              )}
+              <Text style={styles.entryMeta}> — {c.issuer}, {c.date}</Text>
+            </Text>
           </View>
         ))}
 
@@ -169,6 +209,7 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
             <Text style={styles.bulletText}>{a}</Text>
           </View>
         ))}
+
       </Page>
     </Document>
   );

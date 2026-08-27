@@ -3,21 +3,29 @@ import ceuThumb from "@/assets/tools/ceu-feedback.jpg";
 import pdfThumb from "@/assets/tools/pdf-to-word.jpg";
 import unibridgeThumb from "@/assets/tools/unibridge.jpg";
 import proximataThumb from "@/assets/tools/proximata.jpg";
+import { selectedProjects } from "@/content/cv";
+
+/** Case studies without their own tile above (tiles cover Proximata and the MSc capstone). */
+const engagements = selectedProjects.filter(
+  (p) => !["Central European hacker-space movement", "Budapest rental price prediction"].includes(p.name),
+);
+
 
 export const Route = createFileRoute("/featured/")({
   head: () => ({
     meta: [
-      { title: "Featured — Bálint Décsi" },
+      { title: "Work — Bálint Décsi" },
       {
         name: "description",
         content:
-          "Featured work: Proximata (co-founder & CTO), plus small tools and demos I've shipped.",
+          "Selected work: Proximata (co-founder & CTO), an ML rent-prediction capstone for ingatlan.com, client data/ML engagements, plus small tools and demos.",
       },
-      { property: "og:title", content: "Featured — Bálint Décsi" },
-      { property: "og:description", content: "Featured work: Proximata, tools, and demos." },
+      { property: "og:title", content: "Work — Bálint Décsi" },
+      { property: "og:description", content: "Projects, client engagements, tools, and demos." },
       { property: "og:url", content: "/featured" },
     ],
     links: [{ rel: "canonical", href: "/featured" }],
+
   }),
   component: Featured,
 });
@@ -113,9 +121,39 @@ function Featured() {
           </li>
         ))}
       </ul>
+
+      <h2 className="text-2xl mt-12 mb-2">Client engagements</h2>
+      <p className="text-[color:var(--color-ink-muted)] italic mb-6">
+        Longer-running work delivered inside client teams.
+      </p>
+      <div className="space-y-8">
+        {engagements.map((p) => (
+          <div key={p.name} className="border-l-2 border-[color:var(--color-rule)] pl-4">
+            <h3 className="text-xl m-0">{p.name}</h3>
+            <p className="font-mono text-xs text-[color:var(--color-ink-muted)] mb-2">
+              {p.role} · {p.client} · {p.date}
+            </p>
+            <p className="mb-2 text-sm">{p.summary}</p>
+            <ul className="list-disc pl-5 space-y-1 mb-2 text-sm">
+              {p.highlights.map((h, j) => <li key={j}>{h}</li>)}
+            </ul>
+            {p.links.length > 0 ? (
+              <p className="font-mono text-xs mb-1 flex flex-wrap gap-x-3">
+                {p.links.map((l) => (
+                  <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+                ))}
+              </p>
+            ) : null}
+            <p className="font-mono text-xs text-[color:var(--color-ink-muted)]">
+              {p.tags.map((tag) => `[${tag.toLowerCase()}]`).join(" ")}
+            </p>
+          </div>
+        ))}
+      </div>
     </article>
   );
 }
+
 
 function TileBody({ t }: { t: Tool }) {
   return (

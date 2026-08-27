@@ -136,13 +136,111 @@ export const education: EducationEntry[] = [
   { degree: "Exchange — Biomedical Engineering", org: "Universidad CES, Colombia", date: "2019" },
 ];
 
-export const certifications: string[] = [
-  "Generative AI Fundamentals",
-  "Launching into Machine Learning",
-  "Modernizing Data Lakes and Data Warehouses with Google Cloud",
-  "Introduction to Responsible AI",
-  "EUGLOH Summer School",
+export interface Certification {
+  name: string;
+  issuer: string;
+  date: string;
+  url?: string;
+}
+
+const GCSB_A = "https://www.cloudskillsboost.google/public_profiles/6ca5cf48-92ee-499c-babe-43b6269d59f7/badges";
+const GCSB_B = "https://www.cloudskillsboost.google/public_profiles/64e2ba24-a347-4e9d-ba9d-c0bf198184d3/badges";
+
+export const certifications: Certification[] = [
+  { name: "Google Cloud Fundamentals: Core Infrastructure", issuer: "Google Cloud Skills Boost", date: "Mar 2024", url: `${GCSB_A}/8352355` },
+  { name: "Launching into Machine Learning", issuer: "Google Cloud Skills Boost", date: "Feb 2024", url: `${GCSB_A}/8011010` },
+  { name: "Introduction to AI and Machine Learning on Google Cloud", issuer: "Google Cloud Skills Boost", date: "Nov 2023", url: `${GCSB_A}/6073750` },
+  { name: "Encoder-Decoder Architecture", issuer: "Google Cloud Skills Boost", date: "Jul 2023", url: `${GCSB_B}/4491738` },
+  { name: "Introduction to Image Generation", issuer: "Google Cloud Skills Boost", date: "Jul 2023", url: `${GCSB_B}/4230912` },
+  { name: "Generative AI Fundamentals", issuer: "Google Cloud Skills Boost", date: "Jul 2023", url: `${GCSB_B}/4230406` },
+  { name: "Introduction to Responsible AI", issuer: "Google Cloud Skills Boost", date: "Jun 2023", url: `${GCSB_B}/4108202` },
+  { name: "Introduction to Large Language Models", issuer: "Google Cloud Skills Boost", date: "Jun 2023", url: `${GCSB_B}/4052901` },
+  { name: "Introduction to Generative AI", issuer: "Google Cloud Skills Boost", date: "Jun 2023", url: `${GCSB_B}/4031467` },
+  { name: "Modernizing Data Lakes and Data Warehouses with Google Cloud", issuer: "Google Cloud Skills Boost", date: "Feb 2022", url: `${GCSB_B}/1723147` },
+  { name: "Google Cloud Big Data and Machine Learning Fundamentals", issuer: "Google Cloud Skills Boost", date: "Nov 2021", url: `${GCSB_B}/1542057` },
+  { name: "Python Fundamentals Track", issuer: "DataCamp", date: "May 2021" },
+  { name: "EUGLOH Summer School", issuer: "European University Alliance for Global Health", date: "Jul 2020" },
 ];
+
+export interface SelectedProject {
+  name: string;
+  role: string;
+  client: string;
+  date: string;
+  summary: string;
+  highlights: string[];
+  tags: string[];
+  links: { label: string; href: string }[];
+}
+
+/** Client-facing case studies — shared by the Work page and the CV PDF. */
+export const selectedProjects: SelectedProject[] = [
+  {
+    name: "Budapest rental price prediction",
+    role: "Machine Learning Engineer",
+    client: "ingatlan.com (MSc capstone, CEU)",
+    date: "Mar 2026 — Jul 2026",
+    summary:
+      "Rent-suggestion model for Budapest flats so landlords can price competitively at listing upload and cut time-on-market.",
+    highlights: [
+      "9.8% MdAPE on 50,898 listings with rolling time-series CV and a frozen newest-20% holdout, beating the client's ≤10% target.",
+      "Geospatial enrichment on Uber H3 blocks: lagged WorldPop demographics and Sentinel-2 NDVI greenness via Microsoft Planetary Computer.",
+      "Medallion (bronze→silver→gold) warehouse and SHAP/permutation diagnostics feeding an inline instant-pricing UI design.",
+    ],
+    tags: ["XGBoost", "LightGBM", "GCP", "H3", "SHAP"],
+    links: [
+      { label: "report", href: "https://balintdecsi.dev/featured/msc-thesis" },
+      { label: "github", href: "https://github.com/balintdecsi/ceu-public-thesis" },
+    ],
+  },
+  {
+    name: "Central European hacker-space movement",
+    role: "Co-founder & CTO",
+    client: "Proximata (Vienna) · mesh. (Budapest)",
+    date: "May 2025 — present",
+    summary:
+      "Builder community and innovation space where technical talent grows through hands-on building, contract work, and incubation. I lead technical strategy and take AI-native products from concept to production.",
+    highlights: [
+      "Comics Factory: ML-driven SaaS generating stylized comics with consistent characters from a few reference images.",
+      "Rapid full-stack prototyping on Supabase, Firebase, and Firestore; AI agents (Cursor, Gemini CLI, Copilot) for parallelized delivery.",
+    ],
+    tags: ["LLMs", "Image gen", "Supabase", "Firebase"],
+    links: [
+      { label: "proximata.io", href: "https://proximata.io" },
+      { label: "comicsfactory.tech", href: "https://comicsfactory.tech" },
+      { label: "growmesh.io", href: "https://growmesh.io" },
+    ],
+  },
+  {
+    name: "Sovereign data platform",
+    role: "Data Engineer",
+    client: "Deutsche Telekom",
+    date: "May 2024 — present",
+    summary:
+      "Turning a 20-year-old telco data estate, full of sensitive customer data and bound by strict EU regulation, into a cloud-native lakehouse.",
+    highlights: [
+      "Apache Iceberg lakehouse on GCP with automated Airflow ingestion for the fixed-line segment.",
+      "Scalable ML pipelines delivered through GitLab CI/CD.",
+    ],
+    tags: ["Iceberg", "GCP", "BigQuery", "Airflow"],
+    links: [],
+  },
+  {
+    name: "Domestic network optimization",
+    role: "Data Scientist",
+    client: "Vodafone Hungary (B2B: telco & banking)",
+    date: "Dec 2022 — Apr 2024",
+    summary:
+      "Greenfield geospatial ML for retail-network optimization at Hungary's largest telco and banking clients — end-to-end from feature store to client presentation.",
+    highlights: [
+      "Custom geospatial feature store plus automated scraping for competitive intelligence.",
+      "Unsupervised models with Explainable AI and interactive maps to win stakeholder trust.",
+    ],
+    tags: ["Geospatial ML", "XAI", "scikit-learn", "GIS"],
+    links: [],
+  },
+];
+
 
 export const awards: string[] = [
   "Highlighted Study Scholarship of the Hungarian State",
