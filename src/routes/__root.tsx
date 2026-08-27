@@ -196,9 +196,10 @@ function SiteHeader() {
         {/* Desktop nav */}
         <nav className="hidden sm:flex items-center gap-5">
           <Link to="/" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }} activeOptions={{ exact: true }}>about</Link>
+          <Link to="/featured" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>work</Link>
+          <Link to="/projects" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>code</Link>
           <Link to="/cv" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>cv</Link>
-          <Link to="/projects" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>projects</Link>
-          <Link to="/featured" className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>featured</Link>
+
           <button
             onClick={toggleTheme}
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
@@ -233,9 +234,10 @@ function SiteHeader() {
         <nav className="sm:hidden border-t border-[color:var(--color-rule)]">
           <div className="max-w-[72ch] mx-auto px-5 py-4 flex flex-col gap-3">
             <Link to="/" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }} activeOptions={{ exact: true }}>about</Link>
+            <Link to="/featured" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>work</Link>
+            <Link to="/projects" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>code</Link>
             <Link to="/cv" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>cv</Link>
-            <Link to="/projects" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>projects</Link>
-            <Link to="/featured" onClick={() => setMenuOpen(false)} className={linkCls} activeProps={{ className: linkCls + " !text-[color:var(--color-link)] underline" }}>featured</Link>
+
           </div>
         </nav>
       )}
