@@ -92,10 +92,11 @@ const tools: Tool[] = [
 function Featured() {
   return (
     <article>
-      <h1 className="text-3xl sm:text-4xl mt-2 mb-3">Featured</h1>
+      <h1 className="text-3xl sm:text-4xl mt-2 mb-3">Work</h1>
       <p className="text-[color:var(--color-ink-muted)] italic mb-2">
         The work I'd point to first — the venture I'm a co-founder of, plus small tools and demos I've shipped.
       </p>
+
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 list-none p-0">
         {tools.map((t) => (
