@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Document,
   Font,
@@ -13,7 +14,9 @@ import {
   certifications,
   education,
   experience,
+  selectedProjects,
 } from "@/content/cv";
+
 
 // Disable ligature substitution so extractors always see the source glyphs.
 Font.registerHyphenationCallback((word) => [word]);
