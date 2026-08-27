@@ -120,6 +120,10 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
               <Link src="https://github.com/balintdecsi" style={styles.link}>
                 github
               </Link>
+              <Text style={styles.sep}>·</Text>
+              <Link src="https://en.malt.de/profile/balintdecsi" style={styles.link}>
+                malt
+              </Link>
             </View>
             <Text style={styles.meta}>Vienna, Austria / Budapest, Hungary</Text>
           </View>
