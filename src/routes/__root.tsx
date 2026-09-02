@@ -158,7 +158,7 @@ function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
       <SiteHeader />
-      <main className="flex-1 w-full max-w-[72ch] mx-auto px-5 sm:px-6 pb-16 sm:pb-20">
+      <main className="flex-1 w-full max-w-[72ch] mx-auto px-5 sm:px-6 pt-10 sm:pt-14 pb-16 sm:pb-20">
         {children}
       </main>
       <SiteFooter />
