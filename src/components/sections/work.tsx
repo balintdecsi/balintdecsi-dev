@@ -129,8 +129,13 @@ export function WorkSection({ standalone, number = 1 }: { standalone?: boolean; 
 
 function WorkEntry({ item }: { item: WorkItem }) {
   const primary = item.links[0];
+  const hasLink = !!primary;
   const LinkWrapper = item.internal ? Link : "a";
-  const linkProps = item.internal ? { to: primary.href } : { href: primary.href };
+  const linkProps = hasLink
+    ? item.internal
+      ? { to: primary.href }
+      : { href: primary.href }
+    : undefined;
 
   return (
     <div className="border-l-2 border-[color:var(--color-rule)] pl-4">
