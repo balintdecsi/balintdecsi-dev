@@ -129,20 +129,29 @@ export function WorkSection({ standalone, number = 1 }: { standalone?: boolean; 
 
 function WorkEntry({ item }: { item: WorkItem }) {
   const primary = item.links[0];
+  const hasLink = !!primary;
   const LinkWrapper = item.internal ? Link : "a";
-  const linkProps = item.internal ? { to: primary.href } : { href: primary.href };
+  const linkProps = hasLink
+    ? item.internal
+      ? { to: primary.href }
+      : { href: primary.href }
+    : undefined;
 
   return (
     <div className="border-l-2 border-[color:var(--color-rule)] pl-4">
       <h3 className="text-xl m-0">
-        <LinkWrapper
-          {...linkProps}
-          className="no-underline"
-          target={item.internal ? undefined : "_blank"}
-          rel={item.internal ? undefined : "noopener noreferrer"}
-        >
-          {item.name}
-        </LinkWrapper>
+        {hasLink ? (
+          <LinkWrapper
+            {...linkProps}
+            className="no-underline"
+            target={item.internal ? undefined : "_blank"}
+            rel={item.internal ? undefined : "noopener noreferrer"}
+          >
+            {item.name}
+          </LinkWrapper>
+        ) : (
+          item.name
+        )}
       </h3>
       <p className="font-mono text-xs text-[color:var(--color-ink-muted)] mb-2">{item.role}</p>
       <p className="mb-2 text-sm">{item.summary}</p>
