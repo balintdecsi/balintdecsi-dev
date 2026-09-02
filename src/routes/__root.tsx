@@ -158,7 +158,7 @@ function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col">
       <SiteHeader />
-      <main className="flex-1 w-full max-w-[72ch] mx-auto px-5 sm:px-6 pb-16 sm:pb-20">
+      <main className="flex-1 w-full max-w-[72ch] mx-auto px-5 sm:px-6 pt-10 sm:pt-14 pb-16 sm:pb-20">
         {children}
       </main>
       <SiteFooter />
@@ -196,7 +196,7 @@ function SiteHeader() {
   };
 
   return (
-    <header className="site-header no-print border-b border-[color:var(--color-rule)] mb-10 sm:mb-14">
+    <header className="site-header no-print sticky top-0 z-50 bg-[color:var(--color-paper)] border-b border-[color:var(--color-rule)]">
       <div className="max-w-[72ch] mx-auto px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4">
         <Link to="/" className="font-mono text-sm no-underline tracking-tight shrink-0" onClick={() => setMenuOpen(false)}>
           <span className="text-[color:var(--color-link)]">~/</span>balint.decsi
