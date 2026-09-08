@@ -81,7 +81,7 @@ export function PageSection({
 }) {
   if (standalone) {
     return (
-      <section id={id} className="scroll-mt-8">
+      <section id={id} className="scroll-mt-24">
         <h1 className="text-3xl sm:text-4xl mt-2 mb-3">{title}</h1>
         {subtitle && <p className="text-[color:var(--color-ink-muted)] italic mb-2">{subtitle}</p>}
         {children}
@@ -89,7 +89,7 @@ export function PageSection({
     );
   }
   return (
-    <section id={id} className="scroll-mt-8 mt-16 sm:mt-24 pt-8 border-t-2 border-[color:var(--color-rule)]">
+    <section id={id} className="scroll-mt-24 mt-16 sm:mt-24 pt-8 border-t-2 border-[color:var(--color-rule)]">
       <h2 className="text-3xl mt-2 mb-3 flex items-baseline gap-3 flex-wrap">
         <span className="font-mono text-base text-[color:var(--color-ink-muted)]">§{number}</span>
         <span>{title}</span>

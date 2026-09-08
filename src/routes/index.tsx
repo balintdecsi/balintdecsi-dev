@@ -32,7 +32,7 @@ function Index() {
   return (
     <article>
       {/* Title block — academic preprint style */}
-      <header id="about" className="scroll-mt-8 pt-2 sm:pt-4 pb-2">
+      <header id="about" className="scroll-mt-24 pt-2 sm:pt-4 pb-2">
         <h1 className="text-4xl sm:text-5xl md:text-6xl tracking-tight mb-3">Bálint Décsi</h1>
         <p className="text-base sm:text-lg italic text-[color:var(--color-ink-muted)] mb-8 sm:mb-10">
           Data Engineer at Deutsche Telekom · CTO at Proximata · Builder at mesh.
