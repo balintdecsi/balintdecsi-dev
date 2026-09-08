@@ -63,7 +63,6 @@ function Index() {
           <span><sup>†</sup> <Link to="/" hash="experience">experience</Link></span>
           <span><sup>‡</sup> <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer">github</a></span>
           <span><sup>§</sup> <a href="https://www.linkedin.com/in/balintdecsi4b6b53183" target="_blank" rel="noopener noreferrer">linkedin</a></span>
-          <span><sup>¶</sup> <a href="https://en.malt.de/profile/balintdecsi?origin=site_nav_bar" target="_blank" rel="noopener noreferrer">malt</a></span>
         </p>
       </header>
 
