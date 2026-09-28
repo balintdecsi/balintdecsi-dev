@@ -20,7 +20,7 @@ export function CertificationsSection({
         <ul className="space-y-3">
           {googleCertificationGroups.map((group) => (
             <li key={group.title}>
-              <strong>{group.title}</strong>{" "}
+              {group.title}{" "}
               <span className="font-mono text-xs">
                 {group.certifications.map((c, i) => (
                   <span key={c.name} className="mr-2 inline-block">
