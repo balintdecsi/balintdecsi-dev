@@ -27,6 +27,7 @@ export const experience: ExperienceEntry[] = [
   {
     title: "Builder",
     org: "mesh.",
+    orgUrl: "https://www.growmesh.io/",
     date: "June 2025 — Present",
     location: "Budapest, Hungary",
     bullets: [
@@ -40,6 +41,7 @@ export const experience: ExperienceEntry[] = [
   {
     title: "Data Engineer",
     org: "Deutsche Telekom IT Solutions HU",
+    orgUrl: "https://www.deutschetelekomitsolutions.hu/",
     date: "May 2024 — Jul 2026",
     location: "Budapest, Hungary",
     bullets: [
@@ -52,6 +54,7 @@ export const experience: ExperienceEntry[] = [
   {
     title: "Advanced Analytics Expert",
     org: "Vodafone Hungary",
+    orgUrl: "https://www.one.hu/",
     date: "Oct 2023 — Apr 2024",
     location: "Budapest, Hungary",
     bullets: [
@@ -64,6 +67,7 @@ export const experience: ExperienceEntry[] = [
   {
     title: "Discover Graduate Program",
     org: "Vodafone Hungary",
+    orgUrl: "https://www.one.hu/",
     date: "Sep 2021 — Oct 2023",
     location: "Budapest, Hungary",
     bullets: [
@@ -77,6 +81,7 @@ export const experience: ExperienceEntry[] = [
   {
     title: "Undergraduate Research Fellow",
     org: "Institute of Biochemistry, Biological Research Centre",
+    orgUrl: "https://sysbiol.brc.hu/horvath-peter-lab-index.html",
     date: "Jan 2019 — Jun 2020",
     location: "Szeged, Hungary",
     bullets: [
