@@ -11,9 +11,11 @@ import {
 } from "@react-pdf/renderer";
 import {
   awards,
-  certifications,
   education,
   experience,
+  googleCertificationGroups,
+  languages,
+  otherCertifications,
   selectedProjects,
 } from "@/content/cv";
 
@@ -38,12 +40,12 @@ const styles = StyleSheet.create({
     // Built-in Standard 14 PDF font — no embedding needed, guaranteed
     // ToUnicode mapping so extractors read clean text.
     fontFamily: "CvSerif",
-    fontSize: 11,
+    fontSize: 10,
     color: "#111",
-    paddingTop: 64,
-    paddingBottom: 64,
+    paddingTop: 50,
+    paddingBottom: 50,
     paddingHorizontal: 56,
-    lineHeight: 1.4,
+    lineHeight: 1.25,
   },
   header: {
     flexDirection: "row",
@@ -52,8 +54,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 0.75,
     borderBottomWidth: 0.75,
     borderColor: "#999",
-    paddingVertical: 16,
-    marginBottom: 20,
+    paddingVertical: 10,
+    marginBottom: 12,
   },
   headerText: { flexGrow: 1, flexShrink: 1 },
   name: { fontSize: 24, fontWeight: "bold", marginBottom: 8, letterSpacing: 0.3 },
@@ -72,20 +74,21 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 13,
     fontWeight: "bold",
-    marginTop: 14,
-    marginBottom: 8,
+    marginTop: 7,
+    marginBottom: 4,
     borderBottomWidth: 0.5,
     borderBottomColor: "#999",
     paddingBottom: 3,
   },
-  entry: { marginBottom: 10 },
-  entryTitle: { fontSize: 12, fontWeight: "bold" },
-  entryMeta: { fontSize: 9.5, color: "#444", marginBottom: 3 },
-  bullet: { flexDirection: "row", marginBottom: 1.5 },
+  entry: { marginBottom: 5 },
+  entryTitle: { fontSize: 11, fontWeight: "bold" },
+  entryMeta: { fontSize: 9, color: "#444", marginBottom: 2 },
+  bullet: { flexDirection: "row", marginBottom: 1 },
   bulletMark: { width: 10 },
   bulletText: { flex: 1 },
   tags: { fontSize: 9.5, color: "#555", marginTop: 3, fontStyle: "italic" },
   listItem: { flexDirection: "row", marginBottom: 2 },
+  inlineLink: { fontSize: 9, color: "#1a3d7c", textDecoration: "underline", marginRight: 5 },
 });
 
 export interface CvDocProps {
@@ -102,7 +105,7 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
       creator="balintdecsi.dev"
     >
       <Page size="A4" style={styles.page}>
-        <View style={styles.header} fixed>
+        <View style={styles.header}>
           <View style={styles.headerText}>
             <Text style={styles.name}>Bálint Décsi</Text>
             <View style={styles.linkRow}>
@@ -141,12 +144,22 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
                 <Text style={styles.bulletText}>{b}</Text>
               </View>
             ))}
-            {e.tags.length > 0 ? (
-              <Text style={styles.tags}>{e.tags.join(" · ")}</Text>
-            ) : null}
           </View>
         ))}
 
+      </Page>
+
+      <Page size="A4" style={styles.page}>
+        <Text style={styles.sectionTitle}>Education</Text>
+        {education.map((e, i) => (
+          <View key={i} style={styles.entry} wrap={false}>
+            <Text style={styles.entryTitle}>{e.degree}</Text>
+            <Text style={styles.entryMeta}>{e.org} · {e.date}</Text>
+          </View>
+        ))}
+
+        <Text style={styles.sectionTitle}>Languages</Text>
+        <Text>{languages.map((language) => `${language.name} — ${language.level}`).join(" · ")}</Text>
         <Text style={styles.sectionTitle}>Selected projects</Text>
         {selectedProjects.map((p, i) => (
           <View key={i} style={styles.entry} wrap={false}>
@@ -154,13 +167,7 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
             <Text style={styles.entryMeta}>
               {p.role} · {p.client} · {p.date}
             </Text>
-            <Text style={{ marginBottom: 2 }}>{p.summary}</Text>
-            {p.highlights.map((h, j) => (
-              <View key={j} style={styles.bullet}>
-                <Text style={styles.bulletMark}>•</Text>
-                <Text style={styles.bulletText}>{h}</Text>
-              </View>
-            ))}
+            <Text>{p.summary}</Text>
             {p.links.length > 0 ? (
               <View style={styles.linkRow}>
                 {p.links.map((l, j) => (
@@ -171,44 +178,26 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
                 ))}
               </View>
             ) : null}
-            {p.tags.length > 0 ? (
-              <Text style={styles.tags}>{p.tags.join(" · ")}</Text>
-            ) : null}
           </View>
         ))}
 
-        <Text style={styles.sectionTitle}>Education</Text>
-        {education.map((e, i) => (
-          <View key={i} style={styles.entry} wrap={false}>
-            <Text style={styles.entryTitle}>{e.degree}</Text>
-            <Text style={styles.entryMeta}>
-              {e.org} · {e.date}
-            </Text>
+        <Text style={styles.sectionTitle}>Google Cloud certifications</Text>
+        {googleCertificationGroups.map((group) => (
+          <View key={group.title} style={styles.listItem} wrap={false}>
+            <Text style={{ fontWeight: "bold", marginRight: 6 }}>{group.title}</Text>
+            {group.certifications.map((c, i) => (
+              <Link key={c.name} src={c.url ?? ""} style={styles.inlineLink}>
+                [{i + 1}]
+              </Link>
+            ))}
           </View>
         ))}
-
-        <Text style={styles.sectionTitle}>Certifications</Text>
-        {certifications.map((c, i) => (
-          <View key={i} style={styles.listItem}>
-            <Text style={styles.bulletMark}>•</Text>
-            <Text style={styles.bulletText}>
-              {c.url ? (
-                <Link src={c.url} style={styles.link}>{c.name}</Link>
-              ) : (
-                <Text>{c.name}</Text>
-              )}
-              <Text style={styles.entryMeta}> — {c.issuer}, {c.date}</Text>
-            </Text>
-          </View>
+        {otherCertifications.map((c) => (
+          <Text key={c.name}>{c.name} · {c.issuer} · {c.date}</Text>
         ))}
 
         <Text style={styles.sectionTitle}>Awards & scholarships</Text>
-        {awards.map((a, i) => (
-          <View key={i} style={styles.listItem}>
-            <Text style={styles.bulletMark}>•</Text>
-            <Text style={styles.bulletText}>{a}</Text>
-          </View>
-        ))}
+        <Text>{awards.join(" · ")}</Text>
 
       </Page>
     </Document>

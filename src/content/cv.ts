@@ -50,6 +50,19 @@ export const experience: ExperienceEntry[] = [
     tags: ["AI Agents", "ML Prototyping", "SaaS", "Supabase", "Firebase", "LLMs"],
   },
   {
+    title: "Discover Graduate Program",
+    org: "Vodafone Hungary",
+    date: "Sep 2021 — Oct 2023",
+    location: "Budapest, Hungary",
+    bullets: [
+      "Rotations: Data Engineer, Data Warehouse Specialist, Data Analyst, Data Scientist.",
+      "Built cloud migration ETL pipelines and optimized data marts on a cloud-native lakehouse.",
+      "Architected geospatial retail data models and translated analysis into stakeholder reports.",
+      "Delivered ML models for B2B clients, a geospatial feature store, and automated competitive-intelligence scraping.",
+    ],
+    tags: ["Cloud Migration", "ETL", "SQL", "Geospatial", "ML"],
+  },
+  {
     title: "Advanced Analytics Expert",
     org: "Vodafone Hungary",
     date: "Oct 2023 — Apr 2024",
@@ -60,54 +73,6 @@ export const experience: ExperienceEntry[] = [
       "Developing interactive geospatial visualizations to support strategic network planning.",
     ],
     tags: ["Unsupervised ML", "XAI", "Geospatial", "Python"],
-  },
-  {
-    title: "Data Scientist",
-    org: "Vodafone Hungary",
-    date: "Apr 2023 — Oct 2023",
-    location: "Budapest, Hungary",
-    bullets: [
-      "Fourth rotation in Vodafone's Discover Graduate Program.",
-      "End-to-end delivery of machine learning models for external B2B clients.",
-      "Engineered a custom feature store for geospatial and location-based data.",
-      "Developed automated web scraping tools for competitive intelligence gathering.",
-    ],
-    tags: ["ML Modeling", "Python", "Feature Engineering", "Web Scraping", "Geospatial"],
-  },
-  {
-    title: "Data Analyst",
-    org: "Vodafone Hungary",
-    date: "Oct 2022 — Apr 2023",
-    location: "Budapest, Hungary",
-    bullets: [
-      "Third rotation in Vodafone's Discover Graduate Program.",
-      "Architected foundation data models for a major geospatial retail analytics initiative.",
-      "Translated complex analytical results into actionable reports for business stakeholders.",
-    ],
-    tags: ["SQL", "Data Visualization", "BI", "Geospatial"],
-  },
-  {
-    title: "Data Warehouse Specialist",
-    org: "Vodafone Hungary",
-    date: "Apr 2022 — Oct 2022",
-    location: "Budapest, Hungary",
-    bullets: [
-      "Second rotation in Vodafone's Discover Graduate Program.",
-      "Designed and implemented optimized data marts on a cloud-native lakehouse architecture.",
-      "Collaborated with cross-functional stakeholders to define technical data requirements.",
-    ],
-    tags: ["Cloud DWH", "SQL", "Data Modeling", "Lakehouse"],
-  },
-  {
-    title: "Data Engineer",
-    org: "Vodafone Hungary",
-    date: "Sep 2021 — Apr 2022",
-    location: "Budapest, Hungary",
-    bullets: [
-      "First rotation in Vodafone's Discover Graduate Program.",
-      "Built ETL pipelines migrating critical on-premise data to cloud-based environments.",
-    ],
-    tags: ["Data Pipelines", "Cloud Migration", "ETL"],
   },
   {
     title: "Undergraduate Research Fellow",
@@ -160,6 +125,22 @@ export const certifications: Certification[] = [
   { name: "Google Cloud Big Data and Machine Learning Fundamentals", issuer: "Google Cloud Skills Boost", date: "Nov 2021", url: `${GCSB_B}/1542057` },
   { name: "Python Fundamentals Track", issuer: "DataCamp", date: "May 2021" },
   { name: "EUGLOH Summer School", issuer: "European University Alliance for Global Health", date: "Jul 2020" },
+];
+
+/** Google Cloud credentials are grouped once for both the site and downloadable CV. */
+export const googleCertificationGroups = [
+  { title: "Generative AI", certifications: certifications.slice(3, 9) },
+  { title: "Data & cloud engineering", certifications: [certifications[0], certifications[9], certifications[10]] },
+  { title: "ML engineering", certifications: certifications.slice(1, 3) },
+];
+
+export const otherCertifications = certifications.slice(11);
+
+export const languages = [
+  { name: "English", level: "Fluent (C1)" },
+  { name: "Spanish", level: "Fluent (C1)" },
+  { name: "German", level: "Basic" },
+  { name: "Hungarian", level: "Native" },
 ];
 
 export interface SelectedProject {

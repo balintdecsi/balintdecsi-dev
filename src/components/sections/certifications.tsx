@@ -1,5 +1,5 @@
 import { PageSection, Section, subNumber } from "@/components/tex";
-import { awards, certifications } from "@/content/cv";
+import { awards, googleCertificationGroups, otherCertifications } from "@/content/cv";
 
 export function CertificationsSection({
   standalone,
@@ -17,21 +17,21 @@ export function CertificationsSection({
       subtitle="Credentials, badges, and scholarships — each links to the issuing authority where available."
     >
       <Section number={subNumber(standalone, number, 1)} title="Certifications">
-        <ul className="list-disc pl-5 space-y-1">
-          {certifications.map((c) => (
-            <li key={c.name}>
-              {c.url ? (
-                <a href={c.url} target="_blank" rel="noopener noreferrer">
-                  {c.name}
-                </a>
-              ) : (
-                c.name
-              )}
-              <span className="font-mono text-xs text-[color:var(--color-ink-muted)]">
-                {" "}
-                · {c.issuer} · {c.date}
+        <ul className="space-y-3">
+          {googleCertificationGroups.map((group) => (
+            <li key={group.title}>
+              <strong>{group.title}</strong>{" "}
+              <span className="font-mono text-xs">
+                {group.certifications.map((c, i) => (
+                  <span key={c.name} className="mr-2 inline-block">
+                    <a href={c.url} target="_blank" rel="noopener noreferrer" title={`${c.name} · ${c.date}`} aria-label={`${c.name} (${c.date})`}>[{i + 1}]</a>
+                  </span>
+                ))}
               </span>
             </li>
+          ))}
+          {otherCertifications.map((c) => (
+            <li key={c.name}>{c.name} <span className="font-mono text-xs text-[color:var(--color-ink-muted)]">· {c.issuer} · {c.date}</span></li>
           ))}
         </ul>
       </Section>

@@ -1,14 +1,16 @@
 import { useState } from "react";
 import profile from "@/assets/profile.jpg";
 import { BracketTag, PageSection, Section, subNumber } from "@/components/tex";
-import { education, experience } from "@/content/cv";
+import { education, experience, languages } from "@/content/cv";
 
 export function ExperienceSection({ standalone, number = 1 }: { standalone?: boolean; number?: number }) {
   const [includePhoto, setIncludePhoto] = useState(true);
   const [downloading, setDownloading] = useState(false);
+  const [downloadError, setDownloadError] = useState(false);
 
   async function handleDownload() {
     if (downloading) return;
+    setDownloadError(false);
     setDownloading(true);
     try {
       const [{ pdf }, { CvDoc }] = await Promise.all([
@@ -35,6 +37,9 @@ export function ExperienceSection({ standalone, number = 1 }: { standalone?: boo
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("CV download failed", error);
+      setDownloadError(true);
     } finally {
       setDownloading(false);
     }
@@ -67,6 +72,7 @@ export function ExperienceSection({ standalone, number = 1 }: { standalone?: boo
           include profile picture
         </label>
       </div>
+      {downloadError && <p role="alert" className="text-sm text-[color:var(--color-ink-muted)]">Could not generate the PDF. Please try again.</p>}
 
       <Section number={subNumber(standalone, number, 1)} title="Employment">
         <div className="space-y-7">
@@ -112,6 +118,9 @@ export function ExperienceSection({ standalone, number = 1 }: { standalone?: boo
             </div>
           ))}
         </div>
+      </Section>
+      <Section number={subNumber(standalone, number, 3)} title="Languages">
+        <p>{languages.map((language) => `${language.name} — ${language.level}`).join(" · ")}</p>
       </Section>
     </PageSection>
   );
