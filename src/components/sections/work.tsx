@@ -100,7 +100,7 @@ export function WorkSection({ standalone, number = 1 }: { standalone?: boolean; 
       title="Work"
       subtitle="The work I'd point to first — the venture I'm a co-founder of, plus case studies and demos I've shipped."
     >
-      <Section number={subNumber(standalone, number, 1)} title="Live">
+      <Section number={subNumber(standalone, number, 1)} title="Live and Clickable Apps">
         <div className="space-y-8">
           {live.map((p) => (
             <WorkEntry key={p.slug} item={p} />
