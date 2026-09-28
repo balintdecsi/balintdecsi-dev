@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { selectedProjects } from "@/content/cv";
 import { PageSection, Section, subNumber } from "@/components/tex";
 
