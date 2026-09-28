@@ -1,7 +1,7 @@
 import { useState } from "react";
 import profile from "@/assets/profile.jpg";
 import { BracketTag, PageSection, Section, subNumber } from "@/components/tex";
-import { education, experience } from "@/content/cv";
+import { education, experience, languages } from "@/content/cv";
 
 export function ExperienceSection({ standalone, number = 1 }: { standalone?: boolean; number?: number }) {
   const [includePhoto, setIncludePhoto] = useState(true);
@@ -112,6 +112,9 @@ export function ExperienceSection({ standalone, number = 1 }: { standalone?: boo
             </div>
           ))}
         </div>
+      </Section>
+      <Section number={subNumber(standalone, number, 3)} title="Languages">
+        <p>{languages.map((language) => `${language.name} — ${language.level}`).join(" · ")}</p>
       </Section>
     </PageSection>
   );
