@@ -12,18 +12,6 @@ export interface ExperienceEntry {
 
 export const experience: ExperienceEntry[] = [
   {
-    title: "Data Engineer",
-    org: "Deutsche Telekom IT Solutions HU",
-    date: "May 2024 — Present",
-    location: "Budapest, Hungary",
-    bullets: [
-      "Engineering scalable ML solutions and pipelines for the fixed-line business segment.",
-      "Building a modern Data Lakehouse using Apache Iceberg on Google Cloud Platform.",
-      "Developing automated Apache Airflow pipelines for robust data ingestion and processing.",
-    ],
-    tags: ["ML Engineering", "Apache Iceberg", "GCP", "Airflow", "Data Lakehouse"],
-  },
-  {
     title: "CTO",
     org: "Proximata",
     orgUrl: "https://proximata.io/",
@@ -48,6 +36,18 @@ export const experience: ExperienceEntry[] = [
       "Leveraging AI agents (Cursor, Gemini CLI, Copilot) for accelerated, parallelized development.",
     ],
     tags: ["AI Agents", "ML Prototyping", "SaaS", "Supabase", "Firebase", "LLMs"],
+  },
+  {
+    title: "Data Engineer",
+    org: "Deutsche Telekom IT Solutions HU",
+    date: "May 2024 — Jul 2026",
+    location: "Budapest, Hungary",
+    bullets: [
+      "Engineering scalable ML solutions and pipelines for the fixed-line business segment.",
+      "Building a modern Data Lakehouse using Apache Iceberg on Google Cloud Platform.",
+      "Developing automated Apache Airflow pipelines for robust data ingestion and processing.",
+    ],
+    tags: ["ML Engineering", "Apache Iceberg", "GCP", "Airflow", "Data Lakehouse"],
   },
   {
     title: "Advanced Analytics Expert",
@@ -95,8 +95,8 @@ export interface EducationEntry {
 }
 
 export const education: EducationEntry[] = [
-  { degree: "MS Business Analytics", org: "Central European University", date: "Sep 2025 — Jun 2026" },
-  { degree: "MS Data Science for Machine Learning", org: "Pázmány Péter Catholic University", date: "Jan 2020 — Dec 2021" },
+  { degree: "MS Business Analytics", org: "Central European University", date: "2025 — 2026" },
+  { degree: "MS Data Science for Machine Learning", org: "Pázmány Péter Catholic University", date: "2020 — 2021" },
   { degree: "BS Molecular Bionics", org: "University of Szeged", date: "2016 — 2020" },
   { degree: "Exchange — Biomedical Engineering", org: "Universidad CES, Colombia", date: "2019" },
 ];

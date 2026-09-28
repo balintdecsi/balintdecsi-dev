@@ -184,7 +184,7 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
         <Text style={styles.sectionTitle}>Google Cloud certifications</Text>
         {googleCertificationGroups.map((group) => (
           <View key={group.title} style={styles.listItem} wrap={false}>
-            <Text style={{ fontWeight: "bold", marginRight: 6 }}>{group.title}</Text>
+            <Text style={{ marginRight: 6 }}>{group.title}</Text>
             {group.certifications.map((c, i) => (
               <Link key={c.name} src={c.url ?? ""} style={styles.inlineLink}>
                 [{i + 1}]
