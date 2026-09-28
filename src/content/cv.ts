@@ -50,6 +50,18 @@ export const experience: ExperienceEntry[] = [
     tags: ["AI Agents", "ML Prototyping", "SaaS", "Supabase", "Firebase", "LLMs"],
   },
   {
+    title: "Advanced Analytics Expert",
+    org: "Vodafone Hungary",
+    date: "Oct 2023 — Apr 2024",
+    location: "Budapest, Hungary",
+    bullets: [
+      "Optimizing network infrastructure using unsupervised machine learning techniques.",
+      "Implementing Explainable AI (XAI) to drive business engagement and trust in model decisions.",
+      "Developing interactive geospatial visualizations to support strategic network planning.",
+    ],
+    tags: ["Unsupervised ML", "XAI", "Geospatial", "Python"],
+  },
+  {
     title: "Discover Graduate Program",
     org: "Vodafone Hungary",
     date: "Sep 2021 — Oct 2023",
@@ -61,18 +73,6 @@ export const experience: ExperienceEntry[] = [
       "Delivered ML models for B2B clients, a geospatial feature store, and automated competitive-intelligence scraping.",
     ],
     tags: ["Cloud Migration", "ETL", "SQL", "Geospatial", "ML"],
-  },
-  {
-    title: "Advanced Analytics Expert",
-    org: "Vodafone Hungary",
-    date: "Oct 2023 — Apr 2024",
-    location: "Budapest, Hungary",
-    bullets: [
-      "Optimizing network infrastructure using unsupervised machine learning techniques.",
-      "Implementing Explainable AI (XAI) to drive business engagement and trust in model decisions.",
-      "Developing interactive geospatial visualizations to support strategic network planning.",
-    ],
-    tags: ["Unsupervised ML", "XAI", "Geospatial", "Python"],
   },
   {
     title: "Undergraduate Research Fellow",
@@ -129,9 +129,12 @@ export const certifications: Certification[] = [
 
 /** Google Cloud credentials are grouped once for both the site and downloadable CV. */
 export const googleCertificationGroups = [
-  { title: "Generative AI", certifications: certifications.slice(3, 9) },
-  { title: "Data & cloud engineering", certifications: [certifications[0], certifications[9], certifications[10]] },
-  { title: "ML engineering", certifications: certifications.slice(1, 3) },
+  { title: "Google Cloud: Generative AI", certifications: certifications.slice(3, 9) },
+  {
+    title: "Google Cloud: Data & cloud engineering",
+    certifications: [certifications[0], certifications[9], certifications[10]],
+  },
+  { title: "Google Cloud: ML engineering", certifications: certifications.slice(1, 3) },
 ];
 
 export const otherCertifications = certifications.slice(11);
