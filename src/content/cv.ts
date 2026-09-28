@@ -50,18 +50,6 @@ export const experience: ExperienceEntry[] = [
     tags: ["AI Agents", "ML Prototyping", "SaaS", "Supabase", "Firebase", "LLMs"],
   },
   {
-    title: "Advanced Analytics Expert",
-    org: "Vodafone Hungary",
-    date: "Oct 2023 — Apr 2024",
-    location: "Budapest, Hungary",
-    bullets: [
-      "Optimizing network infrastructure using unsupervised machine learning techniques.",
-      "Implementing Explainable AI (XAI) to drive business engagement and trust in model decisions.",
-      "Developing interactive geospatial visualizations to support strategic network planning.",
-    ],
-    tags: ["Unsupervised ML", "XAI", "Geospatial", "Python"],
-  },
-  {
     title: "Discover Graduate Program",
     org: "Vodafone Hungary",
     date: "Sep 2021 — Oct 2023",
@@ -73,6 +61,18 @@ export const experience: ExperienceEntry[] = [
       "Delivered ML models for B2B clients, a geospatial feature store, and automated competitive-intelligence scraping.",
     ],
     tags: ["Cloud Migration", "ETL", "SQL", "Geospatial", "ML"],
+  },
+  {
+    title: "Advanced Analytics Expert",
+    org: "Vodafone Hungary",
+    date: "Oct 2023 — Apr 2024",
+    location: "Budapest, Hungary",
+    bullets: [
+      "Optimizing network infrastructure using unsupervised machine learning techniques.",
+      "Implementing Explainable AI (XAI) to drive business engagement and trust in model decisions.",
+      "Developing interactive geospatial visualizations to support strategic network planning.",
+    ],
+    tags: ["Unsupervised ML", "XAI", "Geospatial", "Python"],
   },
   {
     title: "Undergraduate Research Fellow",
