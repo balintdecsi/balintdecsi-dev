@@ -147,6 +147,9 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
           </View>
         ))}
 
+      </Page>
+
+      <Page size="A4" style={styles.page}>
         <Text style={styles.sectionTitle}>Education</Text>
         {education.map((e, i) => (
           <View key={i} style={styles.entry} wrap={false}>
@@ -157,9 +160,6 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
 
         <Text style={styles.sectionTitle}>Languages</Text>
         <Text>{languages.map((language) => `${language.name} — ${language.level}`).join(" · ")}</Text>
-      </Page>
-
-      <Page size="A4" style={styles.page}>
         <Text style={styles.sectionTitle}>Selected projects</Text>
         {selectedProjects.map((p, i) => (
           <View key={i} style={styles.entry} wrap={false}>
