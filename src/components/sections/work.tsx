@@ -26,7 +26,7 @@ const live: WorkItem[] = [
   },
   {
     slug: "opendrone",
-    name: "OpenDrone",
+    name: "Open Drone Space",
     role: "Open-source minded map for drone pilots — data pipeline engineer",
     summary:
       "An open-source minded map for drone pilots, showing Hungary's static drone airspace layers (no-drone zones, aerodrome zones, airspace). I engineered the data pipelines for different interval scraping/fetching from a dozen of sources.",
