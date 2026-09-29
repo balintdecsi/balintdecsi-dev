@@ -24,6 +24,27 @@ const live: WorkItem[] = [
     links: [{ label: "proximata.io", href: "https://proximata.io" }],
     tags: ["ai systems", "venture building", "infrastructure"],
   },
+  {
+    slug: "opendrone",
+    name: "OpenDrone",
+    role: "Open-source minded map for drone pilots — data pipeline engineer",
+    summary:
+      "An open-source minded map for drone pilots, showing Hungary's static drone airspace layers (no-drone zones, aerodrome zones, airspace). I engineered the data pipelines for different interval scraping/fetching from a dozen of sources.",
+    links: [
+      { label: "opendrone.space", href: "https://opendrone.space/" },
+      { label: "open-drone-space-data", href: "https://github.com/balintdecsi/open-drone-space-data" },
+    ],
+    tags: ["data pipelines", "geospatial", "open source", "aviation"],
+  },
+  {
+    slug: "skills",
+    name: "Skills",
+    role: "Global skill library for my AI agents",
+    summary:
+      "The global skills I use for my agents across different projects — reusable, versioned skill definitions shared by every agent setup I run.",
+    links: [{ label: "github", href: "https://github.com/balintdecsi/skills" }],
+    tags: ["ai agents", "open source"],
+  },
 ];
 
 const caseStudies: WorkItem[] = [
