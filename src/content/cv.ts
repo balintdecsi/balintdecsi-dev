@@ -204,7 +204,7 @@ export const selectedProjects: SelectedProject[] = [
     name: "Sovereign data platform",
     role: "Data Engineer",
     client: "Deutsche Telekom",
-    date: "May 2024 — present",
+    date: "May 2024 — Jul 2026",
     summary:
       "Turning a 20-year-old telco data estate — full of sensitive customer data and bound by strict EU regulation — into a nimble, cloud-native lakehouse.",
     highlights: [

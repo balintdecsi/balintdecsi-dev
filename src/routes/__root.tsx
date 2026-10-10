@@ -111,7 +111,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           jobTitle: "CTO, Data Engineer",
           worksFor: [
             { "@type": "Organization", name: "Proximata", url: "https://proximata.io" },
-            { "@type": "Organization", name: "Deutsche Telekom IT Solutions HU" },
+            { "@type": "Organization", name: "mesh.", url: "https://www.growmesh.io/" },
           ],
           url: "https://balintdecsi.dev",
           sameAs: [
