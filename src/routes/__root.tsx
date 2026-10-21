@@ -37,7 +37,9 @@ bash: cd: No such file or directory`}
 
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
+  const message = error instanceof Error ? error.message : String(error ?? "");
   const router = useRouter();
+
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
@@ -51,7 +53,7 @@ error: unhandled exception`}
         </pre>
         <h1 className="text-3xl mb-3">Something broke</h1>
         <p className="text-[color:var(--color-ink-muted)] mb-6">
-          {error.message || "Try reloading the page."}
+          {message || "Try reloading the page."}
         </p>
         <div className="flex gap-4 font-mono text-sm">
           <button onClick={() => { router.invalidate(); reset(); }} className="underline">
