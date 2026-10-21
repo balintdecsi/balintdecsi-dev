@@ -101,7 +101,7 @@ export interface EducationEntry {
 
 export const education: EducationEntry[] = [
   { degree: "MS Business Analytics", org: "Central European University", date: "2025 — 2026" },
-  { degree: "MS Data Science for Machine Learning", org: "Pázmány Péter Catholic University", date: "2020 — 2021" },
+
   { degree: "BS Molecular Bionics", org: "University of Szeged", date: "2016 — 2020" },
   { degree: "Exchange — Biomedical Engineering", org: "Universidad CES, Colombia", date: "2019" },
 ];
