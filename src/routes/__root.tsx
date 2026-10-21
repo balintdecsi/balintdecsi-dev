@@ -6,6 +6,8 @@ import {
   useRouter,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
+
 } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import { Sun, Moon, Menu, X } from "lucide-react";
@@ -33,7 +35,7 @@ bash: cd: No such file or directory`}
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
