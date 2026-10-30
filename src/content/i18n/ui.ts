@@ -14,6 +14,7 @@ const en = {
   },
   nav: { about: "about", work: "work", experience: "experience", certifications: "certs", code: "code" },
   home: {
+    role: "Data & ML Engineer",
     tagline: "CTO at Proximata · also Builder at mesh.",
     abstractLabel: "Abstract",
     abstract:
@@ -91,6 +92,7 @@ const hu: UiStrings = {
   },
   nav: { about: "rólam", work: "munkák", experience: "tapasztalat", certifications: "tanúsítványok", code: "kód" },
   home: {
+    role: "Data & ML Engineer",
     tagline: "CTO a Proximatánál · emellett Builder a mesh. közösségben",
     abstractLabel: "Összefoglaló",
     abstract:
@@ -166,6 +168,7 @@ const de: UiStrings = {
   },
   nav: { about: "über mich", work: "projekte", experience: "werdegang", certifications: "zertifikate", code: "code" },
   home: {
+    role: "Data & ML Engineer",
     tagline: "CTO bei Proximata · außerdem Builder bei mesh.",
     abstractLabel: "Kurzprofil",
     abstract:
@@ -241,6 +244,7 @@ const es: UiStrings = {
   },
   nav: { about: "sobre mí", work: "proyectos", experience: "experiencia", certifications: "certificaciones", code: "código" },
   home: {
+    role: "Ingeniero de Data & ML",
     tagline: "CTO en Proximata · también Builder en mesh.",
     abstractLabel: "Resumen",
     abstract:
