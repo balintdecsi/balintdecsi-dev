@@ -14,6 +14,8 @@ import { Sun, Moon, Menu, X } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { LOCALES, homePath, useLocale } from "../lib/locale";
+import { UI } from "../content/i18n/ui";
 
 function NotFoundComponent() {
   return (
@@ -133,8 +135,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const locale = useLocale();
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <HeadContent />
       </head>
@@ -171,13 +174,34 @@ function SiteShell({ children }: { children: ReactNode }) {
 }
 
 /** One-pager sections; the menu scrolls to them. */
-const NAV = [
-  { hash: "about", label: "about" },
-  { hash: "work", label: "work" },
-  { hash: "experience", label: "experience" },
-  { hash: "certifications", label: "certs" },
-  { hash: "code", label: "code" },
-] as const;
+const NAV = ["about", "work", "experience", "certifications", "code"] as const;
+
+/** EN · HU · DE · ES switcher; each points at that language's one-pager. */
+function LangSwitch({ onNavigate }: { onNavigate?: () => void }) {
+  const locale = useLocale();
+  return (
+    <span className="font-mono text-xs flex items-center gap-1.5">
+      {LOCALES.map((l, i) => (
+        <span key={l} className="flex items-center gap-1.5">
+          {i > 0 && <span className="text-[color:var(--color-ink-muted)]">·</span>}
+          {l === locale ? (
+            <span aria-current="true" className="text-[color:var(--color-link)]">{l.toUpperCase()}</span>
+          ) : (
+            <Link
+              to={homePath(l)}
+              hrefLang={l}
+              title={UI[l].langName}
+              onClick={onNavigate}
+              className="no-underline text-[color:var(--color-ink-muted)] hover:!text-[color:var(--color-link)]"
+            >
+              {l.toUpperCase()}
+            </Link>
+          )}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 function SiteHeader() {
   const linkCls = "font-mono text-sm no-underline hover:!text-[color:var(--color-link)]";
@@ -186,6 +210,9 @@ function SiteHeader() {
     setIsDark(document.documentElement.classList.contains("dark"));
   }, []);
   const [menuOpen, setMenuOpen] = useState(false);
+  const locale = useLocale();
+  const home = homePath(locale);
+  const nav = UI[locale].nav;
 
   const toggleTheme = () => {
     const next = !isDark;
@@ -202,7 +229,7 @@ function SiteHeader() {
   return (
     <header className="site-header no-print sticky top-0 z-50 bg-[color:var(--color-paper)] border-b border-[color:var(--color-rule)]">
       <div className="max-w-[72ch] mx-auto px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4">
-        <Link to="/" className="font-mono text-sm no-underline tracking-tight shrink-0" onClick={() => setMenuOpen(false)}>
+        <Link to={home} className="font-mono text-sm no-underline tracking-tight shrink-0" onClick={() => setMenuOpen(false)}>
           <span className="text-[color:var(--color-link)]">~/</span>balint.decsi
         </Link>
 
@@ -210,17 +237,18 @@ function SiteHeader() {
         <nav className="hidden sm:flex items-center gap-4 md:gap-5">
           {NAV.map((n) => (
             <Link
-              key={n.hash}
-              to="/"
-              hash={n.hash}
+              key={n}
+              to={home}
+              hash={n}
               className={linkCls}
               activeProps={{ className: linkCls }}
             >
-              {n.label}
+              {nav[n]}
             </Link>
           ))}
 
 
+          <LangSwitch />
           <button
             onClick={toggleTheme}
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
@@ -256,16 +284,17 @@ function SiteHeader() {
           <div className="max-w-[72ch] mx-auto px-5 py-4 flex flex-col gap-3">
             {NAV.map((n) => (
               <Link
-                key={n.hash}
-                to="/"
-                hash={n.hash}
+                key={n}
+                to={home}
+                hash={n}
                 onClick={() => setMenuOpen(false)}
                 className={linkCls}
                 activeProps={{ className: linkCls }}
               >
-                {n.label}
+                {nav[n]}
               </Link>
             ))}
+            <div className="pt-1"><LangSwitch onNavigate={() => setMenuOpen(false)} /></div>
           </div>
         </nav>
       )}
@@ -274,10 +303,11 @@ function SiteHeader() {
 }
 
 function SiteFooter() {
+  const locale = useLocale();
   return (
     <footer className="site-footer no-print border-t border-[color:var(--color-rule)] mt-12">
       <div className="max-w-[72ch] mx-auto px-5 sm:px-6 py-6 font-mono text-xs text-[color:var(--color-ink-muted)] flex flex-wrap items-center justify-between gap-3">
-        <span>© {new Date().getFullYear()} Bálint Décsi · typeset with care in Vienna &amp; Budapest</span>
+        <span>© {new Date().getFullYear()} {locale === "hu" ? "Décsi Bálint" : "Bálint Décsi"} · {UI[locale].footer}</span>
         <span>
           <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline">github</a>
           {" · "}

@@ -13,8 +13,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CertificationsRouteImport } from './routes/certifications'
 import { Route as CodeRouteImport } from './routes/code'
 import { Route as CvRouteImport } from './routes/cv'
+import { Route as DeRouteImport } from './routes/de'
+import { Route as EsRouteImport } from './routes/es'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as FeaturedRouteImport } from './routes/featured'
+import { Route as HuRouteImport } from './routes/hu'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as WorkRouteImport } from './routes/work'
@@ -41,6 +44,16 @@ const CvRoute = CvRouteImport.update({
   path: '/cv',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DeRoute = DeRouteImport.update({
+  id: '/de',
+  path: '/de',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsRoute = EsRouteImport.update({
+  id: '/es',
+  path: '/es',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExperienceRoute = ExperienceRouteImport.update({
   id: '/experience',
   path: '/experience',
@@ -49,6 +62,11 @@ const ExperienceRoute = ExperienceRouteImport.update({
 const FeaturedRoute = FeaturedRouteImport.update({
   id: '/featured',
   path: '/featured',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HuRoute = HuRouteImport.update({
+  id: '/hu',
+  path: '/hu',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -82,8 +100,11 @@ export interface FileRoutesByFullPath {
   '/certifications': typeof CertificationsRoute
   '/code': typeof CodeRoute
   '/cv': typeof CvRoute
+  '/de': typeof DeRoute
+  '/es': typeof EsRoute
   '/experience': typeof ExperienceRoute
   '/featured': typeof FeaturedRouteWithChildren
+  '/hu': typeof HuRoute
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work': typeof WorkRoute
@@ -95,7 +116,10 @@ export interface FileRoutesByTo {
   '/certifications': typeof CertificationsRoute
   '/code': typeof CodeRoute
   '/cv': typeof CvRoute
+  '/de': typeof DeRoute
+  '/es': typeof EsRoute
   '/experience': typeof ExperienceRoute
+  '/hu': typeof HuRoute
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work': typeof WorkRoute
@@ -108,8 +132,11 @@ export interface FileRoutesById {
   '/certifications': typeof CertificationsRoute
   '/code': typeof CodeRoute
   '/cv': typeof CvRoute
+  '/de': typeof DeRoute
+  '/es': typeof EsRoute
   '/experience': typeof ExperienceRoute
   '/featured': typeof FeaturedRouteWithChildren
+  '/hu': typeof HuRoute
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work': typeof WorkRoute
@@ -123,8 +150,11 @@ export interface FileRouteTypes {
     | '/certifications'
     | '/code'
     | '/cv'
+    | '/de'
+    | '/es'
     | '/experience'
     | '/featured'
+    | '/hu'
     | '/projects'
     | '/sitemap.xml'
     | '/work'
@@ -136,7 +166,10 @@ export interface FileRouteTypes {
     | '/certifications'
     | '/code'
     | '/cv'
+    | '/de'
+    | '/es'
     | '/experience'
+    | '/hu'
     | '/projects'
     | '/sitemap.xml'
     | '/work'
@@ -148,8 +181,11 @@ export interface FileRouteTypes {
     | '/certifications'
     | '/code'
     | '/cv'
+    | '/de'
+    | '/es'
     | '/experience'
     | '/featured'
+    | '/hu'
     | '/projects'
     | '/sitemap.xml'
     | '/work'
@@ -162,8 +198,11 @@ export interface RootRouteChildren {
   CertificationsRoute: typeof CertificationsRoute
   CodeRoute: typeof CodeRoute
   CvRoute: typeof CvRoute
+  DeRoute: typeof DeRoute
+  EsRoute: typeof EsRoute
   ExperienceRoute: typeof ExperienceRoute
   FeaturedRoute: typeof FeaturedRouteWithChildren
+  HuRoute: typeof HuRoute
   ProjectsRoute: typeof ProjectsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WorkRoute: typeof WorkRoute
@@ -199,6 +238,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CvRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/de': {
+      id: '/de'
+      path: '/de'
+      fullPath: '/de'
+      preLoaderRoute: typeof DeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es': {
+      id: '/es'
+      path: '/es'
+      fullPath: '/es'
+      preLoaderRoute: typeof EsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/experience': {
       id: '/experience'
       path: '/experience'
@@ -211,6 +264,13 @@ declare module '@tanstack/react-router' {
       path: '/featured'
       fullPath: '/featured'
       preLoaderRoute: typeof FeaturedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hu': {
+      id: '/hu'
+      path: '/hu'
+      fullPath: '/hu'
+      preLoaderRoute: typeof HuRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -270,8 +330,11 @@ const rootRouteChildren: RootRouteChildren = {
   CertificationsRoute: CertificationsRoute,
   CodeRoute: CodeRoute,
   CvRoute: CvRoute,
+  DeRoute: DeRoute,
+  EsRoute: EsRoute,
   ExperienceRoute: ExperienceRoute,
   FeaturedRoute: FeaturedRouteWithChildren,
+  HuRoute: HuRoute,
   ProjectsRoute: ProjectsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   WorkRoute: WorkRoute,
