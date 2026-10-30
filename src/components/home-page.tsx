@@ -18,6 +18,9 @@ export function HomePage() {
       <header id="about" className="scroll-mt-24 pt-2 sm:pt-4 pb-2">
         <h1 className="text-4xl sm:text-5xl md:text-6xl tracking-tight mb-3">
           {locale === "hu" ? "Décsi Bálint" : "Bálint Décsi"}
+          <span className="block mt-2 font-mono text-sm sm:text-base uppercase tracking-wider text-[color:var(--color-ink-muted)]">
+            {t.role}
+          </span>
         </h1>
         <p className="text-base sm:text-lg italic text-[color:var(--color-ink-muted)] mb-8 sm:mb-10">{t.tagline}</p>
 
