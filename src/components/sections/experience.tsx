@@ -1,9 +1,14 @@
 import { useState } from "react";
 import profile from "@/assets/profile.jpg";
 import { BracketTag, PageSection, Section, subNumber } from "@/components/tex";
-import { education, experience, languages } from "@/content/cv";
+import { getContent } from "@/content/i18n/content";
+import { UI } from "@/content/i18n/ui";
+import { useLocale } from "@/lib/locale";
 
 export function ExperienceSection({ standalone, number = 1 }: { standalone?: boolean; number?: number }) {
+  const locale = useLocale();
+  const t = UI[locale].experience;
+  const { education, experience, languages } = getContent(locale);
   const [includePhoto, setIncludePhoto] = useState(true);
   const [downloading, setDownloading] = useState(false);
   const [downloadError, setDownloadError] = useState(false);
@@ -28,11 +33,11 @@ export function ExperienceSection({ standalone, number = 1 }: { standalone?: boo
           reader.readAsDataURL(blob);
         });
       }
-      const blob = await pdf(<CvDoc includePhoto={includePhoto} photoDataUrl={photoDataUrl} />).toBlob();
+      const blob = await pdf(<CvDoc locale={locale} includePhoto={includePhoto} photoDataUrl={photoDataUrl} />).toBlob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "Balint-Decsi-CV.pdf";
+      a.download = locale === "en" ? "Balint-Decsi-CV.pdf" : `Balint-Decsi-CV-${locale.toUpperCase()}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -50,17 +55,17 @@ export function ExperienceSection({ standalone, number = 1 }: { standalone?: boo
       id="experience"
       standalone={standalone}
       number={number}
-      title="Experience"
-      subtitle="Roles, workplaces, and education — the full CV is downloadable as a PDF."
+      title={t.title}
+      subtitle={t.subtitle}
     >
       <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-4 mb-2 no-print">
         <button
           onClick={handleDownload}
           disabled={downloading}
           className="font-mono text-sm border border-[color:var(--color-rule)] px-3 py-1.5 hover:bg-[color:var(--color-muted)] no-underline cursor-pointer disabled:opacity-60"
-          aria-label="Download CV as PDF"
+          aria-label={t.downloadAria}
         >
-          {downloading ? "Generating…" : "Download full CV (PDF)"}
+          {downloading ? t.generating : t.download}
         </button>
         <label className="font-mono text-xs text-[color:var(--color-ink-muted)] flex items-center gap-2 cursor-pointer select-none">
           <input
@@ -69,12 +74,12 @@ export function ExperienceSection({ standalone, number = 1 }: { standalone?: boo
             onChange={(e) => setIncludePhoto(e.target.checked)}
             className="accent-[color:var(--color-link)] cursor-pointer"
           />
-          include profile picture
+          {t.includePhoto}
         </label>
       </div>
-      {downloadError && <p role="alert" className="text-sm text-[color:var(--color-ink-muted)]">Could not generate the PDF. Please try again.</p>}
+      {downloadError && <p role="alert" className="text-sm text-[color:var(--color-ink-muted)]">{t.error}</p>}
 
-      <Section number={subNumber(standalone, number, 1)} title="Employment">
+      <Section number={subNumber(standalone, number, 1)} title={t.employment}>
         <div className="space-y-7">
           {experience.map((e, i) => (
             <div key={i} className="cv-entry">
@@ -107,7 +112,7 @@ export function ExperienceSection({ standalone, number = 1 }: { standalone?: boo
         </div>
       </Section>
 
-      <Section number={subNumber(standalone, number, 2)} title="Education">
+      <Section number={subNumber(standalone, number, 2)} title={t.education}>
         <div className="space-y-4">
           {education.map((e, i) => (
             <div key={i} className="cv-entry">
@@ -119,7 +124,7 @@ export function ExperienceSection({ standalone, number = 1 }: { standalone?: boo
           ))}
         </div>
       </Section>
-      <Section number={subNumber(standalone, number, 3)} title="Languages">
+      <Section number={subNumber(standalone, number, 3)} title={t.languages}>
         <p>{languages.map((language) => `${language.name} — ${language.level}`).join(" · ")}</p>
       </Section>
     </PageSection>

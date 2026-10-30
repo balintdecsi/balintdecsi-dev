@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { BracketTag, PageSection, Section, subNumber } from "@/components/tex";
-import { sideProjects } from "@/content/projects";
+import { getContent } from "@/content/i18n/content";
+import { UI } from "@/content/i18n/ui";
+import { useLocale } from "@/lib/locale";
 
 interface Repo {
   id: number;
@@ -16,15 +18,18 @@ interface Repo {
 }
 
 export function CodeSection({ standalone, number = 1 }: { standalone?: boolean; number?: number }) {
+  const locale = useLocale();
+  const t = UI[locale].code;
+  const { sideProjects } = getContent(locale);
   return (
     <PageSection
       id="code"
       standalone={standalone}
       number={number}
-      title="Code"
-      subtitle="Repositories and side projects — what I've built, shipped, and open-sourced."
+      title={t.title}
+      subtitle={t.subtitle}
     >
-      <Section number={subNumber(standalone, number, 1)} title="Side projects">
+      <Section number={subNumber(standalone, number, 1)} title={t.sideProjects}>
         <div className="space-y-7">
           {sideProjects.map((p) => (
             <div key={p.name}>
@@ -54,29 +59,16 @@ export function CodeSection({ standalone, number = 1 }: { standalone?: boolean; 
         </div>
       </Section>
 
-      <Section number={subNumber(standalone, number, 2)} title="Theses">
+      <Section number={subNumber(standalone, number, 2)} title={t.theses}>
         <Theses />
       </Section>
 
-      <Section number={subNumber(standalone, number, 3)} title="Open source & experiments">
+      <Section number={subNumber(standalone, number, 3)} title={t.oss}>
         <Repos />
       </Section>
     </PageSection>
   );
 }
-
-const thesisNotes: Record<string, { title: string; blurb: string }> = {
-  "ceu-public-thesis": {
-    title: "MSc capstone — Budapest rental price prediction (ingatlan.com)",
-    blurb:
-      "Public-facing deliverables from my CEU Business Analytics capstone with ingatlan.com: a HUF/sqm rental price model for the listing-upload flow, validated with time-ordered CV (best 9.84% MdAPE). Repo contains the CEU ETD public summary (LaTeX, CC BY 4.0) and the ~21-slide client defence deck. Full pipeline, data, and technical report stay under NDA in the private capstone repo.",
-  },
-  THESIS: {
-    title: "BSc thesis — Molecular Bionics (University of Szeged)",
-    blurb:
-      "Supplementary MATLAB source for my BSc Molecular Bionics thesis at the University of Szeged. The repo holds the analysis scripts that accompany the written thesis.",
-  },
-};
 
 function useRepos() {
   return useQuery({
@@ -93,6 +85,7 @@ function useRepos() {
 
 function Theses() {
   const { data } = useRepos();
+  const thesisNotes = getContent(useLocale()).theses;
 
   const order = ["ceu-public-thesis", "THESIS"];
   const items = order
@@ -118,27 +111,23 @@ function Theses() {
   );
 }
 
-const TOPIC_GROUPS: { topic: string; title: string; description?: string }[] = [
-  { topic: "foss", title: "Open-source contributions" },
-  { topic: "side-project", title: "Side projects", description: "Personal builds and tools." },
-  { topic: "hackathon", title: "Hackathons", description: "Weekend builds and competition entries." },
-  { topic: "msc", title: "MSc coursework", description: "CEU MSc Business Analytics assignments and projects." },
-  { topic: "bsc", title: "BSc coursework", description: "University of Szeged, Molecular Bionics." },
-  { topic: "assignment", title: "Other assignments" },
-];
+const TOPIC_ORDER = ["foss", "side-project", "hackathon", "msc", "bsc", "assignment"];
 
 const HIDDEN_REPOS = new Set(["THESIS", "ceu-public-thesis", "balintdecsi.github.io", "balintdecsi-dev"]);
 
 function Repos() {
   const { data, isLoading, error } = useRepos();
+  const locale = useLocale();
+  const t = UI[locale].code;
+  const topics = getContent(locale).topics;
 
   if (isLoading) {
-    return <p className="font-mono text-sm text-[color:var(--color-ink-muted)]">loading repos…</p>;
+    return <p className="font-mono text-sm text-[color:var(--color-ink-muted)]">{t.loading}</p>;
   }
   if (error || !data) {
     return (
       <p className="font-mono text-sm text-[color:var(--color-ink-muted)]">
-        Couldn't load repos. See{" "}
+        {t.loadError}{" "}
         <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer">
           github.com/balintdecsi
         </a>
@@ -152,7 +141,8 @@ function Repos() {
     .sort((a, b) => b.pushed_at.localeCompare(a.pushed_at));
 
   const used = new Set<number>();
-  const groups = TOPIC_GROUPS.map((g) => {
+  const groups: { topic: string; title: string; description?: string; repos: Repo[] }[] = TOPIC_ORDER.map((topic) => {
+    const g = { topic, ...topics[topic] };
     const inGroup = repos.filter((r) => !used.has(r.id) && r.topics?.includes(g.topic));
     inGroup.forEach((r) => used.add(r.id));
     return { ...g, repos: inGroup };
@@ -160,7 +150,7 @@ function Repos() {
 
   const other = repos.filter((r) => !used.has(r.id));
   if (other.length) {
-    groups.push({ topic: "other", title: "Other", repos: other });
+    groups.push({ topic: "other", title: t.other, repos: other });
   }
 
   return (

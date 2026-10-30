@@ -1,0 +1,310 @@
+import type { Locale } from "@/lib/locale";
+
+/**
+ * Interface copy per language. Industry terms that local tech job ads and
+ * CVs keep in English (pipeline, lakehouse, Data Engineer, CTO, Builder,
+ * AI agent in DE, Machine Learning in ES …) stay in English on purpose.
+ */
+const en = {
+  langName: "English",
+  meta: {
+    title: "Bálint Décsi — Data & ML Engineer",
+    description:
+      "CTO at Proximata, also builder at mesh. End-to-end data and ML systems, AI agents, and SaaS prototyping.",
+  },
+  nav: { about: "about", work: "work", experience: "experience", certifications: "certs", code: "code" },
+  home: {
+    tagline: "CTO at Proximata · also Builder at mesh.",
+    abstractLabel: "Abstract",
+    abstract:
+      "Engineer focused on the end-to-end data and ML systems lifecycle — from building cloud pipelines and lakehouse platforms to shipping machine-learning solutions with AI agents. Recently graduated from MS in Business Analytics at Central European University. Also love prototyping ML-driven products.",
+    portraitAlt: "Portrait of Bálint Décsi",
+    experienceLink: "experience",
+    atGlance: "At a glance",
+    currentRole: "Current role",
+    currentRoleValue: "CTO at Proximata",
+    currentRoleNote: "(Vienna-based hacker lab)",
+    also: "Also",
+    alsoValue: "Builder at mesh.",
+    education: "Education",
+    educationValue: "MS Business Analytics, CEU (2025–2026)",
+    location: "Location",
+    locationValue: "Vienna, Austria / Budapest, Hungary",
+    interests: "Interests & skills",
+  },
+  work: {
+    title: "Work",
+    subtitle:
+      "The work I'd point to first — the venture I'm a co-founder of, plus case studies and demos I've shipped.",
+    live: "Live and clickable apps",
+    caseStudies: "Case studies",
+    demos: "Demos",
+  },
+  experience: {
+    title: "Experience",
+    subtitle: "Roles, workplaces, and education — the full CV is downloadable as a PDF.",
+    download: "Download full CV (PDF)",
+    downloadAria: "Download CV as PDF",
+    generating: "Generating…",
+    includePhoto: "include profile picture",
+    error: "Could not generate the PDF. Please try again.",
+    employment: "Employment",
+    education: "Education",
+    languages: "Languages",
+  },
+  certs: {
+    title: "Certifications & awards",
+    subtitle: "Credentials, badges, and scholarships — each links to the issuing authority where available.",
+    certifications: "Certifications",
+    awards: "Awards & scholarships",
+  },
+  code: {
+    title: "Code",
+    subtitle: "Repositories and side projects — what I've built, shipped, and open-sourced.",
+    sideProjects: "Side projects",
+    theses: "Theses",
+    oss: "Open source & experiments",
+    loading: "loading repos…",
+    loadError: "Couldn't load repos. See",
+    other: "Other",
+  },
+  pdf: {
+    experience: "Experience",
+    education: "Education",
+    languages: "Languages",
+    selectedProjects: "Selected projects",
+    googleCerts: "Google Cloud certifications",
+    awards: "Awards & scholarships",
+    subject: "Curriculum Vitae",
+  },
+  footer: "typeset with care in Vienna & Budapest",
+};
+
+export type UiStrings = typeof en;
+
+const hu: UiStrings = {
+  langName: "Magyar",
+  meta: {
+    title: "Décsi Bálint — Data & ML Engineer",
+    description:
+      "CTO a Proximatánál, emellett Builder a mesh. közösségben. End-to-end adat- és ML-rendszerek, AI-ügynökök és SaaS-prototípusok.",
+  },
+  nav: { about: "rólam", work: "munkák", experience: "tapasztalat", certifications: "tanúsítványok", code: "kód" },
+  home: {
+    tagline: "CTO a Proximatánál · emellett Builder a mesh. közösségben",
+    abstractLabel: "Összefoglaló",
+    abstract:
+      "Mérnökként az adat- és ML-rendszerek teljes életciklusával foglalkozom — a felhőalapú pipeline-ok és lakehouse platformok építésétől a gépi tanulási (ML) megoldások AI-ügynökökkel támogatott éles bevezetéséig. Nemrég végeztem a Central European University (CEU) Business Analytics MSc szakán. Szívesen prototipizálok ML-alapú termékeket is.",
+    portraitAlt: "Décsi Bálint portréja",
+    experienceLink: "tapasztalat",
+    atGlance: "Röviden",
+    currentRole: "Jelenlegi pozíció",
+    currentRoleValue: "CTO a Proximatánál",
+    currentRoleNote: "(bécsi hacker lab)",
+    also: "Emellett",
+    alsoValue: "Builder a mesh. közösségben",
+    education: "Tanulmányok",
+    educationValue: "Business Analytics MSc, CEU (2025–2026)",
+    location: "Helyszín",
+    locationValue: "Bécs, Ausztria / Budapest",
+    interests: "Érdeklődés és szakterületek",
+  },
+  work: {
+    title: "Munkák",
+    subtitle:
+      "Amire elsőként mutatnék: a vállalkozás, amelynek társalapítója vagyok, valamint esettanulmányok és demók, amelyeket leszállítottam.",
+    live: "Élő, kipróbálható alkalmazások",
+    caseStudies: "Esettanulmányok",
+    demos: "Demók",
+  },
+  experience: {
+    title: "Tapasztalat",
+    subtitle: "Pozíciók, munkahelyek és tanulmányok — a teljes önéletrajz PDF-ben is letölthető.",
+    download: "Teljes önéletrajz letöltése (PDF)",
+    downloadAria: "Önéletrajz letöltése PDF-ben",
+    generating: "Készül…",
+    includePhoto: "profilkép hozzáadása",
+    error: "Nem sikerült elkészíteni a PDF-et. Kérlek, próbáld újra.",
+    employment: "Szakmai tapasztalat",
+    education: "Tanulmányok",
+    languages: "Nyelvtudás",
+  },
+  certs: {
+    title: "Tanúsítványok és díjak",
+    subtitle: "Képesítések, badge-ek és ösztöndíjak — ahol elérhető, a kiállító oldalára mutató linkkel.",
+    certifications: "Tanúsítványok",
+    awards: "Díjak és ösztöndíjak",
+  },
+  code: {
+    title: "Kód",
+    subtitle: "Repók és mellékprojektek — amit építettem, leszállítottam és open source-ként közzétettem.",
+    sideProjects: "Mellékprojektek",
+    theses: "Szakdolgozatok",
+    oss: "Open source és kísérletek",
+    loading: "repók betöltése…",
+    loadError: "Nem sikerült betölteni a repókat. Lásd:",
+    other: "Egyéb",
+  },
+  pdf: {
+    experience: "Szakmai tapasztalat",
+    education: "Tanulmányok",
+    languages: "Nyelvtudás",
+    selectedProjects: "Kiemelt projektek",
+    googleCerts: "Google Cloud tanúsítványok",
+    awards: "Díjak és ösztöndíjak",
+    subject: "Önéletrajz",
+  },
+  footer: "gondos tipográfiával szedve Bécsben és Budapesten",
+};
+
+const de: UiStrings = {
+  langName: "Deutsch",
+  meta: {
+    title: "Bálint Décsi — Data & ML Engineer",
+    description:
+      "CTO bei Proximata, außerdem Builder bei mesh. End-to-end Data- und ML-Systeme, AI Agents und SaaS-Prototyping.",
+  },
+  nav: { about: "über mich", work: "projekte", experience: "werdegang", certifications: "zertifikate", code: "code" },
+  home: {
+    tagline: "CTO bei Proximata · außerdem Builder bei mesh.",
+    abstractLabel: "Kurzprofil",
+    abstract:
+      "Engineer mit Fokus auf den gesamten Lebenszyklus von Data- und ML-Systemen — vom Aufbau von Cloud-Pipelines und Lakehouse-Plattformen bis zum Shipping von Machine-Learning-Lösungen mit AI Agents. MSc in Business Analytics an der Central European University (CEU). Baue außerdem gern Prototypen für ML-getriebene Produkte.",
+    portraitAlt: "Porträt von Bálint Décsi",
+    experienceLink: "werdegang",
+    atGlance: "Auf einen Blick",
+    currentRole: "Aktuelle Rolle",
+    currentRoleValue: "CTO bei Proximata",
+    currentRoleNote: "(AI-native Hacker Lab in Wien)",
+    also: "Außerdem",
+    alsoValue: "Builder bei mesh.",
+    education: "Ausbildung",
+    educationValue: "MSc Business Analytics, CEU (2025–2026)",
+    location: "Standort",
+    locationValue: "Wien, Österreich / Budapest, Ungarn",
+    interests: "Schwerpunkte & Skills",
+  },
+  work: {
+    title: "Projekte",
+    subtitle:
+      "Ausgewählte Arbeiten — das Venture, das ich mitgegründet habe, sowie Case Studies und Demos, die ich geshippt habe.",
+    live: "Live-Apps zum Ausprobieren",
+    caseStudies: "Case Studies",
+    demos: "Demos",
+  },
+  experience: {
+    title: "Werdegang",
+    subtitle: "Rollen, Arbeitgeber und Ausbildung — der vollständige Lebenslauf steht als PDF zum Download bereit.",
+    download: "Lebenslauf herunterladen (PDF)",
+    downloadAria: "Lebenslauf als PDF herunterladen",
+    generating: "Wird erstellt…",
+    includePhoto: "mit Profilbild",
+    error: "Das PDF konnte nicht erstellt werden. Bitte erneut versuchen.",
+    employment: "Berufserfahrung",
+    education: "Ausbildung",
+    languages: "Sprachen",
+  },
+  certs: {
+    title: "Zertifikate & Auszeichnungen",
+    subtitle: "Zertifikate, Badges und Stipendien — jeweils mit Link zur ausstellenden Stelle, sofern verfügbar.",
+    certifications: "Zertifikate",
+    awards: "Auszeichnungen & Stipendien",
+  },
+  code: {
+    title: "Code",
+    subtitle: "Repositories und Side Projects — was ich gebaut, geshippt und als Open Source veröffentlicht habe.",
+    sideProjects: "Side Projects",
+    theses: "Abschlussarbeiten",
+    oss: "Open Source & Experimente",
+    loading: "Repositories werden geladen…",
+    loadError: "Repositories konnten nicht geladen werden. Siehe",
+    other: "Sonstiges",
+  },
+  pdf: {
+    experience: "Berufserfahrung",
+    education: "Ausbildung",
+    languages: "Sprachen",
+    selectedProjects: "Ausgewählte Projekte",
+    googleCerts: "Google-Cloud-Zertifikate",
+    awards: "Auszeichnungen & Stipendien",
+    subject: "Lebenslauf",
+  },
+  footer: "mit Sorgfalt gesetzt in Wien & Budapest",
+};
+
+const es: UiStrings = {
+  langName: "Español",
+  meta: {
+    title: "Bálint Décsi — Data & ML Engineer",
+    description:
+      "CTO en Proximata y builder en mesh. Sistemas de datos y Machine Learning de extremo a extremo, agentes de IA y prototipado SaaS.",
+  },
+  nav: { about: "sobre mí", work: "proyectos", experience: "experiencia", certifications: "certificaciones", code: "código" },
+  home: {
+    tagline: "CTO en Proximata · también Builder en mesh.",
+    abstractLabel: "Resumen",
+    abstract:
+      "Ingeniero centrado en el ciclo de vida completo de los sistemas de datos y Machine Learning: desde la construcción de pipelines en cloud y plataformas lakehouse hasta la puesta en producción de soluciones de ML con agentes de IA. Recién graduado del MS en Business Analytics de la Central European University (CEU). También me encanta prototipar productos basados en ML.",
+    portraitAlt: "Retrato de Bálint Décsi",
+    experienceLink: "experiencia",
+    atGlance: "En resumen",
+    currentRole: "Puesto actual",
+    currentRoleValue: "CTO en Proximata",
+    currentRoleNote: "(hacker lab con sede en Viena)",
+    also: "Además",
+    alsoValue: "Builder en mesh.",
+    education: "Formación",
+    educationValue: "MS en Business Analytics, CEU (2025–2026)",
+    location: "Ubicación",
+    locationValue: "Viena, Austria / Budapest, Hungría",
+    interests: "Intereses y habilidades",
+  },
+  work: {
+    title: "Proyectos",
+    subtitle:
+      "Lo primero que destacaría: la empresa que cofundé, además de casos de estudio y demos que he entregado.",
+    live: "Apps en producción para probar",
+    caseStudies: "Casos de estudio",
+    demos: "Demos",
+  },
+  experience: {
+    title: "Experiencia",
+    subtitle: "Puestos, empresas y formación — el CV completo se puede descargar en PDF.",
+    download: "Descargar CV completo (PDF)",
+    downloadAria: "Descargar CV en PDF",
+    generating: "Generando…",
+    includePhoto: "incluir foto de perfil",
+    error: "No se pudo generar el PDF. Inténtalo de nuevo.",
+    employment: "Experiencia profesional",
+    education: "Formación",
+    languages: "Idiomas",
+  },
+  certs: {
+    title: "Certificaciones y premios",
+    subtitle: "Credenciales, insignias y becas — cada una enlaza con la entidad emisora cuando está disponible.",
+    certifications: "Certificaciones",
+    awards: "Premios y becas",
+  },
+  code: {
+    title: "Código",
+    subtitle: "Repositorios y proyectos personales — lo que he construido, entregado y publicado como open source.",
+    sideProjects: "Proyectos personales",
+    theses: "Tesis",
+    oss: "Open source y experimentos",
+    loading: "cargando repositorios…",
+    loadError: "No se pudieron cargar los repositorios. Ver",
+    other: "Otros",
+  },
+  pdf: {
+    experience: "Experiencia profesional",
+    education: "Formación",
+    languages: "Idiomas",
+    selectedProjects: "Proyectos destacados",
+    googleCerts: "Certificaciones de Google Cloud",
+    awards: "Premios y becas",
+    subject: "Currículum vitae",
+  },
+  footer: "compuesto con esmero en Viena y Budapest",
+};
+
+export const UI: Record<Locale, UiStrings> = { en, hu, de, es };

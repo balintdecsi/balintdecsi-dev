@@ -9,15 +9,12 @@ import {
   Text,
   View,
 } from "@react-pdf/renderer";
-import {
-  awards,
-  education,
-  experience,
-  googleCertificationGroups,
-  languages,
-  otherCertifications,
-  selectedProjects,
-} from "@/content/cv";
+import { getContent } from "@/content/i18n/content";
+import { UI } from "@/content/i18n/ui";
+import type { Locale } from "@/lib/locale";
+import tinosRegular from "@/assets/fonts/Tinos-Regular.ttf?url";
+import tinosBold from "@/assets/fonts/Tinos-Bold.ttf?url";
+import tinosItalic from "@/assets/fonts/Tinos-Italic.ttf?url";
 
 
 // Disable ligature substitution so extractors always see the source glyphs.
@@ -32,6 +29,18 @@ Font.register({
     { src: "Times-Roman" },
     { src: "Times-Bold", fontWeight: "bold" },
     { src: "Times-Italic", fontStyle: "italic" },
+  ],
+});
+
+// Times (Standard 14) lacks ő/ű, so non-English CVs embed Tinos — a
+// Times-metric open font with full Latin Extended coverage.
+const abs = (u: string) => (typeof window !== "undefined" ? new URL(u, window.location.href).href : u);
+Font.register({
+  family: "CvSerifExt",
+  fonts: [
+    { src: abs(tinosRegular) },
+    { src: abs(tinosBold), fontWeight: "bold" },
+    { src: abs(tinosItalic), fontStyle: "italic" },
   ],
 });
 
@@ -92,22 +101,34 @@ const styles = StyleSheet.create({
 });
 
 export interface CvDocProps {
+  locale?: Locale;
   includePhoto: boolean;
   photoDataUrl?: string;
 }
 
-export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
+export function CvDoc({ locale = "en", includePhoto, photoDataUrl }: CvDocProps) {
+  const t = UI[locale];
+  const {
+    awards,
+    education,
+    experience,
+    googleCertificationGroups,
+    languages,
+    otherCertifications,
+    selectedProjects,
+  } = getContent(locale);
+  const pageStyle = locale === "en" ? styles.page : [styles.page, { fontFamily: "CvSerifExt" }];
   return (
     <Document
       title="Balint Decsi — CV"
       author="Balint Decsi"
-      subject="Curriculum Vitae"
+      subject={t.pdf.subject}
       creator="balintdecsi.dev"
     >
-      <Page size="A4" style={styles.page}>
+      <Page size="A4" style={pageStyle}>
         <View style={styles.header}>
           <View style={styles.headerText}>
-            <Text style={styles.name}>Bálint Décsi</Text>
+            <Text style={styles.name}>{locale === "hu" ? "Décsi Bálint" : "Bálint Décsi"}</Text>
             <View style={styles.linkRow}>
               <Link src="https://balintdecsi.dev" style={styles.link}>
                 balintdecsi.dev
@@ -124,14 +145,14 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
                 github
               </Link>
             </View>
-            <Text style={styles.meta}>Vienna, Austria / Budapest, Hungary</Text>
+            <Text style={styles.meta}>{t.home.locationValue}</Text>
           </View>
           {includePhoto && photoDataUrl ? (
             <Image src={photoDataUrl} style={styles.photo} />
           ) : null}
         </View>
 
-        <Text style={styles.sectionTitle}>Experience</Text>
+        <Text style={styles.sectionTitle}>{t.pdf.experience}</Text>
         {experience.map((e, i) => (
           <View key={i} style={styles.entry} wrap={false}>
             <Text style={styles.entryTitle}>{e.title}</Text>
@@ -149,8 +170,8 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
 
       </Page>
 
-      <Page size="A4" style={styles.page}>
-        <Text style={styles.sectionTitle}>Education</Text>
+      <Page size="A4" style={pageStyle}>
+        <Text style={styles.sectionTitle}>{t.pdf.education}</Text>
         {education.map((e, i) => (
           <View key={i} style={styles.entry} wrap={false}>
             <Text style={styles.entryTitle}>{e.degree}</Text>
@@ -158,9 +179,9 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
           </View>
         ))}
 
-        <Text style={styles.sectionTitle}>Languages</Text>
+        <Text style={styles.sectionTitle}>{t.pdf.languages}</Text>
         <Text>{languages.map((language) => `${language.name} — ${language.level}`).join(" · ")}</Text>
-        <Text style={styles.sectionTitle}>Selected projects</Text>
+        <Text style={styles.sectionTitle}>{t.pdf.selectedProjects}</Text>
         {selectedProjects.map((p, i) => (
           <View key={i} style={styles.entry} wrap={false}>
             <Text style={styles.entryTitle}>{p.name}</Text>
@@ -181,7 +202,7 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
           </View>
         ))}
 
-        <Text style={styles.sectionTitle}>Google Cloud certifications</Text>
+        <Text style={styles.sectionTitle}>{t.pdf.googleCerts}</Text>
         {googleCertificationGroups.map((group) => (
           <View key={group.title} style={styles.listItem} wrap={false}>
             <Text style={{ marginRight: 6 }}>{group.title}</Text>
@@ -196,7 +217,7 @@ export function CvDoc({ includePhoto, photoDataUrl }: CvDocProps) {
           <Text key={c.name}>{c.name} · {c.issuer} · {c.date}</Text>
         ))}
 
-        <Text style={styles.sectionTitle}>Awards & scholarships</Text>
+        <Text style={styles.sectionTitle}>{t.pdf.awards}</Text>
         <Text>{awards.join(" · ")}</Text>
 
       </Page>
