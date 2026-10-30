@@ -1,5 +1,8 @@
 import { selectedProjects } from "@/content/cv";
 import { PageSection, Section, subNumber } from "@/components/tex";
+import { getContent } from "@/content/i18n/content";
+import { UI } from "@/content/i18n/ui";
+import { useLocale, type Locale } from "@/lib/locale";
 
 interface WorkItem {
   slug: string;
@@ -14,113 +17,69 @@ interface WorkItem {
   internal?: boolean;
 }
 
-const live: WorkItem[] = [
-  {
-    slug: "proximata",
-    name: "Proximata",
-    role: "Co-founder & CTO — AI-native products lab",
-    summary:
-      "Vienna-based hacker lab building AI-native products. I co-founded Proximata and lead technical strategy as CTO — from infrastructure to venture-building and spinoffs.",
-    links: [{ label: "proximata.io", href: "https://proximata.io" }],
-    tags: ["ai systems", "venture building", "infrastructure"],
-  },
+const liveLinks: Pick<WorkItem, "slug" | "links" | "tags">[] = [
+  { slug: "proximata", links: [{ label: "proximata.io", href: "https://proximata.io" }], tags: ["ai systems", "venture building", "infrastructure"] },
   {
     slug: "opendrone",
-    name: "Open Drone Space",
-    role: "Open-source minded map for drone pilots — data pipeline engineer",
-    summary:
-      "An open-source minded map for drone pilots, showing Hungary's static drone airspace layers (no-drone zones, aerodrome zones, airspace). I engineered the data pipelines for different interval scraping/fetching from a dozen of sources.",
     links: [
       { label: "opendrone.space", href: "https://opendrone.space/" },
       { label: "open-drone-space-data", href: "https://github.com/balintdecsi/open-drone-space-data" },
     ],
     tags: ["data pipelines", "geospatial", "open source", "aviation"],
   },
-  {
-    slug: "skills",
-    name: "Skills",
-    role: "Global skill library for my AI agents",
-    summary:
-      "The global skills I use for my agents across different projects — reusable, versioned skill definitions shared by every agent setup I run.",
-    links: [{ label: "github", href: "https://github.com/balintdecsi/skills" }],
-    tags: ["ai agents", "open source"],
-  },
+  { slug: "skills", links: [{ label: "github", href: "https://github.com/balintdecsi/skills" }], tags: ["ai agents", "open source"] },
 ];
 
-const caseStudies: WorkItem[] = [
-  {
-    slug: "msc-thesis",
-    name: "MSc capstone — Budapest rental prediction",
-    role: "ingatlan.com × CEU · end-to-end modelling report",
-    summary:
-      "Public-facing summary of my MSc Business Analytics capstone: temporal validation, geospatial enrichment (WorldPop + Sentinel-2 NDVI on H3), model leaderboard, SHAP diagnostics, and product recommendations.",
-    links: [{ label: "read report", href: "/featured/msc-thesis" }],
-    tags: ["ml", "geospatial", "capstone"],
-    internal: true,
-  },
-  ...selectedProjects
-    .filter(
-      (p) =>
-        ![
-          "Central European hacker-space movement",
-          "Budapest rental price prediction",
-        ].includes(p.name),
-    )
-    .map((p) => ({
+const demoLinks: { slug: string; href: string; tags: string[] }[] = [
+  { slug: "comics-factory", href: "https://comicsfactory.tech", tags: ["llms", "image gen", "saas", "supabase"] },
+  { slug: "ceu-feedback", href: "/tools/ceu-feedback/index.html", tags: ["civic tech", "privacy", "higher ed"] },
+  { slug: "pdf-to-word", href: "/tools/pdf-to-word/index.html", tags: ["utility", "client-only", "pdf"] },
+  { slug: "unibridge", href: "/tools/unibridge/index.html", tags: ["product", "i18n", "civic tech"] },
+];
+
+function buildItems(locale: Locale) {
+  const c = getContent(locale);
+  const live: WorkItem[] = liveLinks.map((l, i) => ({ ...l, ...c.live[i] }));
+  const caseStudies: WorkItem[] = [
+    {
+      slug: "msc-thesis",
+      name: c.msc.name,
+      role: c.msc.role,
+      summary: c.msc.summary,
+      links: [{ label: c.msc.linkLabel, href: "/featured/msc-thesis" }],
+      tags: ["ml", "geospatial", "capstone"],
+      internal: true,
+    },
+    // The first two CV projects (capstone, hacker-space movement) are covered above / under Live.
+    ...c.selectedProjects.slice(2).map((p, i) => ({
       ...p,
-      slug: p.name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, ""),
+      slug: selectedProjects[i + 2].name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, ""),
     })),
-];
-
-const demos: WorkItem[] = [
-  {
-    slug: "comics-factory",
-    name: "Comics Factory",
-    role: "ML-driven SaaS for stylized comics with consistent characters",
-    summary:
-      "Generate stylized comics with consistent characters from a handful of reference images. Built at Hungary's first hacker space using Supabase, Firebase, and modern image-gen pipelines.",
-    links: [{ label: "comicsfactory.tech", href: "https://comicsfactory.tech" }],
-    tags: ["llms", "image gen", "saas", "supabase"],
-  },
-  {
-    slug: "ceu-feedback",
-    name: "CEU FeedForward",
-    role: "Anonymous student-feedback platform for CEU",
-    summary:
-      "MVP demo of a secure, GDPR-compliant student feedback platform — registration with a verified @student.ceu.edu email, structured ratings, free-text comments, and institutional dashboards.",
-    links: [{ label: "open demo", href: "/tools/ceu-feedback/index.html" }],
-    tags: ["civic tech", "privacy", "higher ed"],
-  },
-  {
-    slug: "pdf-to-word",
-    name: "PDF → Word",
-    role: "Convert a PDF to .docx, all in the browser",
-    summary:
-      "Drop a PDF in and download an editable .docx. Runs entirely client-side using pdf.js — no file ever leaves your machine.",
-    links: [{ label: "open tool", href: "/tools/pdf-to-word/index.html" }],
-    tags: ["utility", "client-only", "pdf"],
-  },
-  {
-    slug: "unibridge",
-    name: "Unibridge",
-    role: "Onboarding companion for international students in Vienna",
-    summary:
-      "Multi-language prototype that walks new students through housing, health insurance, visa, and local admin. Built as a public-good civic-tech experiment.",
-    links: [{ label: "open demo", href: "/tools/unibridge/index.html" }],
-    tags: ["product", "i18n", "civic tech"],
-  },
-];
+  ];
+  const demos: WorkItem[] = demoLinks.map((d, i) => ({
+    slug: d.slug,
+    name: c.demos[i].name,
+    role: c.demos[i].role,
+    summary: c.demos[i].summary,
+    links: [{ label: c.demos[i].linkLabel, href: d.href }],
+    tags: d.tags,
+  }));
+  return { live, caseStudies, demos };
+}
 
 export function WorkSection({ standalone, number = 1 }: { standalone?: boolean; number?: number }) {
+  const locale = useLocale();
+  const t = UI[locale].work;
+  const { live, caseStudies, demos } = buildItems(locale);
   return (
     <PageSection
       id="work"
       standalone={standalone}
       number={number}
-      title="Work"
-      subtitle="The work I'd point to first — the venture I'm a co-founder of, plus case studies and demos I've shipped."
+      title={t.title}
+      subtitle={t.subtitle}
     >
-      <Section number={subNumber(standalone, number, 1)} title="Live and clickable apps">
+      <Section number={subNumber(standalone, number, 1)} title={t.live}>
         <div className="space-y-8">
           {live.map((p) => (
             <WorkEntry key={p.slug} item={p} />
@@ -128,7 +87,7 @@ export function WorkSection({ standalone, number = 1 }: { standalone?: boolean; 
         </div>
       </Section>
 
-      <Section number={subNumber(standalone, number, 2)} title="Case studies">
+      <Section number={subNumber(standalone, number, 2)} title={t.caseStudies}>
         <div className="space-y-8">
           {caseStudies.map((p) => (
             <WorkEntry key={p.slug} item={p} />
@@ -136,7 +95,7 @@ export function WorkSection({ standalone, number = 1 }: { standalone?: boolean; 
         </div>
       </Section>
 
-      <Section number={subNumber(standalone, number, 3)} title="Demos">
+      <Section number={subNumber(standalone, number, 3)} title={t.demos}>
         <div className="space-y-8">
           {demos.map((p) => (
             <WorkEntry key={p.slug} item={p} />
