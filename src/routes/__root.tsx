@@ -204,7 +204,7 @@ function LangSwitch({ onNavigate }: { onNavigate?: () => void }) {
 }
 
 function SiteHeader() {
-  const linkCls = "font-mono text-sm no-underline hover:!text-[color:var(--color-link)]";
+  const linkCls = "font-mono text-sm whitespace-nowrap no-underline hover:!text-[color:var(--color-link)]";
   const [isDark, setIsDark] = useState(false);
   useEffect(() => {
     setIsDark(document.documentElement.classList.contains("dark"));
