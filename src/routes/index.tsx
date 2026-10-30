@@ -1,100 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import profile from "@/assets/profile.jpg";
-import { BracketTag, DD, DT, Section } from "@/components/tex";
-import { skills } from "@/content/cv";
-import { WorkSection } from "@/components/sections/work";
-import { ExperienceSection } from "@/components/sections/experience";
-import { CertificationsSection } from "@/components/sections/certifications";
-import { CodeSection } from "@/components/sections/code";
+import { createFileRoute } from "@tanstack/react-router";
+import { HomePage, homeHead } from "@/components/home-page";
+import { HREFLANG_LINKS } from "@/lib/locale";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    meta: [
-      { title: "Bálint Décsi — Data & ML Engineer" },
-      {
-        name: "description",
-        content:
-          "CTO at Proximata, also builder at mesh. End-to-end data and ML systems, AI agents, and SaaS prototyping.",
-      },
-      { property: "og:title", content: "Bálint Décsi — Data & ML Engineer" },
-      {
-        property: "og:description",
-        content: "Data & ML engineer. CTO at Proximata, also builder at mesh.",
-      },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
+    ...homeHead("en"),
+    links: [{ rel: "canonical", href: "https://balintdecsi.dev/" }, ...HREFLANG_LINKS],
   }),
-  component: Index,
+  component: HomePage,
 });
-
-function Index() {
-  return (
-    <article>
-      {/* Title block — academic preprint style */}
-      <header id="about" className="scroll-mt-24 pt-2 sm:pt-4 pb-2">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl tracking-tight mb-3">Bálint Décsi</h1>
-        <p className="text-base sm:text-lg italic text-[color:var(--color-ink-muted)] mb-8 sm:mb-10">
-          CTO at Proximata · also Builder at mesh.
-        </p>
-
-        <div className="flex flex-col-reverse md:flex-row gap-6 sm:gap-8 items-center md:items-start">
-          <div className="flex-1 min-w-0">
-            <h2 className="font-mono text-xs uppercase tracking-wider text-[color:var(--color-ink-muted)] mb-2">
-              Abstract
-            </h2>
-            <p className="leading-relaxed">
-              Engineer focused on the end-to-end data and ML systems lifecycle —
-              from building cloud pipelines and lakehouse platforms to shipping
-              machine-learning solutions with AI agents. Recently graduated from
-              MS in Business Analytics at Central European University. Also love
-              prototyping ML-driven products.
-            </p>
-          </div>
-          <img
-            src={profile}
-            alt="Portrait of Bálint Décsi"
-            className="w-32 h-32 sm:w-36 sm:h-36 object-cover border border-[color:var(--color-rule)] shrink-0 mx-auto md:mx-0"
-          />
-        </div>
-
-        {/* Footnote-style links */}
-        <p className="mt-8 sm:mt-10 font-mono text-sm text-[color:var(--color-ink-muted)] flex flex-wrap gap-x-4 gap-y-2">
-          <span><sup>†</sup> <Link to="/" hash="experience">experience</Link></span>
-          <span><sup>‡</sup> <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer">github</a></span>
-          <span><sup>§</sup> <a href="https://www.linkedin.com/in/balintdecsi4b6b53183" target="_blank" rel="noopener noreferrer">linkedin</a></span>
-        </p>
-      </header>
-
-      <Section number={1} title="At a glance">
-        <dl className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
-          <div>
-            <DT>Current role</DT>
-            <DD>CTO at Proximata <span className="text-[color:var(--color-ink-muted)]">(Vienna-based hacker lab)</span></DD>
-            <DT>Also</DT>
-            <DD>Builder at mesh.</DD>
-          </div>
-          <div>
-            <DT>Education</DT>
-            <DD>MS Business Analytics, CEU (2025–2026)</DD>
-            <DT>Location</DT>
-            <DD>Vienna, Austria / Budapest, Hungary</DD>
-          </div>
-        </dl>
-      </Section>
-
-      <Section number={2} title="Interests & skills">
-        <p className="leading-loose">
-          {skills.map((s) => (
-            <BracketTag key={s}>{s.toLowerCase()}</BracketTag>
-          ))}
-        </p>
-      </Section>
-
-      <WorkSection number={3} />
-      <ExperienceSection number={4} />
-      <CertificationsSection number={5} />
-      <CodeSection number={6} />
-    </article>
-  );
-}
