@@ -12,6 +12,9 @@ import {
 import { getContent } from "@/content/i18n/content";
 import { UI } from "@/content/i18n/ui";
 import type { Locale } from "@/lib/locale";
+import tinosRegular from "@/assets/fonts/Tinos-Regular.ttf?url";
+import tinosBold from "@/assets/fonts/Tinos-Bold.ttf?url";
+import tinosItalic from "@/assets/fonts/Tinos-Italic.ttf?url";
 
 
 // Disable ligature substitution so extractors always see the source glyphs.
@@ -31,13 +34,13 @@ Font.register({
 
 // Times (Standard 14) lacks ő/ű, so non-English CVs embed Tinos — a
 // Times-metric open font with full Latin Extended coverage.
-const origin = typeof window !== "undefined" ? window.location.origin : "";
+const abs = (u: string) => (typeof window !== "undefined" ? new URL(u, window.location.href).href : u);
 Font.register({
   family: "CvSerifExt",
   fonts: [
-    { src: `${origin}/fonts/Tinos-Regular.ttf` },
-    { src: `${origin}/fonts/Tinos-Bold.ttf`, fontWeight: "bold" },
-    { src: `${origin}/fonts/Tinos-Italic.ttf`, fontStyle: "italic" },
+    { src: abs(tinosRegular) },
+    { src: abs(tinosBold), fontWeight: "bold" },
+    { src: abs(tinosItalic), fontStyle: "italic" },
   ],
 });
 
