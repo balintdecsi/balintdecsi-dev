@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
@@ -14,7 +15,8 @@ import { Sun, Moon, Menu, X } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { LOCALES, homePath, useLocale } from "../lib/locale";
+import { LOCALES, freelancePath, homePath, isFreelancePath, useLocale } from "../lib/locale";
+import { FIVERR_PROFILE, FREELANCER_PROFILE } from "../content/freelance";
 import { UI } from "../content/i18n/ui";
 
 function NotFoundComponent() {
@@ -123,6 +125,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           sameAs: [
             "https://github.com/balintdecsi",
             "https://www.linkedin.com/in/balintdecsi4b6b53183",
+            FIVERR_PROFILE,
+            FREELANCER_PROFILE.en.href,
+            FREELANCER_PROFILE.hu.href,
           ],
         }),
       },
@@ -176,9 +181,10 @@ function SiteShell({ children }: { children: ReactNode }) {
 /** One-pager sections; the menu scrolls to them. */
 const NAV = ["about", "work", "experience", "certifications", "code"] as const;
 
-/** EN · HU · DE · ES switcher; each points at that language's one-pager. */
+/** EN · HU · DE · ES switcher; points at that language's version of the freelance page, else its one-pager. */
 function LangSwitch({ onNavigate }: { onNavigate?: () => void }) {
   const locale = useLocale();
+  const onFreelance = useRouterState({ select: (s) => isFreelancePath(s.location.pathname) });
   return (
     <span className="font-mono text-xs flex items-center gap-1.5">
       {LOCALES.map((l, i) => (
@@ -188,7 +194,7 @@ function LangSwitch({ onNavigate }: { onNavigate?: () => void }) {
             <span aria-current="true" className="text-[color:var(--color-link)]">{l.toUpperCase()}</span>
           ) : (
             <Link
-              to={homePath(l)}
+              to={onFreelance ? freelancePath(l) : homePath(l)}
               hrefLang={l}
               title={UI[l].langName}
               onClick={onNavigate}
@@ -226,47 +232,51 @@ function SiteHeader() {
     }
   };
 
+  const themeButton = (cls: string) => (
+    <button
+      onClick={toggleTheme}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      className={`${cls} no-underline hover:!text-[color:var(--color-link)] cursor-pointer bg-transparent border-0`}
+    >
+      {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+    </button>
+  );
+
+  /** One-pager sections, then the freelance page. */
+  const navLinks = (onNavigate?: () => void) => (
+    <>
+      {NAV.map((n) => (
+        <Link key={n} to={home} hash={n} onClick={onNavigate} className={linkCls} activeProps={{ className: linkCls }}>
+          {nav[n]}
+        </Link>
+      ))}
+      <Link
+        to={freelancePath(locale)}
+        onClick={onNavigate}
+        className={linkCls}
+        activeProps={{ className: `${linkCls} !underline` }}
+      >
+        {nav.freelance}
+      </Link>
+    </>
+  );
+
   return (
     <header className="site-header no-print sticky top-0 z-50 bg-[color:var(--color-paper)] border-b border-[color:var(--color-rule)]">
-      <div className="max-w-[72ch] mx-auto px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between gap-4">
+      <div className="max-w-[72ch] mx-auto px-5 sm:px-6 pt-4 pb-4 sm:pt-5 sm:pb-2 flex items-center justify-between gap-4">
         <Link to={home} className="font-mono text-sm no-underline tracking-tight shrink-0" onClick={() => setMenuOpen(false)}>
           <span className="text-[color:var(--color-link)]">~/</span>balint.decsi
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden sm:flex items-center gap-4 md:gap-5">
-          {NAV.map((n) => (
-            <Link
-              key={n}
-              to={home}
-              hash={n}
-              className={linkCls}
-              activeProps={{ className: linkCls }}
-            >
-              {nav[n]}
-            </Link>
-          ))}
-
-
+        {/* sm+: language switch and theme toggle; the section links get their own row below */}
+        <div className="hidden sm:flex items-center gap-4">
           <LangSwitch />
-          <button
-            onClick={toggleTheme}
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            className="font-mono text-sm p-1 -mr-1 no-underline hover:!text-[color:var(--color-link)] cursor-pointer bg-transparent border-0"
-          >
-            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </button>
-        </nav>
+          {themeButton("font-mono text-sm p-1 -mr-1")}
+        </div>
 
         {/* Mobile: theme toggle + hamburger */}
         <div className="flex sm:hidden items-center gap-2">
-          <button
-            onClick={toggleTheme}
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            className="p-2 -mr-1 no-underline hover:!text-[color:var(--color-link)] cursor-pointer bg-transparent border-0"
-          >
-            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </button>
+          {themeButton("p-2 -mr-1")}
           <button
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -278,22 +288,16 @@ function SiteHeader() {
         </div>
       </div>
 
+      {/* sm+: section links on a second row, so every language fits the 72ch column */}
+      <nav className="hidden sm:block">
+        <div className="max-w-[72ch] mx-auto px-6 pb-4 flex flex-wrap items-center gap-x-5 gap-y-1">{navLinks()}</div>
+      </nav>
+
       {/* Mobile drawer */}
       {menuOpen && (
         <nav className="sm:hidden border-t border-[color:var(--color-rule)]">
           <div className="max-w-[72ch] mx-auto px-5 py-4 flex flex-col gap-3">
-            {NAV.map((n) => (
-              <Link
-                key={n}
-                to={home}
-                hash={n}
-                onClick={() => setMenuOpen(false)}
-                className={linkCls}
-                activeProps={{ className: linkCls }}
-              >
-                {nav[n]}
-              </Link>
-            ))}
+            {navLinks(() => setMenuOpen(false))}
             <div className="pt-1"><LangSwitch onNavigate={() => setMenuOpen(false)} /></div>
           </div>
         </nav>

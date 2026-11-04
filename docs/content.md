@@ -39,6 +39,29 @@ GitHub — no code change needed.
 - `HIDDEN_REPOS` hides specific repos from the listing.
 - Thesis descriptions (MSc, BSc) are hardcoded in the "Theses" block.
 
+## Freelance
+
+Files: [`src/content/freelance.ts`](../src/content/freelance.ts) (links, prices,
+packages, extras and the English copy) and
+[`src/content/i18n/freelance.ts`](../src/content/i18n/freelance.ts) (HU / DE / ES
+copy, index-aligned with the English). Page labels live under `freelance` in
+[`src/content/i18n/ui.ts`](../src/content/i18n/ui.ts); the page itself is
+[`src/components/freelance-page.tsx`](../src/components/freelance-page.tsx).
+
+- The listings' source of truth is `OFFERING.md` in each private gig repo
+  (`gig-data-engineering`, `gig-ai-agents`, `gig-geospatial`,
+  `gig-custom-website`). When a price, package or extra changes on Fiverr or
+  Upwork, change it there and here.
+- Every text array (features, extras, FAQ …) lines up index by index with the
+  shared data in `gigs`, in all four languages. Adding a feature row means a
+  value in `gigs[i].features` plus a label in each language.
+- Package names, metadata values and tags stay in English in every language,
+  so they match what the platforms show.
+- Gallery covers are WebP copies (1280×769) of each gig's first Fiverr image, in
+  `src/assets/freelance/`.
+- The general freelancer profile differs per language: malt.com (EN), malt.de
+  (DE), malt.es (ES), joszaki.hu (HU) — see `FREELANCER_PROFILE`.
+
 ## Landing page
 
 File: [`src/routes/index.tsx`](../src/routes/index.tsx). Edit the abstract,

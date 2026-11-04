@@ -3,7 +3,7 @@ import profile from "@/assets/profile.jpg";
 import { BracketTag, DD, DT, Section } from "@/components/tex";
 import { skills } from "@/content/cv";
 import { UI } from "@/content/i18n/ui";
-import { homePath, useLocale } from "@/lib/locale";
+import { freelancePath, homePath, useLocale } from "@/lib/locale";
 import { WorkSection } from "@/components/sections/work";
 import { ExperienceSection } from "@/components/sections/experience";
 import { CertificationsSection } from "@/components/sections/certifications";
@@ -42,6 +42,7 @@ export function HomePage() {
           <span><sup>†</sup> <Link to={homePath(locale)} hash="experience">{t.experienceLink}</Link></span>
           <span><sup>‡</sup> <a href="https://github.com/balintdecsi" target="_blank" rel="noopener noreferrer">github</a></span>
           <span><sup>§</sup> <a href="https://www.linkedin.com/in/balintdecsi4b6b53183" target="_blank" rel="noopener noreferrer">linkedin</a></span>
+          <span><sup>¶</sup> <Link to={freelancePath(locale)}>{t.freelanceLink}</Link></span>
         </p>
       </header>
 

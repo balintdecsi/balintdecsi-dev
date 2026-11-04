@@ -1,3 +1,4 @@
 
 - The site is localized by URL prefix (/hu, /de, /es; English at /). UI copy lives in src/content/i18n/ui.ts and translated CV text in src/content/i18n/content.ts as index-aligned overrides of cv.ts/work.ts — why: one source for links/tags, translations can never drift in structure. Add new CV entries in all four languages.
+- The freelance page (/freelance, /hu/freelance, /de/freelance, /es/freelance) mirrors the Fiverr and Upwork gigs. Their source of truth is OFFERING.md in each private gig repo (github.com/balintdecsi/gig-*); update src/content/freelance.ts and its translations in src/content/i18n/freelance.ts together when a listing changes. Localized subpages use the non-nesting route form `hu_.freelance.tsx`, because `hu.tsx` is a leaf route without an `<Outlet />`.
 - Non-English CV PDFs embed the bundled Tinos font (src/assets/fonts) because the built-in Times font lacks Hungarian ő/ű.

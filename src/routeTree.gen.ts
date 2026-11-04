@@ -17,12 +17,16 @@ import { Route as DeRouteImport } from './routes/de'
 import { Route as EsRouteImport } from './routes/es'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as FeaturedRouteImport } from './routes/featured'
+import { Route as FreelanceRouteImport } from './routes/freelance'
 import { Route as HuRouteImport } from './routes/hu'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as WorkRouteImport } from './routes/work'
+import { Route as DeFreelanceRouteImport } from './routes/de_.freelance'
+import { Route as EsFreelanceRouteImport } from './routes/es_.freelance'
 import { Route as FeaturedIndexRouteImport } from './routes/featured.index'
 import { Route as FeaturedMscThesisRouteImport } from './routes/featured.msc-thesis'
+import { Route as HuFreelanceRouteImport } from './routes/hu_.freelance'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -64,6 +68,11 @@ const FeaturedRoute = FeaturedRouteImport.update({
   path: '/featured',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FreelanceRoute = FreelanceRouteImport.update({
+  id: '/freelance',
+  path: '/freelance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HuRoute = HuRouteImport.update({
   id: '/hu',
   path: '/hu',
@@ -84,6 +93,16 @@ const WorkRoute = WorkRouteImport.update({
   path: '/work',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DeFreelanceRoute = DeFreelanceRouteImport.update({
+  id: '/de_/freelance',
+  path: '/de/freelance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsFreelanceRoute = EsFreelanceRouteImport.update({
+  id: '/es_/freelance',
+  path: '/es/freelance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FeaturedIndexRoute = FeaturedIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -93,6 +112,11 @@ const FeaturedMscThesisRoute = FeaturedMscThesisRouteImport.update({
   id: '/msc-thesis',
   path: '/msc-thesis',
   getParentRoute: () => FeaturedRoute,
+} as any)
+const HuFreelanceRoute = HuFreelanceRouteImport.update({
+  id: '/hu_/freelance',
+  path: '/hu/freelance',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -104,11 +128,15 @@ export interface FileRoutesByFullPath {
   '/es': typeof EsRoute
   '/experience': typeof ExperienceRoute
   '/featured': typeof FeaturedRouteWithChildren
+  '/freelance': typeof FreelanceRoute
   '/hu': typeof HuRoute
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work': typeof WorkRoute
+  '/de/freelance': typeof DeFreelanceRoute
+  '/es/freelance': typeof EsFreelanceRoute
   '/featured/msc-thesis': typeof FeaturedMscThesisRoute
+  '/hu/freelance': typeof HuFreelanceRoute
   '/featured/': typeof FeaturedIndexRoute
 }
 export interface FileRoutesByTo {
@@ -119,11 +147,15 @@ export interface FileRoutesByTo {
   '/de': typeof DeRoute
   '/es': typeof EsRoute
   '/experience': typeof ExperienceRoute
+  '/freelance': typeof FreelanceRoute
   '/hu': typeof HuRoute
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work': typeof WorkRoute
+  '/de/freelance': typeof DeFreelanceRoute
+  '/es/freelance': typeof EsFreelanceRoute
   '/featured/msc-thesis': typeof FeaturedMscThesisRoute
+  '/hu/freelance': typeof HuFreelanceRoute
   '/featured': typeof FeaturedIndexRoute
 }
 export interface FileRoutesById {
@@ -136,11 +168,15 @@ export interface FileRoutesById {
   '/es': typeof EsRoute
   '/experience': typeof ExperienceRoute
   '/featured': typeof FeaturedRouteWithChildren
+  '/freelance': typeof FreelanceRoute
   '/hu': typeof HuRoute
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/work': typeof WorkRoute
+  '/de_/freelance': typeof DeFreelanceRoute
+  '/es_/freelance': typeof EsFreelanceRoute
   '/featured/msc-thesis': typeof FeaturedMscThesisRoute
+  '/hu_/freelance': typeof HuFreelanceRoute
   '/featured/': typeof FeaturedIndexRoute
 }
 export interface FileRouteTypes {
@@ -154,11 +190,15 @@ export interface FileRouteTypes {
     | '/es'
     | '/experience'
     | '/featured'
+    | '/freelance'
     | '/hu'
     | '/projects'
     | '/sitemap.xml'
     | '/work'
+    | '/de/freelance'
+    | '/es/freelance'
     | '/featured/msc-thesis'
+    | '/hu/freelance'
     | '/featured/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -169,11 +209,15 @@ export interface FileRouteTypes {
     | '/de'
     | '/es'
     | '/experience'
+    | '/freelance'
     | '/hu'
     | '/projects'
     | '/sitemap.xml'
     | '/work'
+    | '/de/freelance'
+    | '/es/freelance'
     | '/featured/msc-thesis'
+    | '/hu/freelance'
     | '/featured'
   id:
     | '__root__'
@@ -185,11 +229,15 @@ export interface FileRouteTypes {
     | '/es'
     | '/experience'
     | '/featured'
+    | '/freelance'
     | '/hu'
     | '/projects'
     | '/sitemap.xml'
     | '/work'
+    | '/de_/freelance'
+    | '/es_/freelance'
     | '/featured/msc-thesis'
+    | '/hu_/freelance'
     | '/featured/'
   fileRoutesById: FileRoutesById
 }
@@ -202,10 +250,14 @@ export interface RootRouteChildren {
   EsRoute: typeof EsRoute
   ExperienceRoute: typeof ExperienceRoute
   FeaturedRoute: typeof FeaturedRouteWithChildren
+  FreelanceRoute: typeof FreelanceRoute
   HuRoute: typeof HuRoute
   ProjectsRoute: typeof ProjectsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WorkRoute: typeof WorkRoute
+  DeFreelanceRoute: typeof DeFreelanceRoute
+  EsFreelanceRoute: typeof EsFreelanceRoute
+  HuFreelanceRoute: typeof HuFreelanceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -266,6 +318,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/freelance': {
+      id: '/freelance'
+      path: '/freelance'
+      fullPath: '/freelance'
+      preLoaderRoute: typeof FreelanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hu': {
       id: '/hu'
       path: '/hu'
@@ -294,6 +353,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/de_/freelance': {
+      id: '/de_/freelance'
+      path: '/de/freelance'
+      fullPath: '/de/freelance'
+      preLoaderRoute: typeof DeFreelanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es_/freelance': {
+      id: '/es_/freelance'
+      path: '/es/freelance'
+      fullPath: '/es/freelance'
+      preLoaderRoute: typeof EsFreelanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/featured/': {
       id: '/featured/'
       path: '/'
@@ -307,6 +380,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/featured/msc-thesis'
       preLoaderRoute: typeof FeaturedMscThesisRouteImport
       parentRoute: typeof FeaturedRoute
+    }
+    '/hu_/freelance': {
+      id: '/hu_/freelance'
+      path: '/hu/freelance'
+      fullPath: '/hu/freelance'
+      preLoaderRoute: typeof HuFreelanceRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -334,10 +414,14 @@ const rootRouteChildren: RootRouteChildren = {
   EsRoute: EsRoute,
   ExperienceRoute: ExperienceRoute,
   FeaturedRoute: FeaturedRouteWithChildren,
+  FreelanceRoute: FreelanceRoute,
   HuRoute: HuRoute,
   ProjectsRoute: ProjectsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   WorkRoute: WorkRoute,
+  DeFreelanceRoute: DeFreelanceRoute,
+  EsFreelanceRoute: EsFreelanceRoute,
+  HuFreelanceRoute: HuFreelanceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -12,6 +12,7 @@ The site is a single scrollable page; each section also has its own URL.
 - [/certifications](/certifications): Certifications, badges, awards, and scholarships with verification links.
 - [/code](/code): Side projects, theses, and open-source repositories grouped by category.
 - [/featured/msc-thesis](/featured/msc-thesis): Full report of the Budapest rental price prediction capstone for ingatlan.com.
+- [/freelance](/freelance): Freelance services with packages, prices, extras and FAQ, each orderable on Fiverr or Upwork: BigQuery data pipelines, AI agents and RAG apps, location intelligence, and custom business websites; plus a paid Upwork consultation and the Malt / Jószaki freelancer profiles. Also in Hungarian ([/hu/freelance](/hu/freelance)), German ([/de/freelance](/de/freelance)) and Spanish ([/es/freelance](/es/freelance)).
 - [/tools/ceu-feedback/index.html](/tools/ceu-feedback/index.html): CEU FeedForward — anonymous student feedback platform demo.
 - [/tools/pdf-to-word/index.html](/tools/pdf-to-word/index.html): PDF to Word converter, fully client-side.
 - [/tools/unibridge/index.html](/tools/unibridge/index.html): Unibridge — onboarding companion for international students.
