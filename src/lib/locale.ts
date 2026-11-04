@@ -27,3 +27,25 @@ export const HREFLANG_LINKS = [
   { rel: "alternate", hrefLang: "es", href: "https://balintdecsi.dev/es" },
   { rel: "alternate", hrefLang: "x-default", href: "https://balintdecsi.dev/" },
 ];
+
+export type FreelancePath = "/freelance" | "/hu/freelance" | "/de/freelance" | "/es/freelance";
+
+/** The freelance page in each language: /freelance, /hu/freelance, … */
+export function freelancePath(locale: Locale): FreelancePath {
+  return locale === "en" ? "/freelance" : (`/${locale}/freelance` as FreelancePath);
+}
+
+/** True on any language's freelance page; the language switch stays on it. */
+export function isFreelancePath(pathname: string): boolean {
+  return /^\/(?:(?:hu|de|es)\/)?freelance\/?$/.test(pathname);
+}
+
+/** hreflang alternates shared by every localized freelance page. */
+export const FREELANCE_HREFLANG_LINKS = [
+  ...LOCALES.map((l) => ({
+    rel: "alternate",
+    hrefLang: l,
+    href: `https://balintdecsi.dev${freelancePath(l)}`,
+  })),
+  { rel: "alternate", hrefLang: "x-default", href: "https://balintdecsi.dev/freelance" },
+];

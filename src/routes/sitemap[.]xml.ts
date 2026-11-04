@@ -13,6 +13,10 @@ const entries: { path: string; changefreq: string; priority: string }[] = [
   { path: "/certifications", changefreq: "monthly", priority: "0.7" },
   { path: "/code", changefreq: "weekly", priority: "0.8" },
   { path: "/featured/msc-thesis", changefreq: "monthly", priority: "0.6" },
+  { path: "/freelance", changefreq: "monthly", priority: "0.9" },
+  { path: "/hu/freelance", changefreq: "monthly", priority: "0.8" },
+  { path: "/de/freelance", changefreq: "monthly", priority: "0.8" },
+  { path: "/es/freelance", changefreq: "monthly", priority: "0.8" },
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({

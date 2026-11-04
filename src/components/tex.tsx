@@ -14,11 +14,11 @@ export function Section({
 }) {
   return (
     <section id={id} className="mt-12 sm:mt-16">
-      <h2 className="text-2xl mb-4 flex items-baseline gap-3 flex-wrap">
-        <span className="font-mono text-base text-[color:var(--color-ink-muted)]">
+      <h2 className="text-2xl mb-4 flex items-baseline gap-3">
+        <span className="font-mono text-base text-[color:var(--color-ink-muted)] shrink-0">
           §{number}
         </span>
-        <span>{title}</span>
+        <span className="min-w-0">{title}</span>
       </h2>
       <hr className="tex-rule !mt-0 !mb-6" />
       {children}

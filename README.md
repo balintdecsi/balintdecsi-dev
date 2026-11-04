@@ -49,8 +49,9 @@ src/
     cv.tsx             Full CV, print-optimized
     projects.tsx       GitHub projects, grouped by topic
     tools.tsx          Tools index (tiles → /public/tools/*)
+    freelance.tsx      Freelance gigs (Fiverr / Upwork); hu_/de_/es_.freelance.tsx translate it
     sitemap[.]xml.ts   Sitemap server route
-  content/             Typed content modules (cv.ts, projects.ts)
+  content/             Typed content modules (cv.ts, projects.ts, freelance.ts)
   components/          Shared UI primitives (tex.tsx, shadcn ui/)
   styles.css           Tailwind v4 theme + print styles
 public/
