@@ -236,7 +236,7 @@ const hu: UiStrings = {
     steps: "Így dolgozom",
     details: "A hirdetés adatai",
     category: "Kategória",
-    stack: "Technológiák",
+    stack: "Tech stack",
     tags: "Címkék",
     faq: "Gyakori kérdések",
     requirements: "Amit rendeléskor megkérdezek",

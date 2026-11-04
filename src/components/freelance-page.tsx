@@ -33,9 +33,9 @@ function formatDays(n: number, t: T) {
   return `${n}${NBSP}${n === 1 ? t.day : t.days}`;
 }
 
-/** "Table 1." / "Tabelle 1." — Hungarian puts the number first: "1. táblázat". */
+/** "Table 1." / "Tabelle 1." — Hungarian puts the number first: "1. táblázat." */
 function captionLabel(word: string, n: number, locale: Locale) {
-  return locale === "hu" ? `${n}. ${word.toLowerCase()}` : `${word} ${n}.`;
+  return locale === "hu" ? `${n}. ${word.toLowerCase()}.` : `${word} ${n}.`;
 }
 
 const external = { target: "_blank", rel: "noopener noreferrer" } as const;
@@ -135,11 +135,14 @@ function ContentsRow({
 }) {
   return (
     <li>
-      <a href={href} className="tex-contents-row group">
-        <span className="font-mono text-sm text-[color:var(--color-ink-muted)] w-8 shrink-0">
-          §{number}
+      {/* Number hangs on the first line; leader and value sit on the title's last line, as in a LaTeX table of contents. */}
+      <a href={href} className="tex-contents-row tex-leader-row group">
+        <span className="pl-8 -indent-8 group-hover:text-[color:var(--color-link)]">
+          <span className="inline-block w-8 indent-0 font-mono text-sm text-[color:var(--color-ink-muted)]">
+            §{number}
+          </span>
+          {label}
         </span>
-        <span className="group-hover:text-[color:var(--color-link)]">{label}</span>
         <span className="tex-leader" aria-hidden="true" />
         <span className="font-mono text-sm whitespace-nowrap">{value}</span>
       </a>
@@ -164,7 +167,7 @@ function GigSection({
   return (
     <Section id={gig.slug} number={number} title={text.title}>
       <p className="leading-relaxed mb-3">{text.pitch}</p>
-      <p className="font-mono text-xs flex flex-wrap gap-x-3 gap-y-1 mb-6">
+      <p className="font-mono text-xs leading-6 flex flex-wrap gap-x-3 mb-6">
         <span className="text-[color:var(--color-ink-muted)]">{t.related}:</span>
         {gig.related.map((href, j) =>
           href.startsWith("/") ? (
@@ -199,7 +202,9 @@ function GigSection({
       <dl className="sm:hidden mb-4 text-sm">
         {gig.packages.map((p, j) => (
           <div key={p.name} className="mb-2">
-            <dt className="font-semibold">{p.name}</dt>
+            <dt translate="no" className="font-semibold">
+              {p.name}
+            </dt>
             <dd className="m-0 text-[color:var(--color-ink-muted)]">{text.packages[j]}</dd>
           </div>
         ))}
@@ -217,7 +222,7 @@ function GigSection({
                 <span className="sr-only">{t.package}</span>
               </th>
               {gig.packages.map((p) => (
-                <th key={p.name} scope="col" className="font-semibold text-center">
+                <th key={p.name} scope="col" translate="no" className="font-semibold text-center">
                   {p.name}
                 </th>
               ))}
@@ -280,7 +285,7 @@ function GigSection({
       <h3 className="text-lg mt-8 mb-2">{t.extras}</h3>
       <ul className="list-none p-0 m-0 space-y-1 text-sm">
         {gig.extras.map((price, j) => (
-          <li key={j} className="flex items-baseline">
+          <li key={j} className="tex-leader-row">
             <span>{text.extras[j]}</span>
             <span className="tex-leader" aria-hidden="true" />
             <span
@@ -340,12 +345,16 @@ function GigSection({
         ))}
         <DT>{t.stack}</DT>
         <DD>
-          {gig.stack.map((s) => (
-            <BracketTag key={s}>{s}</BracketTag>
-          ))}
+          <span translate="no">
+            {gig.stack.map((s) => (
+              <BracketTag key={s}>{s}</BracketTag>
+            ))}
+          </span>
         </DD>
         <DT>{t.tags}</DT>
-        <DD>{gig.tags.join(", ")}</DD>
+        <DD>
+          <span translate="no">{gig.tags.join(", ")}</span>
+        </DD>
       </dl>
 
       <h3 className="text-lg mt-8 mb-2">{t.faq}</h3>
@@ -370,7 +379,7 @@ function GigSection({
 function Disclosure({ summary, children }: { summary: string; children: ReactNode }) {
   return (
     <details className="tex-details group border-b border-[color:var(--color-rule)]">
-      <summary className="flex items-baseline justify-between gap-4 py-2 cursor-pointer list-none">
+      <summary className="flex items-baseline justify-between gap-4 py-2 cursor-pointer list-none hover:text-[color:var(--color-link)]">
         <span>{summary}</span>
         <span
           aria-hidden="true"
